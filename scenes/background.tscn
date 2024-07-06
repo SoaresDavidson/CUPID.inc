@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbw55k3sjc3cj"]
+
+[ext_resource type="Texture2D" uid="uid://c8ghw5n4mefux" path="res://assets/space.png" id="1_amulx"]
+[ext_resource type="Script" path="res://script/background.gd" id="1_yk6q4"]
+
+[node name="Background" type="ParallaxBackground"]
+follow_viewport_enabled = true
+script = ExtResource("1_yk6q4")
+dificuldade = 1.0
+dia = 1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 0)
+motion_offset = Vector2(500, 0)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
+offset_right = 1152.0
+offset_bottom = 647.0
+texture = ExtResource("1_amulx")
+expand_mode = 1
