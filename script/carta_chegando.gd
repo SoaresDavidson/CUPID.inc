@@ -1,7 +1,7 @@
 extends AnimatableBody2D
-@onready var carta = $"."
-@onready var texto = $"../texto"
-
+@onready var game = $".."
+@onready var animationchegando = $Animationchegando
+@onready var carta = $"../carta"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,9 +10,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if game.tem_carta== false :
+		animationchegando.play("chegando")
 
 
 func _on_button_pressed():
-	carta.get_node("AnimatedSprite2D").play("abri_carta")
-	texto.visible = true
+	animationchegando.play("RESET")
+	carta.visible = true
+	game.tem_carta = true
+	
+	

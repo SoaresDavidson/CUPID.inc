@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://uakw6kd8xwow"]
 
-[ext_resource type="PackedScene" uid="uid://dwphnmv8keod5" path="res://scenes/carta.tscn" id="1_f2712"]
+[ext_resource type="PackedScene" uid="uid://dwphnmv8keod5" path="res://scenes/carta_minigame.tscn" id="1_f2712"]
 [ext_resource type="Script" path="res://script/space_shooter.gd" id="1_h6aqy"]
 [ext_resource type="PackedScene" uid="uid://cbw55k3sjc3cj" path="res://scenes/background.tscn" id="2_1rnw5"]
 [ext_resource type="PackedScene" uid="uid://br0ehb14rn6lr" path="res://scenes/generator.tscn" id="3_hlmud"]

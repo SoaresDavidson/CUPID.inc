@@ -1,132 +1,67 @@
-[gd_scene load_steps=18 format=3 uid="uid://dwphnmv8keod5"]
+[gd_scene load_steps=9 format=3 uid="uid://bkskky10obye7"]
 
-[ext_resource type="Script" path="res://script/carta.gd" id="1_25rrm"]
-[ext_resource type="Script" path="res://components/move_component.gd" id="1_qyhlj"]
-[ext_resource type="Script" path="res://components/input_component.gd" id="2_5dl7n"]
-[ext_resource type="Texture2D" uid="uid://bnsr6ena5aiat" path="res://assets/spritesheetcoração.png" id="2_8i4xx"]
-[ext_resource type="Script" path="res://components/hurtbox_component.gd" id="4_ubhnc"]
-[ext_resource type="Script" path="res://components/clamp_position_component.gd" id="6_ump2p"]
+[ext_resource type="Texture2D" uid="uid://iaiv3jvk8td8" path="res://placeholders/letter.png" id="1_3t4t5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qn5mu"]
-atlas = ExtResource("2_8i4xx")
-region = Rect2(0, 0, 32, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6i6jr"]
+atlas = ExtResource("1_3t4t5")
+region = Rect2(17, 0, 47, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vsbt5"]
-atlas = ExtResource("2_8i4xx")
-region = Rect2(0, 0, 32, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivaaq"]
+atlas = ExtResource("1_3t4t5")
+region = Rect2(64, 0, 47, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bofe7"]
-atlas = ExtResource("2_8i4xx")
-region = Rect2(32, 0, 32, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbmg1"]
+atlas = ExtResource("1_3t4t5")
+region = Rect2(111, 0, 47, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k5dld"]
-atlas = ExtResource("2_8i4xx")
-region = Rect2(0, 16, 32, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfuqu"]
+atlas = ExtResource("1_3t4t5")
+region = Rect2(158, 0, 47, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dvopq"]
-atlas = ExtResource("2_8i4xx")
-region = Rect2(32, 16, 32, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cpci"]
+atlas = ExtResource("1_3t4t5")
+region = Rect2(205, 0, 47, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rg7nr"]
-atlas = ExtResource("2_8i4xx")
-region = Rect2(0, 32, 32, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i6p0"]
+atlas = ExtResource("1_3t4t5")
+region = Rect2(20, 0, 47, 51)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bh15d"]
-atlas = ExtResource("2_8i4xx")
-region = Rect2(32, 32, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_db7xw"]
-atlas = ExtResource("2_8i4xx")
-region = Rect2(0, 48, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pnlqa"]
-atlas = ExtResource("2_8i4xx")
-region = Rect2(32, 48, 32, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_jufr5"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_qijkb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qn5mu")
+"texture": SubResource("AtlasTexture_6i6jr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivaaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbmg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfuqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cpci")
 }],
-"loop": true,
-"name": &"center",
-"speed": 2.0
+"loop": false,
+"name": &"abri_carta",
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vsbt5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bofe7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k5dld")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dvopq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rg7nr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bh15d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_db7xw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pnlqa")
+"texture": SubResource("AtlasTexture_2i6p0")
 }],
-"loop": false,
-"name": &"death",
-"speed": 8.0
-}, {
-"frames": [],
 "loop": true,
-"name": &"down",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"up",
+"name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_12x0b"]
-size = Vector2(15.8, 9.8)
-
-[node name="Carta" type="Node2D"]
-z_index = 5
-scale = Vector2(5, 5)
-script = ExtResource("1_25rrm")
+[node name="carta" type="AnimatableBody2D"]
+z_index = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_jufr5")
-animation = &"death"
-autoplay = "center"
-
-[node name="HurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("actor")]
-scale = Vector2(1, 1)
-script = ExtResource("4_ubhnc")
-actor = NodePath("..")
-
-[node name="HurtCollision" type="CollisionShape2D" parent="HurtBoxComponent"]
-position = Vector2(0.0999999, 0.1)
-shape = SubResource("RectangleShape2D_12x0b")
-debug_color = Color(0.94902, 0, 0, 0.419608)
-
-[node name="InputComponent" type="Node" parent="." node_paths=PackedStringArray("move_component")]
-script = ExtResource("2_5dl7n")
-move_component = NodePath("../MoveComponent")
-speed = 500
-
-[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
-script = ExtResource("1_qyhlj")
-actor = NodePath("..")
-
-[node name="ClampPositionComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
-script = ExtResource("6_ump2p")
-actor = NodePath("..")
-
-[connection signal="area_entered" from="HurtBoxComponent" to="." method="_on_hurt_box_component_area_entered"]
+rotation = 1.5697
+sprite_frames = SubResource("SpriteFrames_qijkb")
+animation = &"abri_carta"
+autoplay = "default"

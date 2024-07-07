@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq5m52kgqx1n7"]
+
+[ext_resource type="Texture2D" uid="uid://dcv1m5ow3ebyq" path="res://placeholders/meta do dia.png" id="1_ovdmu"]
+
+[node name="texto" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ovdmu")

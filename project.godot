@@ -13,7 +13,6 @@ config_version=5
 config/name="Game_Jam"
 run/main_scene="res://scenes/space_shooter.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [autoload]
 
