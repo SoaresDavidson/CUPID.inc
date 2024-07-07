@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dwphnmv8keod5"]
+[gd_scene load_steps=19 format=3 uid="uid://dwphnmv8keod5"]
 
 [ext_resource type="Script" path="res://script/carta.gd" id="1_25rrm"]
 [ext_resource type="Script" path="res://components/move_component.gd" id="1_qyhlj"]
@@ -7,9 +7,13 @@
 [ext_resource type="Script" path="res://components/hurtbox_component.gd" id="4_ubhnc"]
 [ext_resource type="Script" path="res://components/clamp_position_component.gd" id="6_ump2p"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qn5mu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdqah"]
 atlas = ExtResource("2_8i4xx")
-region = Rect2(0, 0, 32, 16)
+region = Rect2(0, 64, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wou5v"]
+atlas = ExtResource("2_8i4xx")
+region = Rect2(32, 64, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vsbt5"]
 atlas = ExtResource("2_8i4xx")
@@ -47,11 +51,14 @@ region = Rect2(32, 48, 32, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qn5mu")
+"texture": SubResource("AtlasTexture_kdqah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wou5v")
 }],
 "loop": true,
 "name": &"center",
-"speed": 2.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -80,24 +87,13 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
-"speed": 8.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"down",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"up",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12x0b"]
-size = Vector2(15.8, 9.8)
+size = Vector2(15.8, 9)
 
 [node name="Carta" type="Node2D"]
-z_index = 5
 scale = Vector2(5, 5)
 script = ExtResource("1_25rrm")
 
@@ -105,6 +101,8 @@ script = ExtResource("1_25rrm")
 sprite_frames = SubResource("SpriteFrames_jufr5")
 animation = &"death"
 autoplay = "center"
+frame = 7
+frame_progress = 1.0
 
 [node name="HurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("actor")]
 scale = Vector2(1, 1)
@@ -112,7 +110,7 @@ script = ExtResource("4_ubhnc")
 actor = NodePath("..")
 
 [node name="HurtCollision" type="CollisionShape2D" parent="HurtBoxComponent"]
-position = Vector2(0.0999999, 0.1)
+position = Vector2(0.0999999, 0.5)
 shape = SubResource("RectangleShape2D_12x0b")
 debug_color = Color(0.94902, 0, 0, 0.419608)
 

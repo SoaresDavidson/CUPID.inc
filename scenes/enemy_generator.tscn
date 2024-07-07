@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://br0ehb14rn6lr"]
 
 [ext_resource type="Script" path="res://script/enemy_generator.gd" id="1_e7boj"]
-[ext_resource type="PackedScene" uid="uid://bcvei5kutmr6g" path="res://scenes/placeeholder.tscn" id="2_b8jwp"]
+[ext_resource type="PackedScene" uid="uid://bcvei5kutmr6g" path="res://enemys_scenes/placeeholder.tscn" id="2_b8jwp"]
 [ext_resource type="Script" path="res://components/spawn_component.gd" id="3_88xmx"]
 
 [node name="EnemyGenerator" type="Node2D"]

@@ -1,5 +1,8 @@
 class_name Player
 extends Node2D
+@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var move_component = $MoveComponent
+@onready var input_component = $InputComponent
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,3 +14,14 @@ func _ready():
 func _process(delta):
 	pass
 
+
+
+func _on_hurt_box_component_area_entered(area):
+	if area.get_parent() is Enemy:
+		animated_sprite_2d.play("death")
+		GlobalVars.playing = 0
+		await animated_sprite_2d.animation_finished
+		get_tree().quit()
+	else:
+		GlobalVars.pontos += 1
+		area.get_parent().queue_free()
