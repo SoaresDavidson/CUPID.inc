@@ -42,7 +42,7 @@ autoplay = "default"
 frame_progress = 0.452808
 
 [node name="MoveComponent" parent="." index="1"]
-velocity = Vector2(-80, -80)
+velocity = Vector2(-20, -60)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" index="0"]
 shape = SubResource("RectangleShape2D_uet1m")
