@@ -8,8 +8,13 @@ var dificuldade = GlobalVars.dificuldade
 var dia = GlobalVars.dia
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#multiplica a velocidade dos inimigos pela velocidade
 	move_component.velocity *= dificuldade 
-	move_component.velocity.y *= randi_range(1,-1)
+	#decide uma direção vertical para inimigos(so afeta quem anda na vertical [drone])
+	var direction = randi_range(-1, 1)
+	while direction == 0:
+		direction = randi_range(-1, 1)
+	move_component.velocity.y *= direction
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
