@@ -4,7 +4,7 @@ extends Node2D
 @onready var move_component = $MoveComponent
 
 
-var dificuldade = GlobalVars.dificuldade
+var dificuldade = GlobalVars.dificuldade * 2.5
 var dia = GlobalVars.dia
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -10,6 +10,9 @@ extends Node
 signal personalidade
 
 func _ready():
+	GlobalVars.dificuldade = 1
+	GlobalVars.pontos = 0
+	GlobalVars.meta = 5
 	await get_tree().create_timer(2.0).timeout
 	animation_player.play("chegando")
 
@@ -34,13 +37,13 @@ func _on_botãocartachegando_pressed():
 		if destinatario_grupo[i] not in remetente_grupo:
 			GlobalVars.dificuldade += 1
 		
-	print(GlobalVars.dificuldade)
+	GlobalVars.meta *= GlobalVars.dificuldade 
 	
 	remetente.text= "eu sou:\n"+str(person_remetente[0])+"\n"+str(person_remetente[1])+"\n"+str(person_remetente[2])+"\n"+str(person_remetente[3])+"\n"
 	destinatario.text = "meu amor e:\n"+str(person_destinatario[0])+"\n"+str(person_destinatario[1])+"\n"+str(person_destinatario[2])+"\n"+str(person_destinatario[3])+"\n"
 
 var person = [
-	[0,1,2,3],#person[0]
+	["a","B","c","d"],#person[0]
 	[4,5,6,7],#person[1]
 	[8,9,10,11],#person[2]
 	[12,13,14,15]#person[3]

@@ -18,9 +18,9 @@ var dificuldade = GlobalVars.dificuldade
 
 func _ready():
 	
-	if dificuldade > 3:
+	if dificuldade >= 2:
 		pombo_timer.process_mode = Node.PROCESS_MODE_INHERIT
-	if dificuldade > 6:
+	if dificuldade >= 3:
 		drone_timer.process_mode = Node.PROCESS_MODE_INHERIT
 	
 	pombo_timer.timeout.connect(spawn_component.spawn.bind(POMBO, pombo_timer, 2.0))

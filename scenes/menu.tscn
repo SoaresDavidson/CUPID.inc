@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4qyxc7ldpnhc"]
+[gd_scene load_steps=4 format=3 uid="uid://b4qyxc7ldpnhc"]
 
 [ext_resource type="Script" path="res://script/menu.gd" id="1_7e1da"]
 [ext_resource type="Texture2D" uid="uid://b75kbulbh2a2t" path="res://assets/interface.png" id="1_165gq"]
+[ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://placeholders/fonts/PixelOperator8.ttf" id="3_qqr6m"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -28,6 +29,18 @@ offset_top = 19.5246
 offset_right = 84.1482
 offset_bottom = 42.5246
 scale = Vector2(0.5, 0.5)
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 18.1233
+offset_top = 12.5796
+offset_right = 150.123
+offset_bottom = 35.5796
+scale = Vector2(0.205199, 0.295885)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_qqr6m")
+text = "highscore:
+"
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
