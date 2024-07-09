@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4qyxc7ldpnhc"]
+
+[ext_resource type="Script" path="res://script/menu.gd" id="1_7e1da"]
+[ext_resource type="Texture2D" uid="uid://b75kbulbh2a2t" path="res://assets/interface.png" id="1_165gq"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -278.0
+offset_top = 38.0
+offset_right = -278.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(15.9463, 15.2628)
+script = ExtResource("1_7e1da")
+
+[node name="Interface" type="Sprite2D" parent="."]
+position = Vector2(54, 67)
+texture = ExtResource("1_165gq")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 44.1482
+offset_top = 19.5246
+offset_right = 84.1482
+offset_bottom = 42.5246
+scale = Vector2(0.5, 0.5)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 46.7194
+offset_top = 19.197
+offset_right = 121.719
+offset_bottom = 50.197
+scale = Vector2(0.2, 0.2)
+text = "começar"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 47.1583
+offset_top = 27.8455
+offset_right = 122.158
+offset_bottom = 58.8455
+scale = Vector2(0.2, 0.2)
+text = "sair"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

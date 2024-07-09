@@ -13,5 +13,6 @@ func _process(delta):
 	pass
 
 
-func _on_sair_pressed():
+
+func _on_carta_chegando_personalidade():
 	texto.visible = false

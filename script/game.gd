@@ -2,6 +2,7 @@ extends Node
 
 @onready var remetente = $texto/remetente
 @onready var destinario = $texto/destinario
+@onready var carta_saindo_sprite = $carta_saindo
 
 
 var tem_carta = false

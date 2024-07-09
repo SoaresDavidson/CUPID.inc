@@ -14,5 +14,5 @@ func _process(delta):
 
 
 func _on_button_pressed():
-	carta.get_node("AnimatedSprite2D").play("abri_carta")
+	
 	texto.visible = true

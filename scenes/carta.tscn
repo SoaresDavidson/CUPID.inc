@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkskky10obye7"]
+[gd_scene load_steps=11 format=3 uid="uid://bkskky10obye7"]
 
 [ext_resource type="Texture2D" uid="uid://iaiv3jvk8td8" path="res://placeholders/letter.png" id="1_3t4t5"]
+[ext_resource type="Texture2D" uid="uid://y6hahwp1o0" path="res://assets/spritesheetanimaçãocarta.png" id="2_7aws2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6i6jr"]
 atlas = ExtResource("1_3t4t5")
@@ -22,9 +23,13 @@ region = Rect2(158, 0, 47, 64)
 atlas = ExtResource("1_3t4t5")
 region = Rect2(205, 0, 47, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2i6p0"]
-atlas = ExtResource("1_3t4t5")
-region = Rect2(20, 0, 47, 51)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nxtu"]
+atlas = ExtResource("2_7aws2")
+region = Rect2(48, 0, 48, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecmpl"]
+atlas = ExtResource("2_7aws2")
+region = Rect2(0, 0, 48, 30)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qijkb"]
 animations = [{
@@ -50,18 +55,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2i6p0")
+"texture": SubResource("AtlasTexture_2nxtu")
 }],
 "loop": true,
-"name": &"default",
+"name": &"aceita",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecmpl")
+}],
+"loop": true,
+"name": &"normal",
 "speed": 5.0
 }]
 
-[node name="carta" type="AnimatableBody2D"]
-z_index = 2
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-rotation = 1.5697
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_qijkb")
-animation = &"abri_carta"
-autoplay = "default"
+animation = &"aceita"
+autoplay = "normal"

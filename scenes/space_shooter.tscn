@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://uakw6kd8xwow"]
+[gd_scene load_steps=8 format=3 uid="uid://uakw6kd8xwow"]
 
 [ext_resource type="PackedScene" uid="uid://dwphnmv8keod5" path="res://scenes/carta_minigame.tscn" id="1_f2712"]
 [ext_resource type="Script" path="res://script/space_shooter.gd" id="1_h6aqy"]
 [ext_resource type="PackedScene" uid="uid://cbw55k3sjc3cj" path="res://scenes/background.tscn" id="2_1rnw5"]
 [ext_resource type="PackedScene" uid="uid://br0ehb14rn6lr" path="res://scenes/generator.tscn" id="3_hlmud"]
+[ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://placeholders/fonts/PixelOperator8.ttf" id="5_8lnsf"]
+[ext_resource type="Texture2D" uid="uid://dg0lfcf5kodqr" path="res://assets/botão.png" id="6_740mj"]
+[ext_resource type="Texture2D" uid="uid://davp1acd1upbx" path="res://assets/spritecomeço.png" id="7_xpwp7"]
 
 [node name="space_shooter" type="Node2D"]
 script = ExtResource("1_h6aqy")
@@ -16,8 +19,55 @@ position = Vector2(120, 150)
 [node name="EnemyGenerator" parent="." instance=ExtResource("3_hlmud")]
 position = Vector2(1189, 307)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 40.0
-one_shot = true
+[node name="Replay" type="Node2D" parent="."]
+visible = false
+z_index = 5
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Label" type="Label" parent="Replay"]
+z_index = 1
+offset_left = 393.0
+offset_top = 272.0
+offset_right = 545.0
+offset_bottom = 295.0
+scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("5_8lnsf")
+text = "Você falhou!"
+
+[node name="Label2" type="Label" parent="Replay"]
+z_index = 1
+offset_left = 424.0
+offset_top = 400.0
+offset_right = 606.0
+offset_bottom = 423.0
+scale = Vector2(2.1913, 2.5)
+theme_override_fonts/font = ExtResource("5_8lnsf")
+text = "Tentar de novo"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Replay"]
+modulate = Color(0.639216, 1, 1, 1)
+position = Vector2(617, 296)
+scale = Vector2(15.368, 10.0657)
+texture = ExtResource("6_740mj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Replay"]
+modulate = Color(1, 0.778083, 0.844946, 1)
+position = Vector2(625, 426)
+scale = Vector2(13.2729, 5.66198)
+texture = ExtResource("6_740mj")
+
+[node name="Button" type="Button" parent="Replay"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 429.0
+offset_top = 390.0
+offset_right = 437.0
+offset_bottom = 398.0
+scale = Vector2(49.3352, 8.51092)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1152, -1)
+scale = Vector2(4.00025, 4.50281)
+texture = ExtResource("7_xpwp7")
+centered = false
+
+[connection signal="pressed" from="Replay/Button" to="." method="_on_button_pressed"]
