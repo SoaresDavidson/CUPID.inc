@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://dwphnmv8keod5"]
+
+[ext_resource type="Script" path="res://script/carta.gd" id="1_25rrm"]
+[ext_resource type="Script" path="res://components/move_component.gd" id="1_qyhlj"]
+[ext_resource type="Script" path="res://components/input_component.gd" id="2_5dl7n"]
+[ext_resource type="Texture2D" uid="uid://doct73280mxdl" path="res://assets/ship.png" id="2_ck0h5"]
+[ext_resource type="Script" path="res://components/hurtbox_component.gd" id="4_ubhnc"]
+[ext_resource type="Script" path="res://components/clamp_position_component.gd" id="6_ump2p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdv8r"]
+atlas = ExtResource("2_ck0h5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x703p"]
+atlas = ExtResource("2_ck0h5")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1ou6"]
+atlas = ExtResource("2_ck0h5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jufr5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdv8r")
+}],
+"loop": true,
+"name": &"center",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x703p")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1ou6")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dy1dp"]
+radius = 6.81176
+
+[node name="Carta" type="Node2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_25rrm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_jufr5")
+animation = &"center"
+autoplay = "center"
+
+[node name="HurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("actor")]
+scale = Vector2(1, 1)
+script = ExtResource("4_ubhnc")
+actor = NodePath("..")
+
+[node name="HurtCollision" type="CollisionShape2D" parent="HurtBoxComponent"]
+shape = SubResource("CircleShape2D_dy1dp")
+debug_color = Color(0.94902, 0, 0, 0.419608)
+
+[node name="InputComponent" type="Node" parent="." node_paths=PackedStringArray("move_component")]
+script = ExtResource("2_5dl7n")
+move_component = NodePath("../MoveComponent")
+speed = 500
+
+[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("1_qyhlj")
+actor = NodePath("..")
+
+[node name="ClampPositionComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("6_ump2p")
+actor = NodePath("..")
+
+[connection signal="area_entered" from="HurtBoxComponent" to="." method="_on_hurt_box_component_area_entered"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg3skjko6rcqc"]
+
+[ext_resource type="Texture2D" uid="uid://bc4yv1h8hxcxn" path="res://assets/escritório.png" id="1_qa1sa"]
+[ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://placeholders/fonts/PixelOperator8.ttf" id="2_oa28h"]
+
+[node name="escritorio_sprite" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qa1sa")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 47.0
+offset_top = -63.0
+offset_right = 113.0
+offset_bottom = -40.0
+scale = Vector2(0.75, 0.75)
+theme_override_fonts/font = ExtResource("2_oa28h")
+text = "Saída"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -110.0
+offset_top = -63.0
+offset_right = -14.0
+offset_bottom = -40.0
+scale = Vector2(0.75, 0.75)
+theme_override_fonts/font = ExtResource("2_oa28h")
+text = "Entrada"

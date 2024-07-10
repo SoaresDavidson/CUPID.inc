@@ -1,0 +1,171 @@
+[gd_scene load_steps=14 format=3 uid="uid://ubfa2s4q64w5"]
+
+[ext_resource type="Script" path="res://script/game.gd" id="1_27t3n"]
+[ext_resource type="PackedScene" uid="uid://bkskky10obye7" path="res://scenes/carta.tscn" id="2_g4p43"]
+[ext_resource type="PackedScene" uid="uid://dg3skjko6rcqc" path="res://scenes/escritorio_sprite.tscn" id="2_num38"]
+[ext_resource type="Script" path="res://script/carta_chegando.gd" id="3_setkx"]
+[ext_resource type="Script" path="res://script/carta.gd" id="5_ftd2a"]
+[ext_resource type="PackedScene" uid="uid://bq5m52kgqx1n7" path="res://scenes/texto.tscn" id="6_xakaf"]
+[ext_resource type="Script" path="res://script/texto.gd" id="7_jiwpc"]
+
+[sub_resource type="Animation" id="Animation_08vir"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-86, 51)]
+}
+
+[sub_resource type="Animation" id="Animation_x5iua"]
+resource_name = "chegando"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-86, 51), Vector2(-87, 79)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bl3ap"]
+_data = {
+"RESET": SubResource("Animation_08vir"),
+"chegando": SubResource("Animation_x5iua")
+}
+
+[sub_resource type="Animation" id="Animation_n3y4x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(97, 92)]
+}
+
+[sub_resource type="Animation" id="Animation_2ybys"]
+resource_name = "saindo"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(97, 92), Vector2(96, 54)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o24ae"]
+_data = {
+"RESET": SubResource("Animation_n3y4x"),
+"saindo": SubResource("Animation_2ybys")
+}
+
+[node name="game" type="Node"]
+script = ExtResource("1_27t3n")
+
+[node name="carta_chegando" parent="." instance=ExtResource("2_g4p43")]
+visible = false
+z_index = 3
+position = Vector2(-86, 51)
+script = ExtResource("3_setkx")
+
+[node name="Animationchegando" type="AnimationPlayer" parent="carta_chegando"]
+libraries = {
+"": SubResource("AnimationLibrary_bl3ap")
+}
+
+[node name="Button" type="Button" parent="carta_chegando"]
+z_index = -1
+offset_left = -22.0
+offset_top = -19.0
+offset_right = 7.0
+offset_bottom = 20.0
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="carta_saindo" parent="." instance=ExtResource("2_g4p43")]
+visible = false
+z_index = 4
+position = Vector2(97, 92)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="carta_saindo"]
+libraries = {
+"": SubResource("AnimationLibrary_o24ae")
+}
+
+[node name="escritorio_sprite" parent="." instance=ExtResource("2_num38")]
+position = Vector2(-7, -3)
+
+[node name="Camera2D" type="Camera2D" parent="escritorio_sprite"]
+position = Vector2(1, -8)
+zoom = Vector2(3, 3)
+
+[node name="carta" parent="." instance=ExtResource("2_g4p43")]
+visible = false
+z_index = 4
+position = Vector2(-12, 9)
+rotation = -1.5732
+script = ExtResource("5_ftd2a")
+
+[node name="Button" type="Button" parent="carta"]
+z_index = -1
+offset_left = -22.0
+offset_top = -19.0
+offset_right = 8.0
+offset_bottom = 20.0
+action_mode = 0
+flat = true
+
+[node name="texto" parent="." instance=ExtResource("6_xakaf")]
+visible = false
+z_index = 5
+position = Vector2(-9, 38)
+scale = Vector2(1.63992, 1.69043)
+script = ExtResource("7_jiwpc")
+
+[node name="remetente" type="Label" parent="texto"]
+offset_left = -49.0
+offset_top = -72.0
+offset_right = 4.0
+offset_bottom = 34.0
+
+[node name="destinario" type="Label" parent="texto"]
+offset_left = 8.0
+offset_top = -76.0
+offset_right = 52.0
+offset_bottom = 35.0
+
+[node name="sair" type="Button" parent="texto"]
+z_index = -2
+offset_left = -7.31744
+offset_top = -88.7347
+offset_right = 4.68256
+offset_bottom = -78.7347
+
+[connection signal="personalidade" from="carta_chegando" to="." method="_on_carta_chegando_personalidade"]
+[connection signal="animation_finished" from="carta_chegando/Animationchegando" to="." method="_on_animationchegando_animation_finished"]
+[connection signal="pressed" from="carta_chegando/Button" to="carta_chegando" method="_on_button_pressed"]
+[connection signal="pressed" from="carta/Button" to="carta" method="_on_button_pressed"]
+[connection signal="pressed" from="texto/sair" to="texto" method="_on_sair_pressed"]

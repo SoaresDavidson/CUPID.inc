@@ -1,0 +1,272 @@
+[gd_scene load_steps=17 format=3 uid="uid://uakw6kd8xwow"]
+
+[ext_resource type="PackedScene" uid="uid://dwphnmv8keod5" path="res://scenes/carta_minigame.tscn" id="1_f2712"]
+[ext_resource type="Script" path="res://script/space_shooter.gd" id="1_h6aqy"]
+[ext_resource type="PackedScene" uid="uid://cbw55k3sjc3cj" path="res://scenes/background.tscn" id="2_1rnw5"]
+[ext_resource type="PackedScene" uid="uid://br0ehb14rn6lr" path="res://scenes/generator.tscn" id="3_hlmud"]
+[ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://placeholders/fonts/PixelOperator8.ttf" id="5_8lnsf"]
+[ext_resource type="Texture2D" uid="uid://dg0lfcf5kodqr" path="res://assets/botão.png" id="6_740mj"]
+[ext_resource type="Texture2D" uid="uid://davp1acd1upbx" path="res://assets/spritecomeço.png" id="7_xpwp7"]
+[ext_resource type="Texture2D" uid="uid://dpout4ufqepk" path="res://assets/allblack.png" id="9_2waaa"]
+[ext_resource type="Texture2D" uid="uid://c5auxjadgayr7" path="res://assets/spritecoração.png" id="9_dkwxe"]
+[ext_resource type="FontFile" uid="uid://daxfdsjhbdu48" path="res://placeholders/fonts/PixelOperator8-Bold.ttf" id="10_njsyg"]
+
+[sub_resource type="Animation" id="Animation_sx5wl"]
+resource_name = "Fadeout"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Allblack:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.784314)]
+}
+
+[sub_resource type="Animation" id="Animation_cns0p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Allblack:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Allblack:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Spritecoração:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(580, 984), Vector2(580, 965)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Carta:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(120, 150)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dkq6e"]
+resource_name = "Fadeout2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Allblack:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.784314), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Allblack:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+
+[sub_resource type="Animation" id="Animation_qp0f4"]
+resource_name = "Coração"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritecoração:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(580, 962), Vector2(580, 327)]
+}
+
+[sub_resource type="Animation" id="Animation_v1o7s"]
+resource_name = "Default"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Carta:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1208, 150), Vector2(120, 150)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1792, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uo2sm"]
+_data = {
+"Coração": SubResource("Animation_qp0f4"),
+"Default": SubResource("Animation_v1o7s"),
+"Fadeout": SubResource("Animation_sx5wl"),
+"Fadeout2": SubResource("Animation_dkq6e"),
+"RESET": SubResource("Animation_cns0p")
+}
+
+[node name="space_shooter" type="Node2D"]
+script = ExtResource("1_h6aqy")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uo2sm")
+}
+autoplay = "RESET"
+
+[node name="Carta" parent="." instance=ExtResource("1_f2712")]
+position = Vector2(120, 150)
+
+[node name="Background" parent="." instance=ExtResource("2_1rnw5")]
+
+[node name="EnemyGenerator" parent="." instance=ExtResource("3_hlmud")]
+position = Vector2(1189, 307)
+
+[node name="Replay" type="Node2D" parent="."]
+visible = false
+z_index = 11
+position = Vector2(-18, -12)
+
+[node name="Label" type="Label" parent="Replay"]
+z_index = 1
+offset_left = 342.0
+offset_top = 249.0
+offset_right = 494.0
+offset_bottom = 272.0
+scale = Vector2(3.43285, 3.96387)
+theme_override_fonts/font = ExtResource("5_8lnsf")
+text = "Você falhou!"
+
+[node name="Label3" type="Label" parent="Replay"]
+z_index = 1
+offset_left = 327.0
+offset_top = 346.0
+offset_right = 515.0
+offset_bottom = 369.0
+scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("5_8lnsf")
+text = "X Pontos totais"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Replay"]
+z_index = 1
+offset_left = 400.366
+offset_top = 446.296
+offset_right = 582.366
+offset_bottom = 469.296
+scale = Vector2(2.1913, 2.5)
+theme_override_fonts/font = ExtResource("5_8lnsf")
+text = "Tentar de novo"
+horizontal_alignment = 1
+
+[node name="Sprite2D2" type="Sprite2D" parent="Replay"]
+modulate = Color(1, 0.778083, 0.844946, 1)
+position = Vector2(601.366, 472.296)
+scale = Vector2(13.2729, 5.66198)
+texture = ExtResource("6_740mj")
+
+[node name="Button" type="Button" parent="Replay"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 401.0
+offset_top = 434.0
+offset_right = 409.0
+offset_bottom = 442.0
+scale = Vector2(49.6452, 9.41724)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1800, -1)
+scale = Vector2(4.00025, 4.50281)
+texture = ExtResource("7_xpwp7")
+centered = false
+
+[node name="Allblack" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+position = Vector2(677, 221)
+texture = ExtResource("9_2waaa")
+
+[node name="Spritecoração" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(580, 984)
+scale = Vector2(35, 35)
+texture = ExtResource("9_dkwxe")
+
+[node name="Label" type="Label" parent="Spritecoração"]
+offset_left = -9.05714
+offset_top = -2.6
+offset_right = 214.943
+offset_bottom = 20.4
+scale = Vector2(0.0804375, 0.0702724)
+theme_override_fonts/font = ExtResource("10_njsyg")
+text = "Carta entregue!"
+
+[connection signal="pressed" from="Replay/Button" to="." method="_on_button_pressed"]

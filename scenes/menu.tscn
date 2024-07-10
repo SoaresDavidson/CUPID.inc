@@ -1,0 +1,339 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4qyxc7ldpnhc"]
+
+[ext_resource type="Script" path="res://script/menu.gd" id="1_7e1da"]
+[ext_resource type="Texture2D" uid="uid://b75kbulbh2a2t" path="res://assets/interface.png" id="1_165gq"]
+[ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://placeholders/fonts/PixelOperator8.ttf" id="3_qqr6m"]
+[ext_resource type="Texture2D" uid="uid://dg0lfcf5kodqr" path="res://assets/botão.png" id="4_2ajk6"]
+[ext_resource type="Texture2D" uid="uid://c5auxjadgayr7" path="res://assets/spritecoração.png" id="5_xb4tc"]
+[ext_resource type="Texture2D" uid="uid://bvlu8yk4ervu1" path="res://assets/botãoverde.png" id="6_fj4yt"]
+
+[sub_resource type="Animation" id="Animation_5w4na"]
+resource_name = "Fadeout"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cbvxy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritecoração:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(81.5863, -10.614)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spritecoração2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16.242, 47.6977)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Spritecoração3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(53.8683, -9.89333)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Spritecoração4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(36.1839, -8.18985)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Spritecoração5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(71.7408, -7.92777)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xe221"]
+resource_name = "default"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritecoração:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(82.0253, 47.4356), Vector2(81.5863, -10.614)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spritecoração2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(16.242, 47.6977), Vector2(16.242, -11.9899)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Spritecoração3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(53.8683, 49.6632), Vector2(53.8683, -9.89333)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Spritecoração4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(36.1839, 47.7632), Vector2(36.1839, -8.18985)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Spritecoração5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(71.7408, 47.7632), Vector2(71.7408, -7.92777)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cernx"]
+_data = {
+"Fadeout": SubResource("Animation_5w4na"),
+"RESET": SubResource("Animation_cbvxy"),
+"default": SubResource("Animation_xe221")
+}
+
+[node name="Menu" type="Control"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -278.0
+offset_top = 38.0
+offset_right = -278.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(15.9463, 15.2628)
+script = ExtResource("1_7e1da")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cernx")
+}
+autoplay = "default"
+
+[node name="Interface" type="Sprite2D" parent="."]
+position = Vector2(52.8649, 39.3768)
+texture = ExtResource("1_165gq")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 46.7193
+offset_top = 18.7384
+offset_right = 121.719
+offset_bottom = 49.7384
+scale = Vector2(0.2, 0.2)
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 46.9074
+offset_top = 27.8455
+offset_right = 121.907
+offset_bottom = 58.8455
+scale = Vector2(0.2, 0.2)
+
+[node name="Jogar" type="Label" parent="."]
+z_index = 2
+layout_mode = 0
+offset_left = 46.5312
+offset_top = 19.3936
+offset_right = 116.531
+offset_bottom = 42.3936
+scale = Vector2(0.400619, 0.573047)
+theme_override_fonts/font = ExtResource("3_qqr6m")
+theme_override_font_sizes/font_size = 8
+text = "Jogar"
+
+[node name="Sair" type="Label" parent="."]
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 41.3889
+offset_top = 29.2869
+offset_right = 93.3889
+offset_bottom = 52.2869
+scale = Vector2(0.507914, 0.468302)
+theme_override_fonts/font = ExtResource("3_qqr6m")
+theme_override_font_sizes/font_size = 8
+text = "Sair"
+horizontal_alignment = 1
+
+[node name="BotãoSprite2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(46.0922, 18.2797)
+scale = Vector2(0.509523, 0.431438)
+texture = ExtResource("4_2ajk6")
+centered = false
+
+[node name="BotãoSprite3" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(46.2176, 27.1903)
+scale = Vector2(0.502877, 0.455316)
+texture = ExtResource("4_2ajk6")
+centered = false
+
+[node name="Spritecoração" type="Sprite2D" parent="."]
+position = Vector2(81.5863, -10.614)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_xb4tc")
+
+[node name="Spritecoração2" type="Sprite2D" parent="."]
+position = Vector2(16.242, 47.6977)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_xb4tc")
+
+[node name="Spritecoração3" type="Sprite2D" parent="."]
+position = Vector2(53.8683, -9.89333)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_xb4tc")
+
+[node name="Spritecoração4" type="Sprite2D" parent="."]
+position = Vector2(36.1839, -8.18985)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_xb4tc")
+
+[node name="Spritecoração5" type="Sprite2D" parent="."]
+position = Vector2(71.7408, -7.92777)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_xb4tc")
+
+[node name="BotãoSprite" type="Sprite2D" parent="."]
+position = Vector2(55.0598, 7.99329)
+scale = Vector2(1.80058, 1)
+texture = ExtResource("4_2ajk6")
+
+[node name="Título" type="Label" parent="."]
+layout_mode = 0
+offset_left = 28.7214
+offset_top = 4.71735
+offset_right = 202.721
+offset_bottom = 27.7174
+scale = Vector2(0.590699, 0.684382)
+theme_override_fonts/font = ExtResource("3_qqr6m")
+theme_override_font_sizes/font_size = 8
+text = "Título de jogo"
+
+[node name="Título2" type="Label" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 21.5724
+offset_top = 18.5418
+offset_right = 195.572
+offset_bottom = 41.5419
+scale = Vector2(0.386894, 0.422483)
+theme_override_fonts/font = ExtResource("3_qqr6m")
+theme_override_font_sizes/font_size = 8
+text = "Recorde:"
+
+[node name="Recorde" type="Label" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 22.6385
+offset_top = 23.4557
+offset_right = 72.6385
+offset_bottom = 33.4557
+scale = Vector2(0.386894, 0.422483)
+theme_override_fonts/font = ExtResource("3_qqr6m")
+theme_override_font_sizes/font_size = 8
+text = "X"
+horizontal_alignment = 1
+
+[node name="Botãoverde" type="Sprite2D" parent="."]
+position = Vector2(31.9823, 23.1281)
+scale = Vector2(0.730487, 0.715584)
+texture = ExtResource("6_fj4yt")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
