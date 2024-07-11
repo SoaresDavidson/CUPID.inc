@@ -14,5 +14,4 @@ func _on_button_pressed():
 	MenuMusic.get_child(3).play()
 	$AnimationPlayer.play("Fadeout2")
 	await get_tree().create_timer(2.5).timeout
-	MenuMusic.get_child(0).play()
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")

@@ -227,6 +227,7 @@ scale = Vector2(0.501128, 0.944444)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_1xo03")
 text = "Pontuação atual:"
+horizontal_alignment = 1
 
 [node name="Pontos" type="Label" parent="MetaDoDia"]
 z_index = 2

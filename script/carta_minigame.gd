@@ -31,7 +31,7 @@ func _on_hurt_box_component_area_entered(area):
 		await get_tree().create_timer(1.5).timeout
 		animation_player.play("Fadeout")
 		await get_tree().create_timer(1.0).timeout
-		label_3.text= str(GlobalVars.scoreatual)+" Pontos Totais"
+		label_3.text= "Seu Pagamento Total: R$" + str(GlobalVars.scoreatual)
 		replay.visible = true
 
 

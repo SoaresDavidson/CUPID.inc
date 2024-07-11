@@ -34,3 +34,4 @@ stream = ExtResource("6_ptupd")
 
 [node name="nave" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_hfqnn")
+volume_db = -8.467

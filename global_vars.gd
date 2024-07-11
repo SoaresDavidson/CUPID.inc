@@ -8,6 +8,7 @@ var dificuldade:float = 1 #valor provisorio pegar do papers please
 var meta = 5
 var highscore = 0
 var scoreatual = 0
+var botão_pressionado = 0
 const SAVEFILE= "user://save.data"
 
 

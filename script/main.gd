@@ -9,16 +9,14 @@ extends Node
 @onready var destinatario = $texto/destinatario
 var alcance:int = 1
 signal personalidade
-
+var pontos = 0
 
 func _ready():
-
 	MenuMusic.get_child(4).play()
 
 	GlobalVars.load_score()
-	$MetaDoDia/Pontos.text = str(GlobalVars.scoreatual)
-
-	alcance += GlobalVars.scoreatual * 0.1
+	$MetaDoDia/Pontos.text ="R$" + str(GlobalVars.scoreatual)
+	alcance += GlobalVars.botão_pressionado
 	if alcance >= 4:
 		alcance = 4
 	GlobalVars.dificuldade = 1
@@ -65,11 +63,14 @@ func _on_botãocartachegando_pressed():
 	destinatario.text = "Meu amor é:\n"#+"\n"+str(person_destinatario[1])+"\n"+str(person_destinatario[2])+"\n"+str(person_destinatario[3])+"\n"
 	printar_personalidade(person_destinatario,destinatario)
 var person = [
-	["Sociável","Extrovertido","Falante"],#person[0]
-	["Imaginativo","Original","Intelectual"],#person[1]
-	["Confiável","Paciente","Sensível"],#person[2]
-	["Persistente","Ambicioso","Energético"],#person[3]
-	["Disciplinado","Atencioso","Criativo"]
+	["Sociável","Extrovertido","Falante", "Tagarela"],#person[0]
+	["Imaginativo","Original","Criativo"],#person[1]
+	["Confiável","Leal","Responsável"],#person[2]
+	["Persistente","Ambicioso","Obstinado"],#person[3]
+	["Carinhoso","Atencioso","Amoroso","Fofo"],
+	["Alegre","Energético","Animado"],
+	["Tímido","Introvertido","Calado","Quieto"],
+	["Nerd","Estudioso","Lolzeiro","Geek"]
 ]
 
 
@@ -96,6 +97,7 @@ func random_person(person_carta: Array):
 		person_carta.append(person[escolha][sub_escolha])
 
 func _on_botãoaceitar_pressed():
+	GlobalVars.botão_pressionado += 1
 	texto.visible = false
 	MenuMusic.get_child(1).play()
 	animation_player.play("saindo")
@@ -109,7 +111,9 @@ func _on_botãoaceitar_pressed():
 func _on_botãonegar_pressed():
 	texto.visible = false
 	MenuMusic.get_child(1).play()
-	GlobalVars.scoreatual -= 25 #mudar depois
+	GlobalVars.scoreatual -= 5 #mudar depois
+	if GlobalVars.scoreatual <= 0:
+		GlobalVars.scoreatual = 0
 	animation_player.play("saindo")
 	MenuMusic.get_child(2).play()
 	await get_tree().create_timer(1.0).timeout
