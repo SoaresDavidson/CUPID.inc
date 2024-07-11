@@ -24,11 +24,14 @@ func _process(delta):
 func _on_hurt_box_component_area_entered(area):
 	if area.get_parent() is Enemy:
 		animated_sprite_2d.play("death")
+		MenuMusic.get_child(7).stop()
+		MenuMusic.get_child(5).play()
 		GlobalVars.playing = 0
 		await get_tree().create_timer(1.5).timeout
 		animation_player.play("Fadeout")
 		await get_tree().create_timer(1.0).timeout
 		replay.visible = true
+
 	else:
 		GlobalVars.pontos += 1
 		GlobalVars.scoreatual += 1
@@ -38,6 +41,8 @@ func _on_hurt_box_component_area_entered(area):
 			GlobalVars.highscore += GlobalVars.pontos
 			GlobalVars.playing = 0
 			animation_player.play("Coração")
+			MenuMusic.get_child(7).stop()
+			MenuMusic.get_child(6).play()
 			await get_tree().create_timer(3.0).timeout
 			animation_player.play("Fadeout")
 			await get_tree().create_timer(2.0).timeout

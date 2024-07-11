@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 [autoload]
 
 GlobalVars="*res://global_vars.gd"
+MenuMusic="*res://Audios/menuMusic.tscn"
 
 [display]
 

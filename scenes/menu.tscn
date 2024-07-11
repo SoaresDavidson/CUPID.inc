@@ -296,14 +296,14 @@ texture = ExtResource("4_2ajk6")
 
 [node name="Título" type="Label" parent="."]
 layout_mode = 0
-offset_left = 28.7214
+offset_left = 37.5636
 offset_top = 4.71735
-offset_right = 202.721
+offset_right = 211.563
 offset_bottom = 27.7174
 scale = Vector2(0.590699, 0.684382)
 theme_override_fonts/font = ExtResource("3_qqr6m")
 theme_override_font_sizes/font_size = 8
-text = "Título de jogo"
+text = "CUPID.INC"
 
 [node name="Título2" type="Label" parent="."]
 z_index = 1
