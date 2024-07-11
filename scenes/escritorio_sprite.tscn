@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://dg3skjko6rcqc"]
 
 [ext_resource type="Texture2D" uid="uid://bc4yv1h8hxcxn" path="res://assets/escritório.png" id="1_qa1sa"]
-[ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://placeholders/fonts/PixelOperator8.ttf" id="2_oa28h"]
+[ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://fonts/PixelOperator8.ttf" id="2_oa28h"]
 
 [node name="escritorio_sprite" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_qa1sa")
 
-[node name="Label" type="Label" parent="."]
+[node name="Saída" type="Label" parent="."]
 offset_left = 47.0
 offset_top = -63.0
 offset_right = 113.0
@@ -17,7 +17,7 @@ scale = Vector2(0.75, 0.75)
 theme_override_fonts/font = ExtResource("2_oa28h")
 text = "Saída"
 
-[node name="Label2" type="Label" parent="."]
+[node name="Entrada" type="Label" parent="."]
 offset_left = -110.0
 offset_top = -63.0
 offset_right = -14.0
@@ -25,3 +25,39 @@ offset_bottom = -40.0
 scale = Vector2(0.75, 0.75)
 theme_override_fonts/font = ExtResource("2_oa28h")
 text = "Entrada"
+
+[node name="Papel1" type="Label" parent="."]
+offset_left = -8.0
+offset_top = 30.0
+offset_right = 92.0
+offset_bottom = 170.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_oa28h")
+theme_override_font_sizes/font_size = 8
+text = "Facilidade de entrega proporcional ao tanto que o remetente combina com o destinatário (personalidades sinônimas)."
+autowrap_mode = 2
+
+[node name="Papel2" type="Label" parent="."]
+offset_left = 28.0
+offset_top = 30.0
+offset_right = 128.0
+offset_bottom = 170.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_oa28h")
+theme_override_font_sizes/font_size = 8
+text = "Recusar um serviço diminui meu salário. Preciso juntar dinheiro."
+autowrap_mode = 2
+
+[node name="Papel3" type="Label" parent="."]
+offset_left = 64.0
+offset_top = 30.0
+offset_right = 164.0
+offset_bottom = 170.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_oa28h")
+theme_override_font_sizes/font_size = 8
+text = "Disseram que falhar durante uma entrega resulta em demissão. "
+autowrap_mode = 2

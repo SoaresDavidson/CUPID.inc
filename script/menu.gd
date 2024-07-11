@@ -12,6 +12,8 @@ func _ready():
 	#label_2.text = "highscore: " + str(GlobalVars.highscore)
 
 func _on_button_pressed():
+	$Button.hide()
+	$Button2.hide()
 	MenuMusic.get_child(0).stop()
 	MenuMusic.get_child(3).play()
 	$AnimationPlayer.play("Fadeout")

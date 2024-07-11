@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://script/background.gd" id="1_yk6q4"]
 [ext_resource type="Texture2D" uid="uid://c0e871jhs067" path="res://assets/spritenuvens.png" id="2_uw14u"]
 [ext_resource type="Texture2D" uid="uid://dxq2s0nfuotm" path="res://assets/spritecasas.png" id="3_k7png"]
-[ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://placeholders/fonts/PixelOperator8.ttf" id="4_sn5u2"]
+[ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://fonts/PixelOperator8.ttf" id="4_sn5u2"]
+
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_24pks"]
 load_path = "res://.godot/imported/spritepredios.png-8cececd6b6ee0df2bdb3299bad70a3ab.ctex"

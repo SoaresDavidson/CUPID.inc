@@ -7,8 +7,9 @@
 [ext_resource type="Script" path="res://script/carta.gd" id="5_ftd2a"]
 [ext_resource type="PackedScene" uid="uid://bq5m52kgqx1n7" path="res://scenes/texto.tscn" id="6_xakaf"]
 [ext_resource type="Script" path="res://script/texto.gd" id="7_jiwpc"]
-[ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://placeholders/fonts/PixelOperator8.ttf" id="8_h6lge"]
+[ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://fonts/PixelOperator8.ttf" id="8_h6lge"]
 [ext_resource type="Texture2D" uid="uid://c3ieu7ynjr36y" path="res://assets/carteiro.png" id="9_5q56s"]
+
 
 [sub_resource type="Animation" id="Animation_08vir"]
 length = 0.001

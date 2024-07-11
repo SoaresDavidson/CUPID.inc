@@ -1,7 +1,8 @@
 res://scenes/jogo_2.tscn
-res://scenes/carta.tscn
-res://scenes/carta_minigame.tscn
-res://scenes/menu.tscn
-res://script/main.gd
-res://global_vars.gd
 res://Audios/menuMusic.tscn
+res://script/main.gd
+res://scenes/menu.tscn
+res://scenes/escritorio_sprite.tscn
+res://scenes/space_shooter.tscn
+res://script/space_shooter.gd
+res://script/menu.gd

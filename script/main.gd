@@ -128,7 +128,14 @@ func cartadeodio():
 	var chances = ["Seu imbecil! Porquê você recusou minha carta? Eu e ela éramos feito um para o outro... ",
 	"Seu @!#$#!, QUEM TU PENSA QUE É SEU !#@#@!@$ VAI A !#@#!#",
 	"VOCÊ ESTRAGOU MINHA VIDA, EU VOU TE PEGAR SEU PALHAÇO!",
-	"Extremamente improfissional. Te peço para realizar somente um serviço de envio simples, e você recusa? Nunca mais conte comigo."]
+	"Extremamente improfissional. É só um serviço de envio simples, e você recusa? Nunca mais conte comigo.",
+	"Seu serviço é um lixo! Vou falar pra todo mundo que essa empresa não presta.",
+	"Incompetente.",
+	"Você acha que pode fazer o que quiser com as nossas vidas? Você me dá nojo.",
+	"Gostava tanto dele... Agora tudo acabou.",
+	"Você vai ser demitido, rapazinho! Vou falar com seu chefe, aí você vai ver...",
+	"Nunca mais sigo recomendações do meu tio. Essa empresa é uma #@!#$."
+	]
 	var i = randi_range(0, chances.size()-1)
 	veneno.text = chances[i]
 	texto_2.visible = true

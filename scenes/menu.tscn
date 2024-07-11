@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4qyxc7ldpnhc"]
+[gd_scene load_steps=12 format=3 uid="uid://b4qyxc7ldpnhc"]
 
 [ext_resource type="Script" path="res://script/menu.gd" id="1_7e1da"]
 [ext_resource type="Texture2D" uid="uid://b75kbulbh2a2t" path="res://assets/interface.png" id="1_165gq"]
-[ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://placeholders/fonts/PixelOperator8.ttf" id="3_qqr6m"]
+[ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://fonts/PixelOperator8.ttf" id="3_qqr6m"]
 [ext_resource type="Texture2D" uid="uid://dg0lfcf5kodqr" path="res://assets/botão.png" id="4_2ajk6"]
 [ext_resource type="Texture2D" uid="uid://c5auxjadgayr7" path="res://assets/spritecoração.png" id="5_xb4tc"]
 [ext_resource type="Texture2D" uid="uid://bvlu8yk4ervu1" path="res://assets/botãoverde.png" id="6_fj4yt"]
+[ext_resource type="Texture2D" uid="uid://c6igun7i4hrfd" path="res://assets/jornal.png" id="7_mqhc5"]
 
 [sub_resource type="Animation" id="Animation_5w4na"]
 resource_name = "Fadeout"
@@ -211,26 +212,27 @@ texture = ExtResource("1_165gq")
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 46.7193
-offset_top = 18.7384
+offset_top = 24.242
 offset_right = 121.719
-offset_bottom = 49.7384
+offset_bottom = 55.242
 scale = Vector2(0.2, 0.2)
 
 [node name="Button2" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 46.9074
-offset_top = 27.8455
+offset_top = 32.4973
 offset_right = 121.907
-offset_bottom = 58.8455
+offset_bottom = 63.4973
 scale = Vector2(0.2, 0.2)
 
 [node name="Jogar" type="Label" parent="."]
 z_index = 2
 layout_mode = 0
 offset_left = 46.5312
-offset_top = 19.3936
+offset_top = 24.8972
 offset_right = 116.531
-offset_bottom = 42.3936
+offset_bottom = 47.8972
 scale = Vector2(0.400619, 0.573047)
 theme_override_fonts/font = ExtResource("3_qqr6m")
 theme_override_font_sizes/font_size = 8
@@ -241,9 +243,9 @@ z_index = 2
 texture_filter = 1
 layout_mode = 0
 offset_left = 41.3889
-offset_top = 29.2869
+offset_top = 33.9387
 offset_right = 93.3889
-offset_bottom = 52.2869
+offset_bottom = 56.9387
 scale = Vector2(0.507914, 0.468302)
 theme_override_fonts/font = ExtResource("3_qqr6m")
 theme_override_font_sizes/font_size = 8
@@ -252,14 +254,14 @@ horizontal_alignment = 1
 
 [node name="BotãoSprite2" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(46.0922, 18.2797)
+position = Vector2(46.0922, 23.7833)
 scale = Vector2(0.509523, 0.431438)
 texture = ExtResource("4_2ajk6")
 centered = false
 
 [node name="BotãoSprite3" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(46.2176, 27.1903)
+position = Vector2(46.2176, 31.8421)
 scale = Vector2(0.502877, 0.455316)
 texture = ExtResource("4_2ajk6")
 centered = false
@@ -334,6 +336,12 @@ horizontal_alignment = 1
 position = Vector2(31.9823, 23.1281)
 scale = Vector2(0.730487, 0.715584)
 texture = ExtResource("6_fj4yt")
+
+[node name="Jornal" type="Sprite2D" parent="."]
+position = Vector2(76.0678, 24.1109)
+rotation = 0.120428
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("7_mqhc5")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
