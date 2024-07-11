@@ -5,7 +5,7 @@ extends Node
 @export var speed: int
 
 func _input(event: InputEvent):
-	var input_axis = Input.get_axis("ui_up", "ui_down")
+	var input_axis = Input.get_axis("up", "down")
 	move_component.velocity = Vector2(0, input_axis * speed)
 	
 

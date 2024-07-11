@@ -32,7 +32,7 @@ sprite_frames = SubResource("SpriteFrames_6kf0i")
 autoplay = "default"
 
 [node name="MoveComponent" parent="." index="1"]
-velocity = Vector2(-80, 0)
+velocity = Vector2(-120, 0)
 
 [node name="HitBoxComponent" parent="." index="2"]
 scale = Vector2(2.26223, 1.74161)

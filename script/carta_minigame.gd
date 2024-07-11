@@ -31,6 +31,7 @@ func _on_hurt_box_component_area_entered(area):
 		replay.visible = true
 	else:
 		GlobalVars.pontos += 1
+		GlobalVars.scoreatual += 1
 		area.get_parent().queue_free()
 		if GlobalVars.pontos >= GlobalVars.meta:
 			print("carta enviada")

@@ -6,10 +6,13 @@ extends Node
 @onready var texto = $texto
 @onready var remetente = $texto/remetente
 @onready var destinatario = $texto/destinatario
-
+var alcance:int = 1
 signal personalidade
 
 func _ready():
+	alcance += GlobalVars.scoreatual * 0.1
+	if alcance >= 4:
+		alcance = 4
 	GlobalVars.dificuldade = 1
 	GlobalVars.pontos = 0
 	GlobalVars.meta = 5
@@ -18,6 +21,9 @@ func _ready():
 	await get_tree().create_timer(1.0).timeout
 	$"botãocartachegando".show()
 
+func printar_personalidade(person: Array, label):
+	for i in person:
+		label.text += i+"\n"
 func _on_botãocartachegando_pressed():
 	$"botãocartachegando".hide()
 	animation_player.play("RESET")
@@ -32,24 +38,25 @@ func _on_botãocartachegando_pressed():
 	var destinatario_grupo = []
 	var remetente_grupo = []
 	
-	for i in range(4):#esse range seria a quantidade de caracteristicas
+	for i in range(alcance):#esse range seria a quantidade de caracteristicas
 		destinatario_grupo.append(grupo(person_destinatario[i]))
 		remetente_grupo.append(grupo(person_remetente[i]))
 	
-	for i in range(4): #mesmo do de cima
+	for i in range(alcance): #mesmo do de cima
 		if destinatario_grupo[i] not in remetente_grupo:
 			GlobalVars.dificuldade += 1
 		
 	GlobalVars.meta *= GlobalVars.dificuldade 
 	
-	remetente.text= "Eu sou:\n"+str(person_remetente[0])+"\n"+str(person_remetente[1])+"\n"+str(person_remetente[2])+"\n"+str(person_remetente[3])+"\n"
-	destinatario.text = "Meu amor é:\n"+str(person_destinatario[0])+"\n"+str(person_destinatario[1])+"\n"+str(person_destinatario[2])+"\n"+str(person_destinatario[3])+"\n"
-
+	remetente.text= "Eu sou:\n"
+	printar_personalidade(person_remetente,remetente)#+"\n"+str(person_remetente[1])+"\n"+str(person_remetente[2])+"\n"+str(person_remetente[3])+"\n"
+	destinatario.text = "Meu amor é:\n"#+"\n"+str(person_destinatario[1])+"\n"+str(person_destinatario[2])+"\n"+str(person_destinatario[3])+"\n"
+	printar_personalidade(person_destinatario,destinatario)
 var person = [
-	["Animado","Positivo","Contente","Extrovertido"],#person[0]
-	["Calado","Pensativo","Estudioso","Tímido"],#person[1]
-	["Criativo","Musical","Artista","Inteligente"],#person[2]
-	["Atencioso","Emotivo","Empático","Gentil"]#person[3]
+	["Sociável","Extrovertido","Falante","Amigável"],#person[0]
+	["Imaginativo","Original","Intelectual","Criativo"],#person[1]
+	["Confiável","Paciente","Sensível","Atencioso"],#person[2]
+	["Persistente","Ambicioso","Energético","Disciplinado"]#person[3]
 ]
 
 
@@ -64,7 +71,7 @@ func grupo(element): #procura o grupo do elemento no alcance de person
 		
 
 func random_person(person_carta: Array):
-	for i in range(4):#esse range uma hora tem que ser substituido pela quant de traços
+	for i in range(alcance):#esse range uma hora tem que ser substituido pela quant de traços
 		var escolha = randi() % person.size()
 		var sub_escolha = randi() % person[escolha].size()
 		
