@@ -1,11 +1,7 @@
-res://scenes/space_shooter.tscn
 res://scenes/jogo_2.tscn
-res://scenes/carta_minigame.tscn
-res://components/input_component.gd
 res://scenes/carta.tscn
-res://script/carta_minigame.gd
-res://components/clamp_position_component.gd
+res://scenes/carta_minigame.tscn
+res://scenes/menu.tscn
 res://script/main.gd
 res://global_vars.gd
-res://scenes/menu.tscn
-res://script/menu.gd
+res://Audios/menuMusic.tscn

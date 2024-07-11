@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgy0abhfd7x7v"]
+
+[ext_resource type="Texture2D" uid="uid://dwn3hvkobc286" path="res://assets/cartaodio.png" id="1_031ry"]
+
+[node name="texto" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_031ry")

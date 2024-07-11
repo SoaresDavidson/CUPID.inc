@@ -1,6 +1,7 @@
 extends Node
 
-
+@onready var veneno = $texto2/Veneno
+@onready var texto_2 = $texto2
 @onready var carta_chegando = $Carta_chegando
 @onready var carta_saindo = $Carta_saindo
 @onready var animation_player = $AnimationPlayer
@@ -34,6 +35,11 @@ func printar_personalidade(person: Array, label):
 func _on_botãocartachegando_pressed():
 	$"botãocartachegando".hide()
 	animation_player.play("RESET")
+	if GlobalVars.cartasnegadas != 0:
+		var sorteio = randi_range(0, 2)
+		if sorteio == 1:
+			cartadeodio()
+			return
 	texto.visible = true
 	MenuMusic.get_child(1).play()
 	
@@ -81,18 +87,14 @@ func grupo(element): #procura o grupo do elemento no alcance de person
 	for i in person.size():
 		if element in person[i]:
 			return i
-		
-		
 
 func random_person(person_carta: Array):
 	for i in range(alcance):
 		var escolha = randi() % person.size()
 		var sub_escolha = randi() % person[escolha].size()
-		
 		while person[escolha][sub_escolha] in person_carta:
 			escolha = randi() % person.size()
 			sub_escolha = randi() % person[escolha].size()
-			
 		person_carta.append(person[escolha][sub_escolha])
 
 func _on_botãoaceitar_pressed():
@@ -109,15 +111,33 @@ func _on_botãoaceitar_pressed():
 	get_tree().change_scene_to_file("res://scenes/space_shooter.tscn")
 
 func _on_botãonegar_pressed():
+	GlobalVars.cartasnegadas += 1
 	texto.visible = false
 	MenuMusic.get_child(1).play()
-	GlobalVars.scoreatual -= 5 #mudar depois
+	GlobalVars.scoreatual -= 5 
 	if GlobalVars.scoreatual <= 0:
 		GlobalVars.scoreatual = 0
 	animation_player.play("saindo")
 	MenuMusic.get_child(2).play()
 	await get_tree().create_timer(1.0).timeout
 	_ready()
-	
+
+func cartadeodio():
+	MenuMusic.get_child(4).stop()
+	MenuMusic.get_child(1).play()
+	var chances = ["Seu imbecil! Porquê você recusou minha carta? Eu e ela éramos feito um para o outro... ",
+	"Seu @!#$#!, QUEM TU PENSA QUE É SEU !#@#@!@$ VAI A !#@#!#",
+	"VOCÊ ESTRAGOU MINHA VIDA, EU VOU TE PEGAR SEU PALHAÇO!",
+	"Extremamente improfissional. Te peço para realizar somente um serviço de envio simples, e você recusa? Nunca mais conte comigo."]
+	var i = randi_range(0, chances.size()-1)
+	veneno.text = chances[i]
+	texto_2.visible = true
 	
 
+func _on_fechar_pressed():
+	MenuMusic.get_child(4).play()
+	GlobalVars.cartasnegadas -= 1
+	texto_2.visible = false
+	MenuMusic.get_child(1).play()
+	await get_tree().create_timer(1.0).timeout
+	_ready()

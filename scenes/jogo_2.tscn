@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c8ahqhmkuob6d"]
+[gd_scene load_steps=17 format=3 uid="uid://c8ahqhmkuob6d"]
 
 [ext_resource type="PackedScene" uid="uid://dg3skjko6rcqc" path="res://scenes/escritorio_sprite.tscn" id="1_5viur"]
 [ext_resource type="Script" path="res://script/main.gd" id="1_o8kaa"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://jae3m2cngfm6" path="res://assets/botãovermelho.png" id="7_2y47h"]
 [ext_resource type="Texture2D" uid="uid://bvlu8yk4ervu1" path="res://assets/botãoverde.png" id="8_45trt"]
 [ext_resource type="Texture2D" uid="uid://dcv1m5ow3ebyq" path="res://placeholders/meta do dia.png" id="9_cm3uy"]
+[ext_resource type="PackedScene" uid="uid://dgy0abhfd7x7v" path="res://scenes/textoruim.tscn" id="10_ohgvg"]
 
 [sub_resource type="Animation" id="Animation_vum8c"]
 resource_name = "Fadeout"
@@ -241,6 +242,28 @@ theme_override_fonts/font = ExtResource("6_1xo03")
 text = "X"
 horizontal_alignment = 1
 
+[node name="texto2" parent="." instance=ExtResource("10_ohgvg")]
+visible = false
+z_index = 10
+
+[node name="Veneno" type="Label" parent="texto2"]
+offset_left = -49.0
+offset_top = -41.0
+offset_right = 48.0
+offset_bottom = 61.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_1xo03")
+theme_override_font_sizes/font_size = 8
+autowrap_mode = 2
+
+[node name="Fechar" type="Button" parent="texto2"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 36.0
+offset_top = -74.0
+offset_right = 58.0
+offset_bottom = -52.0
+
 [connection signal="pressed" from="botãocartachegando" to="." method="_on_botãocartachegando_pressed"]
 [connection signal="pressed" from="texto/botãoaceitar" to="." method="_on_botãoaceitar_pressed"]
 [connection signal="pressed" from="texto/botãonegar" to="." method="_on_botãonegar_pressed"]
+[connection signal="pressed" from="texto2/Fechar" to="." method="_on_fechar_pressed"]
