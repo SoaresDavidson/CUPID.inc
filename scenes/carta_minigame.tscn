@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dwphnmv8keod5"]
+[gd_scene load_steps=20 format=3 uid="uid://dwphnmv8keod5"]
 
 [ext_resource type="Script" path="res://script/carta_minigame.gd" id="1_25rrm"]
 [ext_resource type="Script" path="res://components/move_component.gd" id="1_qyhlj"]
@@ -43,6 +43,14 @@ region = Rect2(0, 48, 32, 16)
 atlas = ExtResource("2_8i4xx")
 region = Rect2(32, 48, 32, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntulg"]
+atlas = ExtResource("2_8i4xx")
+region = Rect2(32, 64, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qko70"]
+atlas = ExtResource("2_8i4xx")
+region = Rect2(0, 64, 32, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_jufr5"]
 animations = [{
 "frames": [{
@@ -82,12 +90,18 @@ animations = [{
 "name": &"death",
 "speed": 8.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntulg")
+}],
 "loop": true,
 "name": &"down",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qko70")
+}],
 "loop": true,
 "name": &"up",
 "speed": 5.0
@@ -103,7 +117,7 @@ script = ExtResource("1_25rrm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jufr5")
-animation = &"death"
+animation = &"up"
 autoplay = "center"
 
 [node name="HurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("actor")]

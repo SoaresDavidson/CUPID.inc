@@ -19,6 +19,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+		
 
 
 
@@ -52,5 +53,6 @@ func _on_hurt_box_component_area_entered(area):
 			await get_tree().create_timer(3.0).timeout
 			animation_player.play("Fadeout")
 			await get_tree().create_timer(2.0).timeout
+			MenuMusic.get_child(4).play()
 			get_tree().change_scene_to_file("res://scenes/jogo_2.tscn")
 

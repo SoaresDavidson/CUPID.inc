@@ -181,7 +181,7 @@ anchor_mode = 0
 libraries = {
 "": SubResource("AnimationLibrary_uo2sm")
 }
-autoplay = "RESET"
+autoplay = "Default"
 
 [node name="Carta" parent="." instance=ExtResource("1_f2712")]
 position = Vector2(120, 150)

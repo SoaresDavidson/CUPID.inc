@@ -7,16 +7,15 @@ extends Node
 @onready var texto = $texto
 @onready var remetente = $texto/remetente
 @onready var destinatario = $texto/destinatario
-var alcance:int = 1
+var alcance:int
 signal personalidade
-var pontos = 0
 
 func _ready():
-	MenuMusic.get_child(4).play()
-
 	GlobalVars.load_score()
 	$MetaDoDia/Pontos.text ="R$" + str(GlobalVars.scoreatual)
-	alcance += GlobalVars.botão_pressionado
+	alcance = GlobalVars.botão_pressionado
+	print(alcance)
+	print(GlobalVars.botão_pressionado)
 	if alcance >= 4:
 		alcance = 4
 	GlobalVars.dificuldade = 1
@@ -106,6 +105,7 @@ func _on_botãoaceitar_pressed():
 	await get_tree().create_timer(1.0).timeout
 	$AnimationPlayer.play("Fadeout")
 	await get_tree().create_timer(2.5).timeout
+	MenuMusic.get_child(4).stop()
 	get_tree().change_scene_to_file("res://scenes/space_shooter.tscn")
 
 func _on_botãonegar_pressed():
