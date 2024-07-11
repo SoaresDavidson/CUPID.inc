@@ -3,6 +3,9 @@ extends Control
 #@onready var label_2 = $Label2
 
 func _ready():
+	GlobalVars.load_score()
+	var hi = GlobalVars.highscore
+	$Recorde.text = str(hi)
 	GlobalVars.playing = 1
 	#label_2.text = "highscore: " + str(GlobalVars.highscore)
 
