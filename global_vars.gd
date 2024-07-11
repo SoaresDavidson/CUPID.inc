@@ -8,3 +8,18 @@ var dificuldade:float = 1 #valor provisorio pegar do papers please
 var meta = 5
 var highscore = 0
 var scoreatual = 0
+const SAVEFILE= "user://save.data"
+
+
+func save_hiscore():
+	var file = FileAccess.open(SAVEFILE,FileAccess.WRITE)
+	file.store_32(GlobalVars.scoreatual)
+	
+func load_score():
+	var file = FileAccess.open(SAVEFILE,FileAccess.READ)
+	if file != null:
+		GlobalVars.highscore = file.get_32()
+		
+	else:
+		GlobalVars.highscore = 0
+		save_hiscore()

@@ -1,5 +1,6 @@
 extends Node
 
+
 @onready var carta_chegando = $Carta_chegando
 @onready var carta_saindo = $Carta_saindo
 @onready var animation_player = $AnimationPlayer
@@ -9,7 +10,10 @@ extends Node
 var alcance:int = 1
 signal personalidade
 
+
 func _ready():
+	GlobalVars.load_score()
+	$MetaDoDia/Pontos.text = str(GlobalVars.scoreatual)
 	alcance += GlobalVars.scoreatual * 0.1
 	if alcance >= 4:
 		alcance = 4
@@ -69,6 +73,7 @@ func grupo(element): #procura o grupo do elemento no alcance de person
 		if element in person[i]:
 			return i
 		
+		
 
 func random_person(person_carta: Array):
 	for i in range(alcance):#esse range uma hora tem que ser substituido pela quant de traços
@@ -95,3 +100,6 @@ func _on_botãonegar_pressed():
 	animation_player.play("saindo")
 	await get_tree().create_timer(1.0).timeout
 	_ready()
+	
+	
+

@@ -318,7 +318,7 @@ theme_override_font_sizes/font_size = 8
 text = "Recorde:"
 
 [node name="Recorde" type="Label" parent="."]
-z_index = 1
+z_index = 2
 layout_mode = 0
 offset_left = 22.6385
 offset_top = 23.4557
