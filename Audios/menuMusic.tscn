@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://bjv3k832gs6c3"]
+
+[ext_resource type="AudioStream" uid="uid://5s0nw7clynws" path="res://Audios/click.mp3" id="1_de55m"]
+[ext_resource type="AudioStream" uid="uid://bvvipj13s2whj" path="res://Audios/menu.wav" id="1_shpsq"]
+[ext_resource type="AudioStream" uid="uid://dh6e8pcgwdbpr" path="res://Audios/cartaslide.mp3" id="2_00hg7"]
+[ext_resource type="AudioStream" uid="uid://dl6yh2l788oa0" path="res://Audios/audio-editor-output.mp3" id="2_s3jgv"]
+[ext_resource type="AudioStream" uid="uid://2lchwt6ahpeg" path="res://Audios/escritorio.mp3" id="4_oniix"]
+[ext_resource type="AudioStream" uid="uid://cx8c42c5tkjtr" path="res://Audios/fail.mp3" id="5_pghuf"]
+[ext_resource type="AudioStream" uid="uid://bfml68sc3w1te" path="res://Audios/ganhar.mp3" id="6_ptupd"]
+[ext_resource type="AudioStream" uid="uid://cly1u3a4y6mbv" path="res://Audios/nave.mp3" id="7_hfqnn"]
+
+[node name="SFX" type="Node"]
+
+[node name="Menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_shpsq")
+
+[node name="abrir_fechar_carta" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_s3jgv")
+
+[node name="carta_entrando_saindo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_00hg7")
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_de55m")
+
+[node name="escritorio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_oniix")
+
+[node name="fail" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_pghuf")
+
+[node name="ganhar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ptupd")
+
+[node name="nave" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_hfqnn")

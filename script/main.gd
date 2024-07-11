@@ -12,8 +12,12 @@ signal personalidade
 
 
 func _ready():
+
+	MenuMusic.get_child(4).play()
+
 	GlobalVars.load_score()
 	$MetaDoDia/Pontos.text = str(GlobalVars.scoreatual)
+
 	alcance += GlobalVars.scoreatual * 0.1
 	if alcance >= 4:
 		alcance = 4
@@ -22,16 +26,20 @@ func _ready():
 	GlobalVars.meta = 5
 	await get_tree().create_timer(2.0).timeout
 	animation_player.play("chegando")
+	MenuMusic.get_child(2).play()
 	await get_tree().create_timer(1.0).timeout
 	$"botãocartachegando".show()
 
 func printar_personalidade(person: Array, label):
 	for i in person:
 		label.text += i+"\n"
+
 func _on_botãocartachegando_pressed():
 	$"botãocartachegando".hide()
 	animation_player.play("RESET")
 	texto.visible = true
+	MenuMusic.get_child(1).play()
+	
 	
 	person_remetente.clear()
 	person_destinatario.clear()
@@ -57,10 +65,11 @@ func _on_botãocartachegando_pressed():
 	destinatario.text = "Meu amor é:\n"#+"\n"+str(person_destinatario[1])+"\n"+str(person_destinatario[2])+"\n"+str(person_destinatario[3])+"\n"
 	printar_personalidade(person_destinatario,destinatario)
 var person = [
-	["Sociável","Extrovertido","Falante","Amigável"],#person[0]
-	["Imaginativo","Original","Intelectual","Criativo"],#person[1]
-	["Confiável","Paciente","Sensível","Atencioso"],#person[2]
-	["Persistente","Ambicioso","Energético","Disciplinado"]#person[3]
+	["Sociável","Extrovertido","Falante"],#person[0]
+	["Imaginativo","Original","Intelectual"],#person[1]
+	["Confiável","Paciente","Sensível"],#person[2]
+	["Persistente","Ambicioso","Energético"],#person[3]
+	["Disciplinado","Atencioso","Criativo"]
 ]
 
 
@@ -76,11 +85,11 @@ func grupo(element): #procura o grupo do elemento no alcance de person
 		
 
 func random_person(person_carta: Array):
-	for i in range(alcance):#esse range uma hora tem que ser substituido pela quant de traços
+	for i in range(alcance):
 		var escolha = randi() % person.size()
 		var sub_escolha = randi() % person[escolha].size()
 		
-		while person[escolha][sub_escolha] in person_carta: #equanto tiver numero repetido vai rerolar os traços
+		while person[escolha][sub_escolha] in person_carta:
 			escolha = randi() % person.size()
 			sub_escolha = randi() % person[escolha].size()
 			
@@ -88,8 +97,10 @@ func random_person(person_carta: Array):
 
 func _on_botãoaceitar_pressed():
 	texto.visible = false
+	MenuMusic.get_child(1).play()
 	animation_player.play("saindo")
 	carta_saindo.play("aceita")
+	MenuMusic.get_child(2).play()
 	await get_tree().create_timer(1.0).timeout
 	$AnimationPlayer.play("Fadeout")
 	await get_tree().create_timer(2.5).timeout
@@ -97,7 +108,10 @@ func _on_botãoaceitar_pressed():
 
 func _on_botãonegar_pressed():
 	texto.visible = false
+	MenuMusic.get_child(1).play()
+	GlobalVars.scoreatual -= 25 #mudar depois
 	animation_player.play("saindo")
+	MenuMusic.get_child(2).play()
 	await get_tree().create_timer(1.0).timeout
 	_ready()
 	

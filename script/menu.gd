@@ -10,6 +10,8 @@ func _ready():
 	#label_2.text = "highscore: " + str(GlobalVars.highscore)
 
 func _on_button_pressed():
+	MenuMusic.get_child(0).stop()
+	MenuMusic.get_child(3).play()
 	$AnimationPlayer.play("Fadeout")
 	await get_tree().create_timer(2.5).timeout
 	get_tree().change_scene_to_file("res://scenes/jogo_2.tscn")
