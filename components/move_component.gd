@@ -8,4 +8,4 @@ extends Node
 
 func _process(delta):
 	#move
-	actor.position += velocity * delta * GlobalVars.playing 
+	actor.position += velocity * delta * GlobalVars.playing
