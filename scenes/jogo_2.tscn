@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c8ahqhmkuob6d"]
+[gd_scene load_steps=18 format=3 uid="uid://c8ahqhmkuob6d"]
 
 [ext_resource type="PackedScene" uid="uid://dg3skjko6rcqc" path="res://scenes/escritorio_sprite.tscn" id="1_5viur"]
 [ext_resource type="Script" path="res://script/main.gd" id="1_o8kaa"]
@@ -10,6 +10,21 @@
 [ext_resource type="Texture2D" uid="uid://bvlu8yk4ervu1" path="res://assets/botãoverde.png" id="8_45trt"]
 [ext_resource type="Texture2D" uid="uid://dcv1m5ow3ebyq" path="res://placeholders/meta do dia.png" id="9_cm3uy"]
 [ext_resource type="PackedScene" uid="uid://dgy0abhfd7x7v" path="res://scenes/textoruim.tscn" id="10_ohgvg"]
+
+[sub_resource type="Animation" id="Animation_mekmd"]
+resource_name = "Fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_vum8c"]
 resource_name = "Fadeout"
@@ -88,6 +103,7 @@ resource_name = "saindorecuso"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ya8fi"]
 _data = {
+"Fadein": SubResource("Animation_mekmd"),
 "Fadeout": SubResource("Animation_vum8c"),
 "RESET": SubResource("Animation_gebqc"),
 "chegando": SubResource("Animation_td6c6"),
@@ -102,6 +118,7 @@ script = ExtResource("1_o8kaa")
 libraries = {
 "": SubResource("AnimationLibrary_ya8fi")
 }
+autoplay = "Fadein"
 
 [node name="escritorio_sprite" parent="." instance=ExtResource("1_5viur")]
 position = Vector2(0, -3)

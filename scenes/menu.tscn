@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4qyxc7ldpnhc"]
+[gd_scene load_steps=13 format=3 uid="uid://b4qyxc7ldpnhc"]
 
 [ext_resource type="Script" path="res://script/menu.gd" id="1_7e1da"]
 [ext_resource type="Texture2D" uid="uid://b75kbulbh2a2t" path="res://assets/interface.png" id="1_165gq"]
@@ -7,6 +7,21 @@
 [ext_resource type="Texture2D" uid="uid://c5auxjadgayr7" path="res://assets/spritecoração.png" id="5_xb4tc"]
 [ext_resource type="Texture2D" uid="uid://bvlu8yk4ervu1" path="res://assets/botãoverde.png" id="6_fj4yt"]
 [ext_resource type="Texture2D" uid="uid://c6igun7i4hrfd" path="res://assets/jornal.png" id="7_mqhc5"]
+
+[sub_resource type="Animation" id="Animation_psrnh"]
+resource_name = "Fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_5w4na"]
 resource_name = "Fadeout"
@@ -178,6 +193,7 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cernx"]
 _data = {
+"Fadein": SubResource("Animation_psrnh"),
 "Fadeout": SubResource("Animation_5w4na"),
 "RESET": SubResource("Animation_cbvxy"),
 "default": SubResource("Animation_xe221")

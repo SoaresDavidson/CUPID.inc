@@ -3,6 +3,7 @@ extends Control
 #@onready var label_2 = $Label2
 
 func _ready():
+	$AnimationPlayer.play("Fadein")
 	GlobalVars.botão_pressionado = 1
 	MenuMusic.get_child(0).play()
 	GlobalVars.load_score()

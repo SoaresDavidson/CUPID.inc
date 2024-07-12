@@ -36,7 +36,7 @@ func _on_botãocartachegando_pressed():
 	$"botãocartachegando".hide()
 	animation_player.play("RESET")
 	if GlobalVars.cartasnegadas != 0:
-		var sorteio = randi_range(0, 2)
+		var sorteio = randi_range(0, 1)
 		if sorteio == 1:
 			cartadeodio()
 			return
