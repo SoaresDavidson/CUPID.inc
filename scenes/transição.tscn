@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=3 uid="uid://d150i87506p1b"]
+
+[ext_resource type="Script" path="res://script/transição.gd" id="1_qssvp"]
+[ext_resource type="Texture2D" uid="uid://cu32maamu0de1" path="res://assets/transição1.png" id="2_6u7uq"]
+[ext_resource type="Texture2D" uid="uid://bot387hxxonsu" path="res://assets/transição2.png" id="3_qofve"]
+[ext_resource type="Texture2D" uid="uid://dyfebwvq4n83n" path="res://assets/transição3.png" id="4_kbfha"]
+[ext_resource type="Texture2D" uid="uid://c0klxwyn4crs8" path="res://assets/transição4.png" id="5_w4us1"]
+[ext_resource type="AudioStream" uid="uid://d08lp1rcogjeq" path="res://Audios/Street Sound Effect _ High-quality (320).mp3" id="6_icwor"]
+
+[sub_resource type="Animation" id="Animation_vhfh6"]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2vwd0"]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2qsbi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_enms8"]
+_data = {
+"FadeIn": SubResource("Animation_vhfh6"),
+"FadeOut": SubResource("Animation_2vwd0"),
+"RESET": SubResource("Animation_2qsbi")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o0yob"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6u7uq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qofve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kbfha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_w4us1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Transição" type="Node2D"]
+script = ExtResource("1_qssvp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_enms8")
+}
+autoplay = "FadeIn"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4.01736, 4.52083)
+sprite_frames = SubResource("SpriteFrames_o0yob")
+autoplay = "default"
+frame_progress = 0.220093
+centered = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_icwor")
+volume_db = -45.0
+autoplay = true

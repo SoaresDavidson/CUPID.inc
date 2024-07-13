@@ -1,8 +1,8 @@
-AudioStreamPlayer
-Sprite2D
 Button
-Timer
 Label
-Camera2D
+AudioStreamPlayer
 AnimationPlayer
+Sprite2D
 AnimatedSprite2D
+Timer
+Camera2D

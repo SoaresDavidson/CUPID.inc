@@ -221,7 +221,7 @@ libraries = {
 autoplay = "Fadein"
 
 [node name="Interface" type="Sprite2D" parent="."]
-modulate = Color(0.925353, 0.925353, 0.925353, 1)
+modulate = Color(0.0941176, 0.392157, 0.529412, 1)
 position = Vector2(52.8649, 39.3768)
 texture = ExtResource("1_165gq")
 
