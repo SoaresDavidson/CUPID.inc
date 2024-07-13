@@ -32,7 +32,16 @@ func gerarcarta():
 	await get_tree().create_timer(0.5).timeout
 	$"botãocartachegando".show()
 
-func printar_personalidade(person: Array, label):
+func printar_personalidade(person: Array, label:Label):
+	var nome_gerado = nome[randi_range(0, nome.size())-1] + " "+ sobrenome[randi_range(0, sobrenome.size()-1)] + "\n"
+	while nome_gerado in nome_usado:
+		nome_gerado = nome[randi_range(0, nome.size())-1] + " "+ sobrenome[randi_range(0, sobrenome.size()-1)] + "\n"
+	nome_usado.append(nome_gerado)
+	label.text += nome_usado[-1]
+	if person == person_destinatario:
+		label.text += template_amor[randi_range(0, template_amor.size()-1)]
+	else:
+		label.text += template_remetente[randi_range(0, template_remetente.size()-1)]
 	for i in person:
 		label.text += i+"\n"
 
@@ -66,11 +75,37 @@ func _on_botãocartachegando_pressed():
 		if destinatario_grupo[i] not in remetente_grupo:
 			pass
 		
-	
-	remetente.text= "Eu sou:\n"
-	printar_personalidade(person_remetente,remetente)#+"\n"+str(person_remetente[1])+"\n"+str(person_remetente[2])+"\n"+str(person_remetente[3])+"\n"
-	destinatario.text = "Meu amor é:\n"#+"\n"+str(person_destinatario[1])+"\n"+str(person_destinatario[2])+"\n"+str(person_destinatario[3])+"\n"
+	remetente.text = "Nome:"
+	printar_personalidade(person_remetente,remetente)
+	destinatario.text = "Nome do par: "
 	printar_personalidade(person_destinatario,destinatario)
+	destinatario.text += "\n" + template[randi_range(0, template.size()-1)]
+	
+	
+	
+var nome = [
+	"Carlos","Cauã","Paulo","Felipe","Pedro","Gabriel","Lara","Beatriz","Manuel", #todos os nomes com espaço no final
+	"Clotilde"
+]
+
+var sobrenome = [
+	"da Silva","Pinkman","dos Santos","Silveira","Sousa","Soares","Matos","oliveira" 
+]
+
+var template_remetente =[
+	"Eu sou:\n","me considero:\n","meus amigos dizem que sou:\n","acredito que seja:\n"
+	
+]
+
+var template_amor = [
+	"meu amor é:\n","meu amado é\n","sempre quis alguém:\n"
+]
+
+var template = [
+	"não sei como me aproximar dessa pessoa,me ajudem por favor","essa pessoa já me recusou muitas vezes vocês são minha ultima experança","vi essa pessoa poucas vezes mas sinto que foi amor a primeira vista",
+	
+]
+
 var person = [
 	["Sociável","Extrovertido","Falante", "Tagarela"],#person[0]
 	["Imaginativo","Original","Criativo"],#person[1]
@@ -82,7 +117,7 @@ var person = [
 	["Nerd","Estudioso","Lolzeiro","Geek"]
 ]
 
-
+var nome_usado = []
 var person_remetente = []
 
 var person_destinatario = []
