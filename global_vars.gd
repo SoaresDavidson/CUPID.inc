@@ -1,7 +1,6 @@
 extends Node
 
 var dia:float = 1 #os dois são float pra fazer divisão racional
-var meta = 5
 var highscore = 0
 var scoreatual = 0
 var botão_pressionado = 2

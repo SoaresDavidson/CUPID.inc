@@ -7,10 +7,19 @@ extends Node
 @onready var texto = $texto
 @onready var remetente = $texto/remetente
 @onready var destinatario = $texto/destinatario
+var processosfeitos = 0
+var diaacabou = 0
+var errou = 0
+var i = randi_range(7, 10)
 var alcance:int
 signal personalidade
 
 func _ready():
+	MenuMusic.get_child(18).play()
+	GlobalVars.scoreatual += 1
+	if GlobalVars.scoreatual>GlobalVars.highscore:
+			GlobalVars.save_hiscore()
+	processosfeitos = 0
 	GlobalVars.load_score()
 	$Pontos.text = str(GlobalVars.scoreatual)
 	alcance = GlobalVars.botão_pressionado
@@ -18,19 +27,33 @@ func _ready():
 	print(GlobalVars.botão_pressionado)
 	if alcance >= 4:
 		alcance = 4
-	GlobalVars.meta = 5
 	await get_tree().create_timer(1.0).timeout
+	MenuMusic.get_child(6).play()
+	await get_tree().create_timer(2.6).timeout
+	MenuMusic.get_child(i).play()
 	gerarcarta()
 
 func gerarcarta():
-	MenuMusic.get_child(6).play()
-	await get_tree().create_timer(2.6).timeout
-	musicadodia()
-	await get_tree().create_timer(2.0).timeout
-	$Carta_chegando.play("normal")
-	MenuMusic.get_child(5).play()
-	await get_tree().create_timer(0.5).timeout
-	$"botãocartachegando".show()
+	if diaacabou == 0:
+		await get_tree().create_timer(2.0).timeout
+		$Carta_chegando.play("normal")
+		MenuMusic.get_child(5).play()
+		await get_tree().create_timer(0.5).timeout
+		$"botãocartachegando".show()
+	else:
+		MenuMusic.get_child(i).stop()
+		$AnimationPlayer.play("Fadeout")
+		await get_tree().create_timer(2.0).timeout
+		if errou == 0:
+			if processosfeitos < 10:
+				get_tree().change_scene_to_file("res://scenes/incompetente.tscn")
+			else:
+				get_tree().change_scene_to_file("res://scenes/transição.tscn")
+		else:
+			if processosfeitos < 10:
+				get_tree().change_scene_to_file("res://scenes/incompetentefracasso.tscn")
+			else:
+				get_tree().change_scene_to_file("res://scenes/fracasso.tscn")
 
 func printar_personalidade(person: Array, label:Label):
 	var nome_gerado = nome[randi_range(0, nome.size())-1] + " "+ sobrenome[randi_range(0, sobrenome.size()-1)] + "\n"
@@ -46,13 +69,15 @@ func printar_personalidade(person: Array, label:Label):
 		label.text += i+"\n"
 
 func _on_botãocartachegando_pressed():
+	$"botãoaceitar".hide()
+	$"botãonegar".hide()
 	$"botãocartachegando".hide()
 	$Carta_chegando.play("nada")
-	if GlobalVars.cartasnegadas != 0:
-		var sorteio = randi_range(0, 1)
-		if sorteio == 1:
-			cartadeodio()
-			return
+	#if GlobalVars.cartasnegadas != 0:
+		#var sorteio = randi_range(0, 1)
+		#if sorteio == 1:
+			#cartadeodio()
+			#return
 	texto.visible = true
 	$Carta_mesa.play("normal")
 	MenuMusic.get_child(1).play()
@@ -137,6 +162,10 @@ func random_person(person_carta: Array):
 		person_carta.append(person[escolha][sub_escolha])
 
 func _on_botãoaceitar_pressed():
+	processosfeitos += 1
+	$"botãoaceitar".hide()
+	$"botãonegar".hide()
+	$cartaReabrir.hide()
 	$Carta_mesa.play("nada")
 	GlobalVars.botão_pressionado += 1
 	MenuMusic.get_child(15).play()
@@ -145,8 +174,13 @@ func _on_botãoaceitar_pressed():
 	await get_tree().create_timer(1.0).timeout
 	MenuMusic.get_child(4).play()
 	$Carta_saindo.play("nada")
+	gerarcarta()
 
 func _on_botãonegar_pressed():
+	processosfeitos += 1
+	$"botãoaceitar".hide()
+	$"botãonegar".hide()
+	$cartaReabrir.hide()
 	$Carta_mesa.play("nada")
 	GlobalVars.cartasnegadas += 1
 	MenuMusic.get_child(15).play()
@@ -158,6 +192,7 @@ func _on_botãonegar_pressed():
 	await get_tree().create_timer(1.0).timeout
 	MenuMusic.get_child(4).play()
 	$Carta_saindo.play("nada")
+	gerarcarta()
 
 func cartadeodio():
 	MenuMusic.get_child(4).stop()
@@ -179,24 +214,21 @@ func cartadeodio():
 	
 
 func _on_fechar_pressed():
-	MenuMusic.get_child(4).play()
+	$cartaReabrir.show()
 	GlobalVars.cartasnegadas -= 1
 	texto.visible = false
 	$"botãoaceitar".show()
 	$"botãonegar".show()
 	MenuMusic.get_child(1).play()
-	await get_tree().create_timer(1.0).timeout
-
-func musicadodia():
-	var i = randi_range(7, 10)
-	MenuMusic.get_child(i).play()
 
 func _on_timer_timeout():
-	pass
-	#acabar dia em 5 minutos
-	GlobalVars.scoreatual += 1
+	MenuMusic.get_child(i).stop()
+	MenuMusic.get_child(16).play()
+	diaacabou = 1
 
 func _on_carta_reabrir_pressed():
+	$"botãoaceitar".hide()
+	$"botãonegar".hide()
 	$cartaReabrir.hide()
 	texto.visible = true
 	MenuMusic.get_child(1).play()

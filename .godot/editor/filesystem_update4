@@ -1,3 +1,13 @@
 res://scenes/menu.tscn
 res://scenes/jogo_2.tscn
 res://script/main.gd
+res://Audios/menuMusic.tscn
+res://scenes/incompetentefracasso.tscn
+res://scenes/fracasso.tscn
+res://scenes/transição.tscn
+res://scenes/incompetente.tscn
+res://scenes/menu.tscn
+res://script/transição.gd
+res://script/fracasso.gd
+res://script/incompetente.gd
+res://script/incompetentefracasso.gd
