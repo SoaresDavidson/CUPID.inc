@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bq5m52kgqx1n7" path="res://scenes/texto.tscn" id="4_fgr2b"]
 [ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://fonts/PixelOperator8.ttf" id="6_1xo03"]
 [ext_resource type="FontFile" uid="uid://daxfdsjhbdu48" path="res://fonts/PixelOperator8-Bold.ttf" id="8_magwp"]
-[ext_resource type="Texture2D" uid="uid://dehqaaft31st0" path="res://assets/abadireita.png" id="9_gg3lf"]
-[ext_resource type="Texture2D" uid="uid://r6xfdmqadj28" path="res://assets/abaesquerda.png" id="10_7cux2"]
+[ext_resource type="Texture2D" path="res://assets/abadireita.png" id="9_gg3lf"]
+[ext_resource type="Texture2D" path="res://assets/abaesquerda.png" id="10_7cux2"]
 
 [sub_resource type="Animation" id="Animation_mekmd"]
 resource_name = "Fadein"
@@ -100,7 +100,6 @@ scale = Vector2(1.04167, 0.85)
 position = Vector2(71, -27)
 
 [node name="botãoaceitar" type="Button" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0)
 offset_left = 106.0
 offset_top = 24.0
@@ -110,7 +109,6 @@ scale = Vector2(3.13832, 1.74883)
 mouse_default_cursor_shape = 2
 
 [node name="botãonegar" type="Button" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0)
 offset_left = 71.0
 offset_top = 26.0
@@ -126,26 +124,28 @@ position = Vector2(0, -1)
 
 [node name="remetente" type="Label" parent="texto"]
 z_index = 7
-offset_left = -48.0
-offset_top = -45.0
-offset_right = -8.0
-offset_bottom = -22.0
+offset_left = -53.0
+offset_top = -49.0
+offset_right = 98.0
+offset_bottom = -26.0
 scale = Vector2(0.7, 0.7)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_1xo03")
 theme_override_font_sizes/font_size = 8
+autowrap_mode = 2
 
 [node name="destinatario" type="Label" parent="texto"]
 z_index = 7
-offset_left = -48.0
-offset_top = 1.0
-offset_right = -8.0
-offset_bottom = 24.0
+offset_left = -53.0
+offset_top = -4.0
+offset_right = 100.0
+offset_bottom = 19.0
 scale = Vector2(0.7, 0.7)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_1xo03")
 theme_override_font_sizes/font_size = 8
-text = "ca"
+text = "Nome do par:"
+autowrap_mode = 2
 
 [node name="Fechar" type="Button" parent="texto"]
 modulate = Color(1, 1, 1, 0)
