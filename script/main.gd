@@ -1,7 +1,6 @@
 extends Node
 
-@onready var veneno = $texto2/Veneno
-@onready var texto_2 = $texto2
+@onready var veneno = $Veneno
 @onready var carta_chegando = $Carta_chegando
 @onready var carta_saindo = $Carta_saindo
 @onready var animation_player = $AnimationPlayer
@@ -13,19 +12,24 @@ signal personalidade
 
 func _ready():
 	GlobalVars.load_score()
-	$MetaDoDia/Pontos.text ="R$" + str(GlobalVars.scoreatual)
+	$Pontos.text = str(GlobalVars.scoreatual)
 	alcance = GlobalVars.botão_pressionado
 	print(alcance)
 	print(GlobalVars.botão_pressionado)
 	if alcance >= 4:
 		alcance = 4
-	GlobalVars.dificuldade = 1
-	GlobalVars.pontos = 0
 	GlobalVars.meta = 5
-	await get_tree().create_timer(2.0).timeout
-	animation_player.play("chegando")
-	MenuMusic.get_child(2).play()
 	await get_tree().create_timer(1.0).timeout
+	gerarcarta()
+
+func gerarcarta():
+	MenuMusic.get_child(6).play()
+	await get_tree().create_timer(2.6).timeout
+	musicadodia()
+	await get_tree().create_timer(2.0).timeout
+	$Carta_chegando.play("normal")
+	MenuMusic.get_child(5).play()
+	await get_tree().create_timer(0.5).timeout
 	$"botãocartachegando".show()
 
 func printar_personalidade(person: Array, label):
@@ -34,13 +38,14 @@ func printar_personalidade(person: Array, label):
 
 func _on_botãocartachegando_pressed():
 	$"botãocartachegando".hide()
-	animation_player.play("RESET")
+	$Carta_chegando.play("nada")
 	if GlobalVars.cartasnegadas != 0:
 		var sorteio = randi_range(0, 1)
 		if sorteio == 1:
 			cartadeodio()
 			return
 	texto.visible = true
+	$Carta_mesa.play("normal")
 	MenuMusic.get_child(1).play()
 	
 	
@@ -59,9 +64,8 @@ func _on_botãocartachegando_pressed():
 	
 	for i in range(alcance): #mesmo do de cima
 		if destinatario_grupo[i] not in remetente_grupo:
-			GlobalVars.dificuldade += 1
+			pass
 		
-	GlobalVars.meta *= GlobalVars.dificuldade 
 	
 	remetente.text= "Eu sou:\n"
 	printar_personalidade(person_remetente,remetente)#+"\n"+str(person_remetente[1])+"\n"+str(person_remetente[2])+"\n"+str(person_remetente[3])+"\n"
@@ -98,29 +102,27 @@ func random_person(person_carta: Array):
 		person_carta.append(person[escolha][sub_escolha])
 
 func _on_botãoaceitar_pressed():
+	$Carta_mesa.play("nada")
 	GlobalVars.botão_pressionado += 1
-	texto.visible = false
-	MenuMusic.get_child(1).play()
-	animation_player.play("saindo")
-	carta_saindo.play("aceita")
+	MenuMusic.get_child(15).play()
+	$Carta_saindo.play("aceita")
 	MenuMusic.get_child(2).play()
 	await get_tree().create_timer(1.0).timeout
-	$AnimationPlayer.play("Fadeout")
-	await get_tree().create_timer(2.5).timeout
-	MenuMusic.get_child(4).stop()
-	get_tree().change_scene_to_file("res://scenes/space_shooter.tscn")
+	MenuMusic.get_child(4).play()
+	$Carta_saindo.play("nada")
 
 func _on_botãonegar_pressed():
+	$Carta_mesa.play("nada")
 	GlobalVars.cartasnegadas += 1
-	texto.visible = false
-	MenuMusic.get_child(1).play()
+	MenuMusic.get_child(15).play()
 	GlobalVars.scoreatual -= 5 
 	if GlobalVars.scoreatual <= 0:
 		GlobalVars.scoreatual = 0
-	animation_player.play("saindo")
+	$Carta_saindo.play("recusada")
 	MenuMusic.get_child(2).play()
 	await get_tree().create_timer(1.0).timeout
-	_ready()
+	MenuMusic.get_child(4).play()
+	$Carta_saindo.play("nada")
 
 func cartadeodio():
 	MenuMusic.get_child(4).stop()
@@ -138,13 +140,28 @@ func cartadeodio():
 	]
 	var i = randi_range(0, chances.size()-1)
 	veneno.text = chances[i]
-	texto_2.visible = true
+	texto.visible = true
 	
 
 func _on_fechar_pressed():
 	MenuMusic.get_child(4).play()
 	GlobalVars.cartasnegadas -= 1
-	texto_2.visible = false
+	texto.visible = false
+	$"botãoaceitar".show()
+	$"botãonegar".show()
 	MenuMusic.get_child(1).play()
 	await get_tree().create_timer(1.0).timeout
-	_ready()
+
+func musicadodia():
+	var i = randi_range(7, 10)
+	MenuMusic.get_child(i).play()
+
+func _on_timer_timeout():
+	pass
+	#acabar dia em 5 minutos
+	GlobalVars.scoreatual += 1
+
+func _on_carta_reabrir_pressed():
+	$cartaReabrir.hide()
+	texto.visible = true
+	MenuMusic.get_child(1).play()

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bsb7bmpwpkjmt"
+path="res://.godot/imported/Queen - Love of my life 8 Bits (320).mp3-79dddf323939a39cc91c64988bd5effe.mp3str"
+
+[deps]
+
+source_file="res://Audios/Queen - Love of my life 8 Bits (320).mp3"
+dest_files=["res://.godot/imported/Queen - Love of my life 8 Bits (320).mp3-79dddf323939a39cc91c64988bd5effe.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

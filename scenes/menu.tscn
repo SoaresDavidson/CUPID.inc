@@ -218,37 +218,40 @@ script = ExtResource("1_7e1da")
 libraries = {
 "": SubResource("AnimationLibrary_cernx")
 }
-autoplay = "default"
+autoplay = "Fadein"
 
 [node name="Interface" type="Sprite2D" parent="."]
+modulate = Color(0.925353, 0.925353, 0.925353, 1)
 position = Vector2(52.8649, 39.3768)
 texture = ExtResource("1_165gq")
 
 [node name="Button" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 46.7193
-offset_top = 24.242
-offset_right = 121.719
-offset_bottom = 55.242
+offset_left = 21.447
+offset_top = 18.1488
+offset_right = 96.4467
+offset_bottom = 49.1488
 scale = Vector2(0.2, 0.2)
+mouse_default_cursor_shape = 2
 
 [node name="Button2" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 46.9074
-offset_top = 32.4973
-offset_right = 121.907
-offset_bottom = 63.4973
+offset_left = 21.6351
+offset_top = 26.4041
+offset_right = 96.6347
+offset_bottom = 57.4041
 scale = Vector2(0.2, 0.2)
+mouse_default_cursor_shape = 2
 
 [node name="Jogar" type="Label" parent="."]
 z_index = 2
 layout_mode = 0
-offset_left = 46.5312
-offset_top = 24.8972
-offset_right = 116.531
-offset_bottom = 47.8972
+offset_left = 21.5097
+offset_top = 18.804
+offset_right = 91.5095
+offset_bottom = 41.804
 scale = Vector2(0.400619, 0.573047)
 theme_override_fonts/font = ExtResource("3_qqr6m")
 theme_override_font_sizes/font_size = 8
@@ -258,10 +261,10 @@ text = "Jogar"
 z_index = 2
 texture_filter = 1
 layout_mode = 0
-offset_left = 41.3889
-offset_top = 33.9387
-offset_right = 93.3889
-offset_bottom = 56.9387
+offset_left = 16.1166
+offset_top = 27.8455
+offset_right = 68.1166
+offset_bottom = 50.8455
 scale = Vector2(0.507914, 0.468302)
 theme_override_fonts/font = ExtResource("3_qqr6m")
 theme_override_font_sizes/font_size = 8
@@ -270,14 +273,14 @@ horizontal_alignment = 1
 
 [node name="BotãoSprite2" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(46.0922, 23.7833)
+position = Vector2(20.8199, 17.6901)
 scale = Vector2(0.509523, 0.431438)
 texture = ExtResource("4_2ajk6")
 centered = false
 
 [node name="BotãoSprite3" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(46.2176, 31.8421)
+position = Vector2(20.9453, 25.7489)
 scale = Vector2(0.502877, 0.455316)
 texture = ExtResource("4_2ajk6")
 centered = false
@@ -308,16 +311,16 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_xb4tc")
 
 [node name="BotãoSprite" type="Sprite2D" parent="."]
-position = Vector2(54.207, 7.73793)
-scale = Vector2(1.80058, 1)
+position = Vector2(37.689, 6.97775)
+scale = Vector2(1.2111, 0.937738)
 texture = ExtResource("4_2ajk6")
 
 [node name="Título" type="Label" parent="."]
 layout_mode = 0
-offset_left = 36.7108
-offset_top = 4.46199
-offset_right = 210.71
-offset_bottom = 27.462
+offset_left = 21.0959
+offset_top = 4.19991
+offset_right = 195.095
+offset_bottom = 27.1999
 scale = Vector2(0.590699, 0.684382)
 theme_override_fonts/font = ExtResource("3_qqr6m")
 theme_override_font_sizes/font_size = 8
@@ -326,10 +329,10 @@ text = "CUPID.INC"
 [node name="Título2" type="Label" parent="."]
 z_index = 1
 layout_mode = 0
-offset_left = 21.5724
-offset_top = 18.5418
-offset_right = 195.572
-offset_bottom = 41.5419
+offset_left = 66.1832
+offset_top = 28.5252
+offset_right = 240.183
+offset_bottom = 51.5253
 scale = Vector2(0.386894, 0.422483)
 theme_override_fonts/font = ExtResource("3_qqr6m")
 theme_override_font_sizes/font_size = 8
@@ -338,10 +341,10 @@ text = "Recorde:"
 [node name="Recorde" type="Label" parent="."]
 z_index = 2
 layout_mode = 0
-offset_left = 22.6385
-offset_top = 23.4557
-offset_right = 72.6385
-offset_bottom = 33.4557
+offset_left = 67.2493
+offset_top = 33.4391
+offset_right = 117.249
+offset_bottom = 43.4391
 scale = Vector2(0.386894, 0.422483)
 theme_override_fonts/font = ExtResource("3_qqr6m")
 theme_override_font_sizes/font_size = 8
@@ -349,14 +352,14 @@ text = "X"
 horizontal_alignment = 1
 
 [node name="Botãoverde" type="Sprite2D" parent="."]
-position = Vector2(31.9823, 23.1281)
+position = Vector2(76.5931, 33.1115)
 scale = Vector2(0.730487, 0.715584)
 texture = ExtResource("6_fj4yt")
 
 [node name="Jornal" type="Sprite2D" parent="."]
-position = Vector2(76.0678, 24.1109)
+position = Vector2(72.9891, 14.9623)
 rotation = 0.120428
-scale = Vector2(0.04, 0.04)
+scale = Vector2(0.0525328, 0.0531975)
 texture = ExtResource("7_mqhc5")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

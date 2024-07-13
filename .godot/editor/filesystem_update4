@@ -1,2 +1,7 @@
-res://scenes/menu.tscn
 res://scenes/jogo_2.tscn
+res://Audios/menuMusic.tscn
+res://global_vars.gd
+res://script/main.gd
+res://script/menu.gd
+res://scenes/menu.tscn
+res://scenes/escritorio_sprite.tscn

@@ -1,15 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://c8ahqhmkuob6d"]
+[gd_scene load_steps=13 format=3 uid="uid://c8ahqhmkuob6d"]
 
 [ext_resource type="PackedScene" uid="uid://dg3skjko6rcqc" path="res://scenes/escritorio_sprite.tscn" id="1_5viur"]
 [ext_resource type="Script" path="res://script/main.gd" id="1_o8kaa"]
 [ext_resource type="PackedScene" uid="uid://bkskky10obye7" path="res://scenes/carta.tscn" id="2_krjd3"]
-[ext_resource type="Texture2D" uid="uid://c3ieu7ynjr36y" path="res://assets/carteiro.png" id="3_4w4ow"]
 [ext_resource type="PackedScene" uid="uid://bq5m52kgqx1n7" path="res://scenes/texto.tscn" id="4_fgr2b"]
 [ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://fonts/PixelOperator8.ttf" id="6_1xo03"]
-[ext_resource type="Texture2D" uid="uid://jae3m2cngfm6" path="res://assets/botãovermelho.png" id="7_2y47h"]
-[ext_resource type="Texture2D" uid="uid://bvlu8yk4ervu1" path="res://assets/botãoverde.png" id="8_45trt"]
-[ext_resource type="Texture2D" uid="uid://dcv1m5ow3ebyq" path="res://placeholders/meta do dia.png" id="9_cm3uy"]
-[ext_resource type="PackedScene" uid="uid://dgy0abhfd7x7v" path="res://scenes/textoruim.tscn" id="10_ohgvg"]
+[ext_resource type="FontFile" uid="uid://daxfdsjhbdu48" path="res://fonts/PixelOperator8-Bold.ttf" id="8_magwp"]
+[ext_resource type="Texture2D" uid="uid://dehqaaft31st0" path="res://assets/abadireita.png" id="9_gg3lf"]
+[ext_resource type="Texture2D" uid="uid://r6xfdmqadj28" path="res://assets/abaesquerda.png" id="10_7cux2"]
 
 [sub_resource type="Animation" id="Animation_mekmd"]
 resource_name = "Fadein"
@@ -46,69 +44,21 @@ tracks/0/keys = {
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Carta_chegando:position")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-73, -26)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_td6c6"]
-resource_name = "chegando"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Carta_chegando:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-75, -29), Vector2(-75, 7)]
-}
-
-[sub_resource type="Animation" id="Animation_n37wc"]
-resource_name = "saindo"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Carta_saindo:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(71, 6), Vector2(71, -27)]
-}
-
-[sub_resource type="Animation" id="Animation_i0ld7"]
-resource_name = "saindorecuso"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ya8fi"]
 _data = {
 "Fadein": SubResource("Animation_mekmd"),
 "Fadeout": SubResource("Animation_vum8c"),
-"RESET": SubResource("Animation_gebqc"),
-"chegando": SubResource("Animation_td6c6"),
-"saindo": SubResource("Animation_n37wc"),
-"saindorecuso": SubResource("Animation_i0ld7")
+"RESET": SubResource("Animation_gebqc")
 }
 
 [node name="Jogo2" type="Node2D"]
@@ -130,51 +80,49 @@ zoom = Vector2(4, 4.6)
 [node name="botãocartachegando" type="Button" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0)
-offset_left = -95.0
-offset_top = -5.0
-offset_right = -87.0
-offset_bottom = 3.0
-scale = Vector2(5.05476, 2.98225)
+offset_left = -96.0
+offset_top = -30.0
+offset_right = -88.0
+offset_bottom = -22.0
+scale = Vector2(5.84096, 1.91982)
+mouse_default_cursor_shape = 2
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
 
 [node name="Carta_chegando" parent="." instance=ExtResource("2_krjd3")]
-position = Vector2(-73, -26)
-animation = &"normal"
+position = Vector2(-73, -30)
+animation = &"nada"
+
+[node name="Carta_mesa" parent="." instance=ExtResource("2_krjd3")]
+position = Vector2(-2.92063e-06, 49.75)
+scale = Vector2(1.04167, 0.85)
 
 [node name="Carta_saindo" parent="." instance=ExtResource("2_krjd3")]
 position = Vector2(71, -27)
-animation = &"normal"
 
-[node name="Carteiro" type="Sprite2D" parent="."]
-z_index = 5
-position = Vector2(-72, -26)
-texture = ExtResource("3_4w4ow")
+[node name="botãoaceitar" type="Button" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = 106.0
+offset_top = 24.0
+offset_right = 114.0
+offset_bottom = 46.0
+scale = Vector2(3.13832, 1.74883)
+mouse_default_cursor_shape = 2
 
-[node name="Carteiro2" type="Sprite2D" parent="."]
-z_index = 5
-position = Vector2(72, -26)
-texture = ExtResource("3_4w4ow")
+[node name="botãonegar" type="Button" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = 71.0
+offset_top = 26.0
+offset_right = 79.0
+offset_bottom = 46.0
+scale = Vector2(3.41058, 1.7643)
+mouse_default_cursor_shape = 2
 
 [node name="texto" parent="." instance=ExtResource("4_fgr2b")]
 visible = false
 z_index = 6
 position = Vector2(0, -1)
-
-[node name="botãoaceitar" type="Button" parent="texto"]
-modulate = Color(1, 1, 1, 0)
-offset_left = 19.0
-offset_top = 48.0
-offset_right = 27.0
-offset_bottom = 56.0
-scale = Vector2(3.7058, 1.77613)
-
-[node name="botãonegar" type="Button" parent="texto"]
-modulate = Color(1, 1, 1, 0)
-offset_left = -49.0
-offset_top = 48.0
-offset_right = -41.0
-offset_bottom = 56.0
-scale = Vector2(3.70455, 1.7643)
 
 [node name="remetente" type="Label" parent="texto"]
 z_index = 7
@@ -199,71 +147,49 @@ theme_override_fonts/font = ExtResource("6_1xo03")
 theme_override_font_sizes/font_size = 8
 text = "ca"
 
-[node name="Botãovermelho" type="Sprite2D" parent="texto"]
-z_index = 7
-position = Vector2(-34, 55)
-texture = ExtResource("7_2y47h")
+[node name="Fechar" type="Button" parent="texto"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 32.0
+offset_top = -73.0
+offset_right = 62.0
+offset_bottom = -46.0
+mouse_default_cursor_shape = 2
 
-[node name="Botãoverde" type="Sprite2D" parent="texto"]
-z_index = 7
-position = Vector2(34, 55)
-texture = ExtResource("8_45trt")
+[node name="cartaReabrir" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -22.0
+offset_top = 38.0
+offset_right = 23.0
+offset_bottom = 61.0
+mouse_default_cursor_shape = 2
 
-[node name="Aceitar" type="Label" parent="texto"]
-z_index = 8
-offset_left = 19.0
-offset_top = 50.0
-offset_right = 111.0
-offset_bottom = 73.0
-scale = Vector2(0.324693, 0.588153)
-theme_override_fonts/font = ExtResource("6_1xo03")
-text = "Aceitar"
-
-[node name="Negar" type="Label" parent="texto"]
-z_index = 8
-offset_left = -49.0
-offset_top = 50.0
-offset_right = 21.0
-offset_bottom = 73.0
-scale = Vector2(0.426559, 0.485536)
-theme_override_fonts/font = ExtResource("6_1xo03")
-text = "Negar"
-
-[node name="MetaDoDia" type="Sprite2D" parent="."]
-modulate = Color(0.89059, 0.89059, 0.89059, 1)
-position = Vector2(-2, -13)
-scale = Vector2(0.470403, 0.364342)
-texture = ExtResource("9_cm3uy")
-
-[node name="Label" type="Label" parent="MetaDoDia"]
+[node name="Dia" type="Label" parent="."]
 z_index = 2
-offset_left = -48.8942
-offset_top = -85.0849
-offset_right = 147.106
-offset_bottom = -62.0849
-scale = Vector2(0.501128, 0.944444)
+offset_left = 1.0
+offset_top = -56.0
+offset_right = 23.0
+offset_bottom = -48.0
+scale = Vector2(0.732006, 1.29638)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_1xo03")
-text = "Salário atual:"
+theme_override_fonts/font = ExtResource("8_magwp")
+theme_override_font_sizes/font_size = 8
+text = "Dia"
 horizontal_alignment = 1
 
-[node name="Pontos" type="Label" parent="MetaDoDia"]
+[node name="Pontos" type="Label" parent="."]
 z_index = 2
-offset_left = -34.0134
-offset_top = -46.6595
-offset_right = 65.9866
-offset_bottom = -23.6595
-scale = Vector2(0.767811, 1.30473)
+offset_left = 4.0
+offset_top = -44.0
+offset_right = 11.0
+offset_bottom = -36.0
+scale = Vector2(1.45307, 1.81011)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_1xo03")
+theme_override_font_sizes/font_size = 8
 text = "X"
 horizontal_alignment = 1
 
-[node name="texto2" parent="." instance=ExtResource("10_ohgvg")]
-visible = false
-z_index = 10
-
-[node name="Veneno" type="Label" parent="texto2"]
+[node name="Veneno" type="Label" parent="."]
 offset_left = -49.0
 offset_top = -41.0
 offset_right = 48.0
@@ -273,14 +199,24 @@ theme_override_fonts/font = ExtResource("6_1xo03")
 theme_override_font_sizes/font_size = 8
 autowrap_mode = 2
 
-[node name="Fechar" type="Button" parent="texto2"]
-modulate = Color(1, 1, 1, 0)
-offset_left = 32.0
-offset_top = -74.0
-offset_right = 62.0
-offset_bottom = -47.0
+[node name="Abadireita" type="Sprite2D" parent="."]
+position = Vector2(72, -46)
+scale = Vector2(1, 1.01891)
+texture = ExtResource("9_gg3lf")
+
+[node name="Abaesquerda" type="Sprite2D" parent="."]
+position = Vector2(-72, -46)
+texture = ExtResource("10_7cux2")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 300.0
+one_shot = true
+autostart = true
 
 [connection signal="pressed" from="botãocartachegando" to="." method="_on_botãocartachegando_pressed"]
-[connection signal="pressed" from="texto/botãoaceitar" to="." method="_on_botãoaceitar_pressed"]
-[connection signal="pressed" from="texto/botãonegar" to="." method="_on_botãonegar_pressed"]
-[connection signal="pressed" from="texto2/Fechar" to="." method="_on_fechar_pressed"]
+[connection signal="pressed" from="botãoaceitar" to="." method="_on_botãoaceitar_pressed"]
+[connection signal="pressed" from="botãonegar" to="." method="_on_botãonegar_pressed"]
+[connection signal="pressed" from="texto/Fechar" to="." method="_on_fechar_pressed"]
+[connection signal="pressed" from="cartaReabrir" to="." method="_on_carta_reabrir_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
