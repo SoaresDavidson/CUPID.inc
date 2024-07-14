@@ -17,6 +17,7 @@ var i = randi_range(7, 10) #determina o index das músicas da rádio
 var invasivo:bool = false #se auma carta for invasiva isso se torna true
 var alcance = 0
 var combinam:bool = false
+var veneno:bool = false
 #name bank de nomes masculinos
 var namebankM = ["Carlos","Cauê","Paulo","Felipe","Pedro","Gabriel","Manuel",
 "Waldecy","Gilvan","João","Guilherme","Lucas","Davi","Luís","Jorge","Antônio",
@@ -85,15 +86,13 @@ func dia_acabou():
 
 func _on_botãocartachegando_pressed():
 	invasivo = false
+	veneno = false
 	trabalhando = 1 #inicia o processo da carta
 	combinam = false
 	var j = randi_range(0,12)
-	if j < 6: #dando maior chance de ocorrer uma carta padrão ao invés de um evento especial
+	if j > 6: #dando maior chance de ocorrer uma carta padrão ao invés de um evento especial
 		cartapadrão()
-		if j < 3:
-			%textinho.text += ". Se você acha que a gente tenho chances, manda a carta."
-		else:
-			%textinho.text += ". Combina?"
+		completa_cartapadrao()
 	else: #chamando uma função especial
 		evento(j)
 		
@@ -115,7 +114,7 @@ func _on_botãocartachegando_pressed():
 	
 
 func _on_botãoaceitar_pressed():
-	if invasivo or not combinam: #se for invasivo e for aceito,perde
+	if (invasivo or not combinam) or veneno: #se for invasivo e for aceito,perde
 		errou += 1
 		print(errou)
 	processosfeitos += 1 #aumenta o número de processos feitos
@@ -135,7 +134,7 @@ func _on_botãoaceitar_pressed():
 	$Meta2.text= str(processosfeitos) +"/"+ str(meta)
 
 func _on_botãonegar_pressed():
-	if combinam and not invasivo:
+	if (combinam and not invasivo) or veneno:
 		errou += 1
 		print(errou)
 	
@@ -199,6 +198,7 @@ func _on_lixeira_pressed(): #botar carta na lixeira
 	MenuMusic.get_child(19).play()
 	$Carta_saindo.play("nada")
 	gerarcarta()
+	$Meta2.text= str(processosfeitos) +"/"+ str(meta)
 
 func _on_fechar_livro_pressed(): #fechar livro de regras 
 	$Livro.hide()
@@ -234,27 +234,27 @@ func evento(j:int):
 		cobrançachefe()
 	
 func cartapadrão():
-	var w = randi_range(0,1)#
-	var l = randi_range(0,1)#
-	var x = randi_range(0,23)#index nome do remetente
-	var y = randi_range(0,23)#index nome do par
-	
+	var w = randi_range(0, 1)#
+	var l = randi_range(0, 1)#
+	var x = randi_range(0, 23)#index nome do remetente
+	var y = randi_range(0, 23)#index nome do par
+	var z = randi_range(0, 1)
 	if w == 0:
 		
 		%remetente.text = "De: " + namebankM[x]
 		%destinatario.text = "Para: " + namebankF[y]
 		if l == 0:
-			%textinho.text = "Eu sou " + random_person(grupo_remetente) + " e ela é " + random_person(grupo_destinatario)
+			%textinho.text = "Eu sou " + random_person(grupo_remetente) + " e ela é " + sorteia(z)
 		else:
-			%textinho.text = "Eu adoro o jeitinho " + random_person(grupo_remetente) + " dela. Eu, pessoalmente, sou " + random_person(grupo_destinatario)
+			%textinho.text = "Eu adoro o jeitinho " + random_person(grupo_remetente) + " dela. Eu, pessoalmente, sou " + sorteia(z)
 	else:
 		%remetente.text = "De: " + namebankF[x]
 		%destinatario.text = "Para: " + namebankM[y]
 		if l == 0:
-			%textinho.text = "Eu sou " + random_person(grupo_remetente) + " e ele é " + random_person(grupo_destinatario)
+			%textinho.text = "Eu sou " + random_person(grupo_remetente) + " e ele é " + sorteia(z)
 		else:
-			%textinho.text = "Eu adoro o jeitinho " + random_person(grupo_remetente) + " dele. Eu, pessoalmente, sou " + random_person(grupo_destinatario) 
-
+			%textinho.text = "Eu adoro o jeitinho " + random_person(grupo_remetente) + " dele. Eu, pessoalmente, sou " + sorteia(z) 
+	print(grupo_destinatario)
 
 	
 func empresarival():
@@ -262,7 +262,8 @@ func empresarival():
 		%remetente.text = "De: Corporação Santo Antônio" 
 		%destinatario.text = "Para: Você,futuro companheiro"
 		%textinho.text ="Queremos você,eles vão tentar lhe ganhar \nabaixando sua meta,mas so nos vamos lhe dar o que \nseu trabalho duro merece"
-		--meta
+		meta -= 1
+		veneno = true
 	else:
 		cartapadrão()
 
@@ -272,9 +273,11 @@ func cobrançachefe():
 		%destinatario.text = "Para: Você,novato"
 		%textinho.text ="Tomamos ciência do seu atual desempenho,\n estamos preocupados se você\n realmente tem preparo, 
 		então vamos lhe dar um desafio para testa-lo"
-		++meta
+		meta += 1
+		veneno = true
 	else:
 		cartapadrão()
+		completa_cartapadrao()
 
 func stalker():
 	cartapadrão()
@@ -304,22 +307,22 @@ func cartadeodio():
 		"Você vai ser demitido, rapazinho! Vou falar com seu chefe, aí você vai ver...",
 		"Nunca mais sigo recomendações do meu tio. Essa empresa é uma #@!#$."
 		]
+		
 		%remetente.text = " "
 		%destinatario.text = " "
 		var i = randi_range(0, chances.size()-1)
 		%textinho.text = chances[i]
 		texto.visible = true
+		veneno = true
 	else:
 		cartapadrão()
-		if randi_range(0,1) == 0:
-			%textinho.text += ". Se você acha que tenho chances, manda a carta."
-		else:
-			%textinho.text += ". Combina?"
+		completa_cartapadrao()
 
 	
 
 func bomba():
 	cartapadrão()
+	completa_cartapadrao()
 
 func cartadeseixo():
 	var w = randi_range(0,1)#
@@ -330,7 +333,7 @@ func cartadeseixo():
 		%remetente.text +"De :" + namebankF[x]
 	%destinatario.text ="Para: "+ "Qualquer pessoa"
 	%textinho.text="\nEu quero qualquer pessoa\nnão quero passar mais uma noite de domingo\nsozinho"
-	combinam =true
+	veneno = true
 
 func cartadetraicao():
 	var w = randi_range(0,1)#
@@ -368,3 +371,18 @@ func grupo(element): #checa o grupo da personalidade pra depois comparar
 	for i in personalidades:
 		if element in i:
 			return i
+
+
+func completa_cartapadrao():
+	if randi_range(0,1) == 0:
+		%textinho.text += ". Se você acha que a gente tenho chances, manda a carta."
+	else:
+		%textinho.text += ". Combina?"
+		
+func sorteia(z: int):
+	if z == 0:
+		return random_person(grupo_destinatario)
+	else:
+		print("deu certo")
+		grupo_destinatario.append(grupo_remetente[0])
+		return grupo_destinatario[0][randi_range(0, 1)]
