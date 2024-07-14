@@ -84,11 +84,12 @@ func _on_botãocartachegando_pressed():
 	invasivo = false
 	trabalhando = 1 #inicia o processo da carta
 	combinam = false
-	var j = randi_range(6,8)
+	var j = randi_range(5,6)
+	print(j)
 	if j > 6: #dando maior chance de ocorrer uma carta padrão ao invés de um evento especial
 		cartapadrão()
-		if j > 10:
-			%textinho.text += ". Se você acha que a gente tenho chances, manda a carta."
+		if j % 2 == 0:
+			%textinho.text += ". Se você acha que tenho chances, manda a carta."
 		else:
 			%textinho.text += ". Combina?"
 	else: #chamando uma função especial
@@ -96,7 +97,7 @@ func _on_botãocartachegando_pressed():
 		
 	if grupo_remetente == grupo_destinatario:
 		combinam = true
-		print ("cu")
+		print ("combinam")
 	grupo_remetente.clear()
 	grupo_destinatario.clear()
 		
@@ -134,6 +135,7 @@ func _on_botãonegar_pressed():
 	if combinam and not invasivo:
 		errou += 1
 		print(errou)
+	
 	processosfeitos += 1
 	$"botãoaceitar".hide()
 	$"botãonegar".hide()
@@ -152,7 +154,6 @@ func _on_botãonegar_pressed():
 
 func _on_fechar_pressed():
 	$cartaReabrir.show()
-	GlobalVars.cartasnegadas -= 1
 	texto.visible = false
 	$"botãoaceitar".show()
 	$"botãonegar".show() #minimizar a carta quando aberta na tela
@@ -215,18 +216,18 @@ func _on_fechar_livro_pressed(): #fechar livro de regras
 func evento(j:int):
 	if j == 6:
 		stalker()
-	elif j == 7:
-		cobrançachefe()
-	elif j == 8:
-		empresarival()
-	elif j == 9:
+	elif j == 5:
 		cartadeodio()
-	elif j == 10:
+	elif j == 4:
+		empresarival()
+	elif j == 3:
 		bomba()
-	elif j == 11:
+	elif j == 2:
 		cartadeseixo()
-	elif j == 12:
+	elif j == 1:
 		cartadetraicao()
+	elif j == 0:
+		cobrançachefe()
 	
 func cartapadrão():
 	var w = randi_range(0,1)#
@@ -262,8 +263,8 @@ func cobrançachefe():
 func stalker():
 	cartapadrão()
 	var creepy = [
-		". Sempre sou rejeitado por essa pessoa mas dessa vez vai ser diferente",
-		". Não vou aceitar um não como resposta dessa vez",
+		". Sempre sou rejeitado mas dessa vez vai ser diferente",
+		". Não vou aceitar um não como resposta",
 		". Não vou desistir de nosso amor"
 		
 	]
@@ -271,7 +272,33 @@ func stalker():
 	invasivo = true
 
 func cartadeodio():
-	cartapadrão()
+	if GlobalVars.cartasnegadas > 0:
+		
+		MenuMusic.get_child(i).stop()
+		MenuMusic.get_child(1).play()
+		
+		var chances = ["Seu imbecil! Porquê você recusou minha carta? Eu e ela éramos feito um para o outro... ",
+		"Seu @!#$#!, QUEM TU PENSA QUE É SEU !#@#@!@$ VAI A !#@#!#",
+		"VOCÊ ESTRAGOU MINHA VIDA, EU VOU TE PEGAR SEU PALHAÇO!",
+		"Extremamente improfissional. É só um serviço de envio simples, e você recusa? Nunca mais conte comigo.",
+		"Seu serviço é um lixo! Vou falar pra todo mundo que essa empresa não presta.",
+		"Incompetente.",
+		"Você acha que pode fazer o que quiser com as nossas vidas? Você me dá nojo.",
+		"Gostava tanto dele... Agora tudo acabou.",
+		"Você vai ser demitido, rapazinho! Vou falar com seu chefe, aí você vai ver...",
+		"Nunca mais sigo recomendações do meu tio. Essa empresa é uma #@!#$."
+		]
+		%remetente.text = " "
+		%destinatario.text = " "
+		var i = randi_range(0, chances.size()-1)
+		%textinho.text = chances[i]
+		texto.visible = true
+	else:
+		cartapadrão()
+		if randi_range(0,1) == 0:
+			%textinho.text += ". Se você acha que tenho chances, manda a carta."
+		else:
+			%textinho.text += ". Combina?"
 
 func bomba():
 	cartapadrão()
@@ -281,6 +308,9 @@ func cartadeseixo():
 
 func cartadetraicao():
 	cartapadrão()
+
+
+
 
 func random_person(grupo) -> String:
 	#resumindante pega o array de arrays personalidade e pega um array e depois um elemento desse array
