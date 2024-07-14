@@ -72,13 +72,13 @@ func dia_acabou():
 	$AnimationPlayer.play("Fadeout")
 	await get_tree().create_timer(2.0).timeout
 	if errou == 0: #determina os finais baseado em erros e processos feitos
-		if processosfeitos < 5:
+		if processosfeitos < meta:
 			get_tree().change_scene_to_file("res://scenes/incompetente.tscn")
 		else:
 			get_tree().change_scene_to_file("res://scenes/transição.tscn")
 			GlobalVars.dia += 1
 	else:
-		if processosfeitos < 5:
+		if processosfeitos < meta:
 			get_tree().change_scene_to_file("res://scenes/incompetentefracasso.tscn")
 		else:
 			get_tree().change_scene_to_file("res://scenes/fracasso.tscn")
@@ -133,13 +133,6 @@ func _on_botãoaceitar_pressed():
 	$Carta_saindo.play("nada")
 	gerarcarta() #reinicia o loop do jogo
 	$Meta2.text= str(processosfeitos) +"/"+ str(meta)
-	if cobranca >0:
-		if processosfeitos >0:
-			processosfeitos = processosfeitos - 2
-			cobranca = 0
-	if proposta >0:
-		++processosfeitos
-		proposta = 0
 
 func _on_botãonegar_pressed():
 	if combinam and not invasivo:
@@ -161,10 +154,6 @@ func _on_botãonegar_pressed():
 	$Carta_saindo.play("nada")
 	gerarcarta()
 	$Meta2.text= str(processosfeitos) +"/"+ str(meta)
-	if cobranca >0:
-		if processosfeitos >0:
-			processosfeitos= processosfeitos - 2
-			cobranca = 0
 
 func _on_fechar_pressed():
 	$cartaReabrir.show()
@@ -209,10 +198,6 @@ func _on_lixeira_pressed(): #botar carta na lixeira
 	$Carta_mesa.play("nada")
 	MenuMusic.get_child(19).play()
 	$Carta_saindo.play("nada")
-	if cobranca >0:
-		if processosfeitos >0:
-			--processosfeitos
-			cobranca = 0
 	gerarcarta()
 
 func _on_fechar_livro_pressed(): #fechar livro de regras 
@@ -277,8 +262,8 @@ func empresarival():
 	if GlobalVars.scoreatual > 1:
 		%remetente.text = "De: Corporação Santo Antônio" 
 		%destinatario.text = "Para: Você,futuro companheiro"
-		%textinho.text ="Tomamos ciência do seu atual desempenho,\nestamos interessados em tervocê conosco,\nmande um coração se a proposta ti interessar"
-		++proposta
+		%textinho.text ="Queremos você,eles vão tentar lhe ganhar \nabaixando sua meta,mas so nos vamos lhe dar o que \nseu trabalho duro merece"
+		--meta
 	else:
 		cartapadrão()
 
@@ -288,7 +273,7 @@ func cobrançachefe():
 		%destinatario.text = "Para: Você,novato"
 		%textinho.text ="Tomamos ciência do seu atual desempenho,\n estamos preocupados se você\n realmente tem preparo, 
 		então vamos lhe dar um desafio para testa-lo"
-		++cobranca
+		++meta
 	else:
 		cartapadrão()
 
