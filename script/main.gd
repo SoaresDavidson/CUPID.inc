@@ -239,7 +239,6 @@ func cartapadrão():
 	var x = randi_range(0,23)#index nome do remetente
 	var y = randi_range(0,23)#index nome do par
 	
-	
 	if w == 0:
 		
 		%remetente.text = "De: " + namebankM[x]
@@ -289,7 +288,34 @@ func stalker():
 	invasivo = true
 
 func cartadeodio():
-	cartapadrão()
+	if GlobalVars.cartasnegadas > 0:
+		
+		MenuMusic.get_child(i).stop()
+		MenuMusic.get_child(1).play()
+		
+		var chances = ["Seu imbecil! Porquê você recusou minha carta? Eu e ela éramos feito um para o outro... ",
+		"Seu @!#$#!, QUEM TU PENSA QUE É SEU !#@#@!@$ VAI A !#@#!#",
+		"VOCÊ ESTRAGOU MINHA VIDA, EU VOU TE PEGAR SEU PALHAÇO!",
+		"Extremamente improfissional. É só um serviço de envio simples, e você recusa? Nunca mais conte comigo.",
+		"Seu serviço é um lixo! Vou falar pra todo mundo que essa empresa não presta.",
+		"Incompetente.",
+		"Você acha que pode fazer o que quiser com as nossas vidas? Você me dá nojo.",
+		"Gostava tanto dele... Agora tudo acabou.",
+		"Você vai ser demitido, rapazinho! Vou falar com seu chefe, aí você vai ver...",
+		"Nunca mais sigo recomendações do meu tio. Essa empresa é uma #@!#$."
+		]
+		%remetente.text = " "
+		%destinatario.text = " "
+		var i = randi_range(0, chances.size()-1)
+		%textinho.text = chances[i]
+		texto.visible = true
+	else:
+		cartapadrão()
+		if randi_range(0,1) == 0:
+			%textinho.text += ". Se você acha que tenho chances, manda a carta."
+		else:
+			%textinho.text += ". Combina?"
+
 	
 
 func bomba():
