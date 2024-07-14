@@ -4,8 +4,6 @@ extends Node
 @onready var carta_saindo = $Carta_saindo
 @onready var animation_player = $AnimationPlayer
 @onready var texto = $texto
-@onready var remetente:Label = %remetente as Label
-@onready var destinatario = %destinatario
 
 
 var trabalhando = 0 #determina se está operando alguma carta no momento
@@ -13,7 +11,9 @@ var diaacabou = 0 #determina se o dia acabou
 var errou = 0 #determina quantos erros ocorreram
 var processosfeitos = 0 #determina o número de processos enviados, descartados não contam
 var i = randi_range(7, 10) #determina o index das músicas da rádio
-
+var invasivo:bool = false #se auma carta for invasiva isso se torna true
+var alcance = 0
+var combinam:bool = false
 #name bank de nomes masculinos
 var namebankM = ["Carlos","Cauê","Paulo","Felipe","Pedro","Gabriel","Manuel",
 "Waldecy","Gilvan","João","Guilherme","Lucas","Davi","Luís","Jorge","Antônio",
@@ -25,13 +25,14 @@ var namebankF = ["Lara","Beatriz","Maria","Marília","Marcia","Raquel","Luciana"
 "Fernanda","Amanda","Beatriz","Lia","Francisca","Cecília","Eduarda"]
 
 #personalidades das cartas padrões
-var personalidades = ["Alegre","Positivo","Tímido","Geek","Nerd","Lolzeiro","Bobo",
-"Engraçado","Sensível","Emotivo","Romântico","Leitor","Criativo","Artista","Calmo",
-"Pensativo","Calado","Falante"]
+var personalidades = [["Alegre","Positivo"],["Tímido","Nerd"],["Geek","Lolzeiro"],["Bobo",
+"Engraçado"],["Sensível","Emotivo"],["Romântico","Leitor"],["Criativo","Artista"],["Calmo",
+"Pensativo"],["Calado","Falante"]]
 
-#array de eventos randômicos possíveis
-#var eventos = [cartapadrão(),empresarival(),cobrançachefe(),stalker(),cartadeodio(),
-#bomba(),cartadeseixo(),cartadetraicao()]
+var grupo_remetente = []
+
+var grupo_destinatario = []
+
 
 func _ready():
 	MenuMusic.get_child(18).play()
@@ -68,24 +69,37 @@ func dia_acabou():
 	$AnimationPlayer.play("Fadeout")
 	await get_tree().create_timer(2.0).timeout
 	if errou == 0: #determina os finais baseado em erros e processos feitos
-		if processosfeitos < 10:
+		if processosfeitos < 5:
 			get_tree().change_scene_to_file("res://scenes/incompetente.tscn")
 		else:
 			get_tree().change_scene_to_file("res://scenes/transição.tscn")
 			GlobalVars.dia += 1
 	else:
-		if processosfeitos < 10:
+		if processosfeitos < 5:
 			get_tree().change_scene_to_file("res://scenes/incompetentefracasso.tscn")
 		else:
 			get_tree().change_scene_to_file("res://scenes/fracasso.tscn")
 
 func _on_botãocartachegando_pressed():
+	invasivo = false
 	trabalhando = 1 #inicia o processo da carta
-	var j = randi_range(0,14)
+	combinam = false
+	var j = randi_range(6,8)
 	if j > 6: #dando maior chance de ocorrer uma carta padrão ao invés de um evento especial
 		cartapadrão()
+		if j > 10:
+			%textinho.text += ". Se você acha que a gente tenho chances, manda a carta."
+		else:
+			%textinho.text += ". Combina?"
 	else: #chamando uma função especial
-		evento()
+		evento(j)
+		
+	if grupo_remetente == grupo_destinatario:
+		combinam = true
+		print ("cu")
+	grupo_remetente.clear()
+	grupo_destinatario.clear()
+		
 	$"botãoaceitar".hide()
 	$"botãonegar".hide()
 	$"botãocartachegando".hide()
@@ -95,10 +109,12 @@ func _on_botãocartachegando_pressed():
 	texto.visible = true #aparecer carta aberta na tela
 	$Carta_mesa.play("normal")
 	MenuMusic.get_child(1).play()
-	cartapadrão()
 	
 
 func _on_botãoaceitar_pressed():
+	if invasivo or not combinam: #se for invasivo e for aceito,perde
+		errou += 1
+		print(errou)
 	processosfeitos += 1 #aumenta o número de processos feitos
 	$"botãoaceitar".hide()
 	$"botãonegar".hide()
@@ -115,6 +131,9 @@ func _on_botãoaceitar_pressed():
 	gerarcarta() #reinicia o loop do jogo
 
 func _on_botãonegar_pressed():
+	if combinam and not invasivo:
+		errou += 1
+		print(errou)
 	processosfeitos += 1
 	$"botãoaceitar".hide()
 	$"botãonegar".hide()
@@ -191,55 +210,87 @@ func _on_fechar_livro_pressed(): #fechar livro de regras
 		$cartaReabrir.show()
 		$Lixeira.show()
 		$Livrinho.show()
-
+		
+		
+func evento(j:int):
+	if j == 6:
+		stalker()
+	elif j == 7:
+		cobrançachefe()
+	elif j == 8:
+		empresarival()
+	elif j == 9:
+		cartadeodio()
+	elif j == 10:
+		bomba()
+	elif j == 11:
+		cartadeseixo()
+	elif j == 12:
+		cartadetraicao()
+	
 func cartapadrão():
-	var w = randi_range(0,1)
+	var w = randi_range(0,1)#
+	var l = randi_range(0,1)#
+	var x = randi_range(0,23)#index nome do remetente
+	var y = randi_range(0,23)#index nome do par
+	
+	
 	if w == 0:
-		pass
-		var l = randi_range(0,1)
-		var escolha = randi_range(0,23)
-		var y = randi_range(0,23)
-		var z = randi_range(0,17)
-		var v = randi_range(0,17)
-		remetente.text = "De: " + namebankM[escolha]
-		destinatario.text = "Para: " + namebankF[y]
+		
+		%remetente.text = "De: " + namebankM[x]
+		%destinatario.text = "Para: " + namebankF[y]
 		if l == 0:
-			%textinho.text = "Eu sou " + str(personalidades[z]) + " e ela é " + str(personalidades[v]) + ". Se você acha que a gente tem chances, manda essa carta pra ela."
+			%textinho.text = "Eu sou " + random_person(grupo_remetente) + " e ela é " + random_person(grupo_destinatario)
 		else:
-			%textinho.text = "Eu adoro o jeitinho " + str(personalidades[z]) + "dela. Eu, pessoalmente, sou " + str(personalidades[v]) + ". Combina?"
+			%textinho.text = "Eu adoro o jeitinho " + random_person(grupo_remetente) + " dela. Eu, pessoalmente, sou " + random_person(grupo_destinatario)
 	else:
-		var l = randi_range(0,1)
-		var x = randi_range(0, namebankF.size()-1)
-		var y = randi_range(0,23)
-		var z = randi_range(0,17)
-		var v = randi_range(0,17)
-		remetente.text = "De: " + namebankF[x]
+		%remetente.text = "De: " + namebankF[x]
 		%destinatario.text = "Para: " + namebankM[y]
 		if l == 0:
-			%textinho.text += "Eu sou " + personalidades[z] + " e ele é " + str(personalidades[v]) + ". Se você acha que a gente tem chances, manda essa carta pra ele."
+			%textinho.text = "Eu sou " + random_person(grupo_remetente) + " e ele é " + random_person(grupo_destinatario)
 		else:
-			%textinho.text += "Eu adoro o jeitinho " + personalidades[z] + "dele. Eu, pessoalmente, sou " + personalidades[v] + ". Combina?"
+			%textinho.text = "Eu adoro o jeitinho " + random_person(grupo_remetente) + " dele. Eu, pessoalmente, sou " + random_person(grupo_destinatario) 
 
-func evento():
-	gerarcarta()
+
 	
 func empresarival():
-	pass
+	cartapadrão()
 
 func cobrançachefe():
-	pass
+	cartapadrão()
 
 func stalker():
-	pass
+	cartapadrão()
+	var creepy = [
+		". Sempre sou rejeitado por essa pessoa mas dessa vez vai ser diferente",
+		". Não vou aceitar um não como resposta dessa vez",
+		". Não vou desistir de nosso amor"
+		
+	]
+	%textinho.text +=  creepy[randi_range(0, creepy.size()-1)]
+	invasivo = true
 
 func cartadeodio():
-	pass
+	cartapadrão()
 
 func bomba():
-	pass
+	cartapadrão()
 
 func cartadeseixo():
-	pass
+	cartapadrão()
 
 func cartadetraicao():
-	pass
+	cartapadrão()
+
+func random_person(grupo) -> String:
+	#resumindante pega o array de arrays personalidade e pega um array e depois um elemento desse array
+	var escolha = randi() % personalidades.size()
+	var sub_escolha = randi() % personalidades[escolha].size()
+	grupo.append(grupo(personalidades[escolha][sub_escolha]))
+	return personalidades[escolha][sub_escolha]
+		
+
+func grupo(element): #checa o grupo da personalidade pra depois comparar 
+	for i in personalidades:
+		if element in i:
+			return i
