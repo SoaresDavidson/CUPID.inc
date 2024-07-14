@@ -6,7 +6,6 @@ func _ready():
 	$Button.hide()
 	$Button2.hide()
 	$AnimationPlayer.play("Fadein")
-	GlobalVars.botão_pressionado = 1
 	MenuMusic.get_child(0).play()
 	GlobalVars.load_score()
 	var hi = GlobalVars.highscore

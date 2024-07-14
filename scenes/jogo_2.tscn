@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://script/main.gd" id="1_o8kaa"]
 [ext_resource type="PackedScene" uid="uid://bkskky10obye7" path="res://scenes/carta.tscn" id="2_krjd3"]
 [ext_resource type="PackedScene" uid="uid://bq5m52kgqx1n7" path="res://scenes/texto.tscn" id="4_fgr2b"]
-[ext_resource type="PackedScene" uid="uid://ceeivj7ajngfv" path="res://scenes/livroderegras.tscn" id="4_wcrty"]
+[ext_resource type="PackedScene" path="res://scenes/livroderegras.tscn" id="4_wcrty"]
 [ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://fonts/PixelOperator8.ttf" id="6_1xo03"]
 [ext_resource type="FontFile" uid="uid://daxfdsjhbdu48" path="res://fonts/PixelOperator8-Bold.ttf" id="8_magwp"]
 [ext_resource type="Texture2D" uid="uid://dehqaaft31st0" path="res://assets/abadireita.png" id="9_gg3lf"]

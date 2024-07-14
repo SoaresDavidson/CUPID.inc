@@ -4,6 +4,8 @@ extends Node
 @onready var carta_saindo = $Carta_saindo
 @onready var animation_player = $AnimationPlayer
 @onready var texto = $texto
+@onready var remetente:Label = %remetente as Label
+@onready var destinatario = %destinatario
 
 
 var trabalhando = 0 #determina se está operando alguma carta no momento
@@ -28,8 +30,8 @@ var personalidades = ["Alegre","Positivo","Tímido","Geek","Nerd","Lolzeiro","Bo
 "Pensativo","Calado","Falante"]
 
 #array de eventos randômicos possíveis
-var eventos = [cartapadrão(),empresarival(),cobrançachefe(),stalker(),cartadeodio(),
-bomba(),cartadeseixo(),cartadetraicao()]
+#var eventos = [cartapadrão(),empresarival(),cobrançachefe(),stalker(),cartadeodio(),
+#bomba(),cartadeseixo(),cartadetraicao()]
 
 func _ready():
 	MenuMusic.get_child(18).play()
@@ -42,7 +44,8 @@ func _ready():
 	MenuMusic.get_child(6).play()
 	await get_tree().create_timer(2.6).timeout
 	MenuMusic.get_child(i).play()
-	gerarcarta() #fazer com que a carta chegue na caixa
+	gerarcarta()
+	 
 
 func gerarcarta():
 	trabalhando = 0 #não está operando uma carta no momento
@@ -82,7 +85,7 @@ func _on_botãocartachegando_pressed():
 	if j > 6: #dando maior chance de ocorrer uma carta padrão ao invés de um evento especial
 		cartapadrão()
 	else: #chamando uma função especial
-		eventos[j].call()
+		evento()
 	$"botãoaceitar".hide()
 	$"botãonegar".hide()
 	$"botãocartachegando".hide()
@@ -92,6 +95,8 @@ func _on_botãocartachegando_pressed():
 	texto.visible = true #aparecer carta aberta na tela
 	$Carta_mesa.play("normal")
 	MenuMusic.get_child(1).play()
+	cartapadrão()
+	
 
 func _on_botãoaceitar_pressed():
 	processosfeitos += 1 #aumenta o número de processos feitos
@@ -190,30 +195,34 @@ func _on_fechar_livro_pressed(): #fechar livro de regras
 func cartapadrão():
 	var w = randi_range(0,1)
 	if w == 0:
+		pass
 		var l = randi_range(0,1)
-		var x = randi_range(0,23)
+		var escolha = randi_range(0,23)
 		var y = randi_range(0,23)
 		var z = randi_range(0,17)
 		var v = randi_range(0,17)
-		%remetente.text = "De: " + str(namebankM[x])
-		%destinatario.text = "Para: " + str(namebankF[y])
+		remetente.text = "De: " + namebankM[escolha]
+		destinatario.text = "Para: " + namebankF[y]
 		if l == 0:
 			%textinho.text = "Eu sou " + str(personalidades[z]) + " e ela é " + str(personalidades[v]) + ". Se você acha que a gente tem chances, manda essa carta pra ela."
 		else:
 			%textinho.text = "Eu adoro o jeitinho " + str(personalidades[z]) + "dela. Eu, pessoalmente, sou " + str(personalidades[v]) + ". Combina?"
 	else:
 		var l = randi_range(0,1)
-		var x = randi_range(0,23)
+		var x = randi_range(0, namebankF.size()-1)
 		var y = randi_range(0,23)
 		var z = randi_range(0,17)
 		var v = randi_range(0,17)
-		%remetente.text = "De: " + str(namebankF[x])
-		%destinatario.text = "Para: " + str(namebankM[y])
+		remetente.text = "De: " + namebankF[x]
+		%destinatario.text = "Para: " + namebankM[y]
 		if l == 0:
-			%textinho.text = "Eu sou " + str(personalidades[z]) + " e ele é " + str(personalidades[v]) + ". Se você acha que a gente tem chances, manda essa carta pra ele."
+			%textinho.text += "Eu sou " + personalidades[z] + " e ele é " + str(personalidades[v]) + ". Se você acha que a gente tem chances, manda essa carta pra ele."
 		else:
-			%textinho.text = "Eu adoro o jeitinho " + str(personalidades[z]) + "dele. Eu, pessoalmente, sou " + str(personalidades[v]) + ". Combina?"
+			%textinho.text += "Eu adoro o jeitinho " + personalidades[z] + "dele. Eu, pessoalmente, sou " + personalidades[v] + ". Combina?"
 
+func evento():
+	gerarcarta()
+	
 func empresarival():
 	pass
 
