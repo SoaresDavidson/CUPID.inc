@@ -1,0 +1,133 @@
+[gd_scene load_steps=8 format=3 uid="uid://ceeivj7ajngfv"]
+
+[ext_resource type="Script" path="res://script/Livrinho.gd" id="1_lpoyb"]
+[ext_resource type="Texture2D" uid="uid://cdkhw7v0jq2k0" path="res://assets/livrodireita.png" id="2_2ye82"]
+[ext_resource type="Texture2D" uid="uid://dik8yvsykfhtk" path="res://assets/livroesquerda.png" id="3_3awbt"]
+[ext_resource type="FontFile" uid="uid://daxfdsjhbdu48" path="res://fonts/PixelOperator8-Bold.ttf" id="4_ymmns"]
+[ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://fonts/PixelOperator8.ttf" id="5_w2sde"]
+[ext_resource type="Texture2D" uid="uid://c5auxjadgayr7" path="res://assets/spritecoração.png" id="6_roo0w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yv563"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2ye82")
+}],
+"loop": true,
+"name": &"direita",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3awbt")
+}],
+"loop": true,
+"name": &"esquerda",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_lpoyb")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yv563")
+animation = &"direita"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -106.0
+offset_top = -52.0
+offset_right = 28.0
+offset_bottom = -33.0
+scale = Vector2(0.743826, 0.773352)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ymmns")
+theme_override_font_sizes/font_size = 8
+text = "Livro de regras da 
+        Cupid.INC"
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -103.0
+offset_top = -33.0
+offset_right = 17.0
+offset_bottom = 69.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_w2sde")
+theme_override_font_sizes/font_size = 8
+text = "- Por turno, devem ser ENVIADAS 10 cartas.
+- Cartas devem ser recusadas com o selo de X, ou aceitas com o selo de     ."
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 10.0
+offset_top = -37.0
+offset_right = 127.0
+offset_bottom = 70.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_w2sde")
+theme_override_font_sizes/font_size = 8
+text = "- Cartas que não dizem respeito à empresa ou que não tem destinatário definido devem ser descartadas no lixeiro. Essas não contarão como processadas."
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="."]
+visible = false
+offset_left = -103.0
+offset_top = -31.0
+offset_right = 16.0
+offset_bottom = 93.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_w2sde")
+theme_override_font_sizes/font_size = 8
+text = "- Cartas só devem ser enviadas como aceitas caso seu conteúdo não seja invasivo ou danoso (dilemas morais não nos concerne).
+"
+autowrap_mode = 3
+
+[node name="Label5" type="Label" parent="."]
+visible = false
+offset_left = 10.0
+offset_top = -52.0
+offset_right = 135.0
+offset_bottom = 77.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_w2sde")
+theme_override_font_sizes/font_size = 8
+text = "- Eis uma lista de personalidades que combinam:
+Alegre - Positivo
+Tímido - Nerd
+Geek - Lolzeiro
+Bobo - Engraçado
+Sensível - Emotivo
+Romântico - Leitor
+Criativo - Artista
+Calmo - Pensativo
+Calado - Falante"
+autowrap_mode = 3
+
+[node name="Direita" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 91.0
+offset_top = -55.0
+offset_right = 110.0
+offset_bottom = -36.0
+mouse_default_cursor_shape = 2
+
+[node name="Esquerda" type="Button" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = -109.0
+offset_top = -55.0
+offset_right = -90.0
+offset_bottom = -36.0
+mouse_default_cursor_shape = 2
+
+[node name="Coração" type="Sprite2D" parent="."]
+position = Vector2(-83, 32)
+scale = Vector2(0.595238, 0.617647)
+texture = ExtResource("6_roo0w")
+
+[connection signal="pressed" from="Direita" to="." method="_on_direita_pressed"]
+[connection signal="pressed" from="Esquerda" to="." method="_on_esquerda_pressed"]
