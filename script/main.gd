@@ -266,6 +266,7 @@ func empresarival():
 		veneno = true
 	else:
 		cartapadrão()
+		completa_cartapadrao()
 
 func cobrançachefe():
 	if GlobalVars.scoreatual > 1:
