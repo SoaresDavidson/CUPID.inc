@@ -5,7 +5,10 @@ extends Node
 @onready var animation_player = $AnimationPlayer
 @onready var texto = $texto
 
-
+var traicao = 0 #quando alguem ta traindo,tem texto especial
+var proposta=0 #identificar se ele recebeu proposta de outra empres
+var cobranca=0 #identificar se o chefe cobrou algo
+var meta = 10 
 var trabalhando = 0 #determina se está operando alguma carta no momento
 var diaacabou = 0 #determina se o dia acabou
 var errou = 0 #determina quantos erros ocorreram
@@ -69,13 +72,13 @@ func dia_acabou():
 	$AnimationPlayer.play("Fadeout")
 	await get_tree().create_timer(2.0).timeout
 	if errou == 0: #determina os finais baseado em erros e processos feitos
-		if processosfeitos < 5:
+		if processosfeitos < meta:
 			get_tree().change_scene_to_file("res://scenes/incompetente.tscn")
 		else:
 			get_tree().change_scene_to_file("res://scenes/transição.tscn")
 			GlobalVars.dia += 1
 	else:
-		if processosfeitos < 5:
+		if processosfeitos < meta:
 			get_tree().change_scene_to_file("res://scenes/incompetentefracasso.tscn")
 		else:
 			get_tree().change_scene_to_file("res://scenes/fracasso.tscn")
@@ -84,12 +87,11 @@ func _on_botãocartachegando_pressed():
 	invasivo = false
 	trabalhando = 1 #inicia o processo da carta
 	combinam = false
-	var j = randi_range(5,6)
-	print(j)
-	if j > 6: #dando maior chance de ocorrer uma carta padrão ao invés de um evento especial
+	var j = randi_range(0,12)
+	if j < 6: #dando maior chance de ocorrer uma carta padrão ao invés de um evento especial
 		cartapadrão()
-		if j % 2 == 0:
-			%textinho.text += ". Se você acha que tenho chances, manda a carta."
+		if j < 3:
+			%textinho.text += ". Se você acha que a gente tenho chances, manda a carta."
 		else:
 			%textinho.text += ". Combina?"
 	else: #chamando uma função especial
@@ -130,6 +132,7 @@ func _on_botãoaceitar_pressed():
 	MenuMusic.get_child(4).play()
 	$Carta_saindo.play("nada")
 	gerarcarta() #reinicia o loop do jogo
+	$Meta2.text= str(processosfeitos) +"/"+ str(meta)
 
 func _on_botãonegar_pressed():
 	if combinam and not invasivo:
@@ -151,6 +154,7 @@ func _on_botãonegar_pressed():
 	MenuMusic.get_child(4).play()
 	$Carta_saindo.play("nada")
 	gerarcarta()
+	$Meta2.text= str(processosfeitos) +"/"+ str(meta)
 
 func _on_fechar_pressed():
 	$cartaReabrir.show()
@@ -255,10 +259,23 @@ func cartapadrão():
 
 	
 func empresarival():
-	cartapadrão()
+	if GlobalVars.scoreatual > 1:
+		%remetente.text = "De: Corporação Santo Antônio" 
+		%destinatario.text = "Para: Você,futuro companheiro"
+		%textinho.text ="Queremos você,eles vão tentar lhe ganhar \nabaixando sua meta,mas so nos vamos lhe dar o que \nseu trabalho duro merece"
+		--meta
+	else:
+		cartapadrão()
 
 func cobrançachefe():
-	cartapadrão()
+	if GlobalVars.scoreatual > 1:
+		%remetente.text = "De: Cupido" 
+		%destinatario.text = "Para: Você,novato"
+		%textinho.text ="Tomamos ciência do seu atual desempenho,\n estamos preocupados se você\n realmente tem preparo, 
+		então vamos lhe dar um desafio para testa-lo"
+		++meta
+	else:
+		cartapadrão()
 
 func stalker():
 	cartapadrão()
@@ -272,44 +289,45 @@ func stalker():
 	invasivo = true
 
 func cartadeodio():
-	if GlobalVars.cartasnegadas > 0:
-		
-		MenuMusic.get_child(i).stop()
-		MenuMusic.get_child(1).play()
-		
-		var chances = ["Seu imbecil! Porquê você recusou minha carta? Eu e ela éramos feito um para o outro... ",
-		"Seu @!#$#!, QUEM TU PENSA QUE É SEU !#@#@!@$ VAI A !#@#!#",
-		"VOCÊ ESTRAGOU MINHA VIDA, EU VOU TE PEGAR SEU PALHAÇO!",
-		"Extremamente improfissional. É só um serviço de envio simples, e você recusa? Nunca mais conte comigo.",
-		"Seu serviço é um lixo! Vou falar pra todo mundo que essa empresa não presta.",
-		"Incompetente.",
-		"Você acha que pode fazer o que quiser com as nossas vidas? Você me dá nojo.",
-		"Gostava tanto dele... Agora tudo acabou.",
-		"Você vai ser demitido, rapazinho! Vou falar com seu chefe, aí você vai ver...",
-		"Nunca mais sigo recomendações do meu tio. Essa empresa é uma #@!#$."
-		]
-		%remetente.text = " "
-		%destinatario.text = " "
-		var i = randi_range(0, chances.size()-1)
-		%textinho.text = chances[i]
-		texto.visible = true
-	else:
-		cartapadrão()
-		if randi_range(0,1) == 0:
-			%textinho.text += ". Se você acha que tenho chances, manda a carta."
-		else:
-			%textinho.text += ". Combina?"
+	cartapadrão()
+	
 
 func bomba():
 	cartapadrão()
 
 func cartadeseixo():
-	cartapadrão()
+	var w = randi_range(0,1)#
+	var x = randi_range(0,23)#index nome do remetente
+	if w == 0:
+		%remetente.text = "De: " + namebankM[x]
+	else :
+		%remetente.text +"De :" + namebankF[x]
+	%destinatario.text ="Para: "+ "Qualquer pessoa"
+	%textinho.text="\nEu quero qualquer pessoa\nnão quero passar mais uma noite de domingo\nsozinho"
+	combinam =true
 
 func cartadetraicao():
-	cartapadrão()
-
-
+	var w = randi_range(0,1)#
+	var l = randi_range(0,1)#
+	var x = randi_range(0,23)#index nome do remetente
+	var y = randi_range(0,23)#index nome do par
+	
+	
+	if w == 0:
+		
+		%remetente.text = "De: " + namebankM[x]
+		%destinatario.text = "Para: " + namebankF[y]
+		if l == 0:
+			%textinho.text = "Sei que to namorando,mas\nnão to morto"
+		else:
+			%textinho.text = "Vocês não ligam pra traição né?\nÉ por isso que são os melhores"
+	else:
+		%remetente.text = "De: " + namebankF[x]
+		%destinatario.text = "Para: " + namebankM[y]
+		if l == 0:
+			%textinho.text = "Não é traição,amo tanto,que\nate fico outras pessoas,mas\nnão termino o relacionamento"
+		else:
+			%textinho.text = "Não é traição,ele me chamou primeiro\ne é deselegante recusar um convite"
 
 
 func random_person(grupo) -> String:

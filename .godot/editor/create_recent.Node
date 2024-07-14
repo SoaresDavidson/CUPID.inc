@@ -1,7 +1,7 @@
+Label
 AudioStreamPlayer
 Button
 Sprite2D
-Label
 Camera2D
 AnimatedSprite2D
 Timer
