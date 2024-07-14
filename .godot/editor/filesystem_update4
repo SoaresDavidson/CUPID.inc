@@ -1,5 +1,5 @@
 res://scenes/menu.tscn
+res://script/main.gd
 res://scenes/jogo_2.tscn
 res://scenes/carta.tscn
-res://script/menu.gd
-res://script/main.gd
+res://Audios/menuMusic.tscn

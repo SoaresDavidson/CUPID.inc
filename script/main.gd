@@ -5,7 +5,10 @@ extends Node
 @onready var animation_player = $AnimationPlayer
 @onready var texto = $texto
 
-
+var traicao = 0 #quando alguem ta traindo,tem texto especial
+var proposta=0 #identificar se ele recebeu proposta de outra empres
+var cobranca=0 #identificar se o chefe cobrou algo
+var meta = 10 
 var trabalhando = 0 #determina se está operando alguma carta no momento
 var diaacabou = 0 #determina se o dia acabou
 var errou = 0 #determina quantos erros ocorreram
@@ -84,10 +87,10 @@ func _on_botãocartachegando_pressed():
 	invasivo = false
 	trabalhando = 1 #inicia o processo da carta
 	combinam = false
-	var j = randi_range(6,8)
-	if j > 6: #dando maior chance de ocorrer uma carta padrão ao invés de um evento especial
+	var j = randi_range(0,12)
+	if j < 6: #dando maior chance de ocorrer uma carta padrão ao invés de um evento especial
 		cartapadrão()
-		if j > 10:
+		if j < 3:
 			%textinho.text += ". Se você acha que a gente tenho chances, manda a carta."
 		else:
 			%textinho.text += ". Combina?"
@@ -129,6 +132,14 @@ func _on_botãoaceitar_pressed():
 	MenuMusic.get_child(4).play()
 	$Carta_saindo.play("nada")
 	gerarcarta() #reinicia o loop do jogo
+	$Meta2.text= str(processosfeitos) +"/"+ str(meta)
+	if cobranca >0:
+		if processosfeitos >0:
+			processosfeitos = processosfeitos - 2
+			cobranca = 0
+	if proposta >0:
+		++processosfeitos
+		proposta = 0
 
 func _on_botãonegar_pressed():
 	if combinam and not invasivo:
@@ -149,6 +160,11 @@ func _on_botãonegar_pressed():
 	MenuMusic.get_child(4).play()
 	$Carta_saindo.play("nada")
 	gerarcarta()
+	$Meta2.text= str(processosfeitos) +"/"+ str(meta)
+	if cobranca >0:
+		if processosfeitos >0:
+			processosfeitos= processosfeitos - 2
+			cobranca = 0
 
 func _on_fechar_pressed():
 	$cartaReabrir.show()
@@ -193,6 +209,10 @@ func _on_lixeira_pressed(): #botar carta na lixeira
 	$Carta_mesa.play("nada")
 	MenuMusic.get_child(19).play()
 	$Carta_saindo.play("nada")
+	if cobranca >0:
+		if processosfeitos >0:
+			--processosfeitos
+			cobranca = 0
 	gerarcarta()
 
 func _on_fechar_livro_pressed(): #fechar livro de regras 
@@ -254,10 +274,23 @@ func cartapadrão():
 
 	
 func empresarival():
-	cartapadrão()
+	if GlobalVars.scoreatual > 1:
+		%remetente.text = "De: Corporação Santo Antônio" 
+		%destinatario.text = "Para: Você,futuro companheiro"
+		%textinho.text ="Tomamos ciência do seu atual desempenho,\nestamos interessados em tervocê conosco,\nmande um coração se a proposta ti interessar"
+		++proposta
+	else:
+		cartapadrão()
 
 func cobrançachefe():
-	cartapadrão()
+	if GlobalVars.scoreatual > 1:
+		%remetente.text = "De: Cupido" 
+		%destinatario.text = "Para: Você,novato"
+		%textinho.text ="Tomamos ciência do seu atual desempenho,\n estamos preocupados se você\n realmente tem preparo, 
+		então vamos lhe dar um desafio para testa-lo"
+		++cobranca
+	else:
+		cartapadrão()
 
 func stalker():
 	cartapadrão()
@@ -272,15 +305,45 @@ func stalker():
 
 func cartadeodio():
 	cartapadrão()
+	
 
 func bomba():
 	cartapadrão()
 
 func cartadeseixo():
-	cartapadrão()
+	var w = randi_range(0,1)#
+	var x = randi_range(0,23)#index nome do remetente
+	if w == 0:
+		%remetente.text = "De: " + namebankM[x]
+	else :
+		%remetente.text +"De :" + namebankF[x]
+	%destinatario.text ="Para: "+ "Qualquer pessoa"
+	%textinho.text="\nEu quero qualquer pessoa\nnão quero passar mais uma noite de domingo\nsozinho"
+	combinam =true
 
 func cartadetraicao():
-	cartapadrão()
+	var w = randi_range(0,1)#
+	var l = randi_range(0,1)#
+	var x = randi_range(0,23)#index nome do remetente
+	var y = randi_range(0,23)#index nome do par
+	
+	
+	if w == 0:
+		
+		%remetente.text = "De: " + namebankM[x]
+		%destinatario.text = "Para: " + namebankF[y]
+		if l == 0:
+			%textinho.text = "Sei que to namorando,mas\nnão to morto"
+		else:
+			%textinho.text = "Vocês não ligam pra traição né?\nÉ por isso que são os melhores"
+	else:
+		%remetente.text = "De: " + namebankF[x]
+		%destinatario.text = "Para: " + namebankM[y]
+		if l == 0:
+			%textinho.text = "Não é traição,amo tanto,que\nate fico outras pessoas,mas\nnão termino o relacionamento"
+		else:
+			%textinho.text = "Não é traição,ele me chamou primeiro\ne é deselegante recusar um convite"
+
 
 func random_person(grupo) -> String:
 	#resumindante pega o array de arrays personalidade e pega um array e depois um elemento desse array
