@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bq5m52kgqx1n7" path="res://scenes/texto.tscn" id="4_fgr2b"]
 [ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://fonts/PixelOperator8.ttf" id="6_1xo03"]
 [ext_resource type="FontFile" uid="uid://daxfdsjhbdu48" path="res://fonts/PixelOperator8-Bold.ttf" id="8_magwp"]
-[ext_resource type="Texture2D" path="res://assets/abadireita.png" id="9_gg3lf"]
-[ext_resource type="Texture2D" path="res://assets/abaesquerda.png" id="10_7cux2"]
+[ext_resource type="Texture2D" uid="uid://dehqaaft31st0" path="res://assets/abadireita.png" id="9_gg3lf"]
+[ext_resource type="Texture2D" uid="uid://r6xfdmqadj28" path="res://assets/abaesquerda.png" id="10_7cux2"]
 
 [sub_resource type="Animation" id="Animation_mekmd"]
 resource_name = "Fadein"
@@ -144,7 +144,6 @@ scale = Vector2(0.7, 0.7)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_1xo03")
 theme_override_font_sizes/font_size = 8
-text = "Nome do par:"
 autowrap_mode = 2
 
 [node name="Fechar" type="Button" parent="texto"]
@@ -215,9 +214,12 @@ wait_time = 300.0
 one_shot = true
 autostart = true
 
+[node name="Timer2" type="Timer" parent="."]
+
 [connection signal="pressed" from="botãocartachegando" to="." method="_on_botãocartachegando_pressed"]
 [connection signal="pressed" from="botãoaceitar" to="." method="_on_botãoaceitar_pressed"]
 [connection signal="pressed" from="botãonegar" to="." method="_on_botãonegar_pressed"]
 [connection signal="pressed" from="texto/Fechar" to="." method="_on_fechar_pressed"]
 [connection signal="pressed" from="cartaReabrir" to="." method="_on_carta_reabrir_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

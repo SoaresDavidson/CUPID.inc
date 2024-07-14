@@ -7,19 +7,22 @@ extends Node
 @onready var texto = $texto
 @onready var remetente = $texto/remetente
 @onready var destinatario = $texto/destinatario
-var processosfeitos = 0
 var diaacabou = 0
 var errou = 0
+var processosfeitos = 0
 var i = randi_range(7, 10)
 var alcance:int
-signal personalidade
+var carta:bool = true
+var evento_namoro = 0
+@onready var timer_2 = $Timer2
+
 
 func _ready():
+	carta = true
 	MenuMusic.get_child(18).play()
 	GlobalVars.scoreatual += 1
 	if GlobalVars.scoreatual>GlobalVars.highscore:
 			GlobalVars.save_hiscore()
-	processosfeitos = 0
 	GlobalVars.load_score()
 	$Pontos.text = str(GlobalVars.scoreatual)
 	alcance = GlobalVars.botão_pressionado
@@ -34,33 +37,64 @@ func _ready():
 	gerarcarta()
 
 func gerarcarta():
-	if diaacabou == 0:
-		await get_tree().create_timer(2.0).timeout
-		$Carta_chegando.play("normal")
-		MenuMusic.get_child(5).play()
-		await get_tree().create_timer(0.5).timeout
-		$"botãocartachegando".show()
-	else:
-		MenuMusic.get_child(i).stop()
-		$AnimationPlayer.play("Fadeout")
-		await get_tree().create_timer(2.0).timeout
-		if errou == 0:
-			if processosfeitos < 10:
-				get_tree().change_scene_to_file("res://scenes/incompetente.tscn")
-			else:
-				get_tree().change_scene_to_file("res://scenes/transição.tscn")
+	if diaacabou == 1:
+		dia_acabou()
+		return
+	await get_tree().create_timer(2.0).timeout
+	$Carta_chegando.play("normal")
+	MenuMusic.get_child(5).play()
+	await get_tree().create_timer(0.5).timeout
+	$"botãocartachegando".show()
+	
+	
+	
+
+func dia_acabou():
+	MenuMusic.get_child(i).stop()
+	$AnimationPlayer.play("Fadeout")
+	await get_tree().create_timer(2.0).timeout
+	
+	if errou == 0:
+		if processosfeitos < 10:
+			get_tree().change_scene_to_file("res://scenes/incompetente.tscn")
 		else:
-			if processosfeitos < 10:
-				get_tree().change_scene_to_file("res://scenes/incompetentefracasso.tscn")
-			else:
-				get_tree().change_scene_to_file("res://scenes/fracasso.tscn")
+			get_tree().change_scene_to_file("res://scenes/transição.tscn")
+			GlobalVars.dia += 1
+	else:
+		if processosfeitos < 10:
+			get_tree().change_scene_to_file("res://scenes/incompetentefracasso.tscn")
+		else:
+			get_tree().change_scene_to_file("res://scenes/fracasso.tscn")
+			
+func namoro():
+	#esse evento usa o timer2 quando o timer acaba é hora do nome da carta normal ser substituido por um nome ja usado
+	#pra dar sinal disso evento_namoro se torna 1 e quando na carta aparece o nome ja usado evento namoro se torna 2
+	#se o jogador aprovar uma carta mas evento namoro é 2 então ele automaticamente erra
+	namorado.append(nome_usado[randi_range(0, nome_usado.size()-1)])
+	remetente.text = "Olá,me chamo " + namorado[-1] + "Estou lhe escrevendo pois enviei uma carta para sua empresa um tempo atrás,mas hoje estou comprometido
+	por isso peço que caso receba minha carta recuse-a já que ja estou muito feliz no relacionamento que estou.\nDesde já agradeço a compreensão"
+	destinatario.text = ""
+	timer_2.start(randf_range(20, 40))
+
 
 func printar_personalidade(person: Array, label:Label):
+	#gera um nome aleatorio com os nomes e sobrenomes
 	var nome_gerado = nome[randi_range(0, nome.size())-1] + " "+ sobrenome[randi_range(0, sobrenome.size()-1)] + "\n"
 	while nome_gerado in nome_usado:
 		nome_gerado = nome[randi_range(0, nome.size())-1] + " "+ sobrenome[randi_range(0, sobrenome.size()-1)] + "\n"
 	nome_usado.append(nome_gerado)
-	label.text += nome_usado[-1]
+	#o while impede que tenham nomes repetidos,checa se existe em nome_usado,array so de nomes usados
+	#quando o evento namoro acontecer o nome do remetente vai ser substituido por um ja usado,o nome ja é tirado da lista de nomes de namorados
+	#e recolocado na lista de nomes usados
+	if evento_namoro:
+		var nome = randi_range(0, namorado.size()-1)
+		label.text += namorado[nome]
+		nome_usado.append(nome)
+		namorado.erase(nome)
+		evento_namoro += 1
+	else:
+		label.text += nome_usado[-1]
+		
 	if person == person_destinatario:
 		label.text += template_amor[randi_range(0, template_amor.size()-1)]
 	else:
@@ -73,16 +107,21 @@ func _on_botãocartachegando_pressed():
 	$"botãonegar".hide()
 	$"botãocartachegando".hide()
 	$Carta_chegando.play("nada")
+	
 	#if GlobalVars.cartasnegadas != 0:
 		#var sorteio = randi_range(0, 1)
 		#if sorteio == 1:
 			#cartadeodio()
 			#return
+		
+	
 	texto.visible = true
 	$Carta_mesa.play("normal")
 	MenuMusic.get_child(1).play()
-	
-	
+	if processosfeitos == 1:
+		namoro()
+		return
+
 	person_remetente.clear()
 	person_destinatario.clear()
 	
@@ -98,7 +137,7 @@ func _on_botãocartachegando_pressed():
 	
 	for i in range(alcance): #mesmo do de cima
 		if destinatario_grupo[i] not in remetente_grupo:
-			pass
+			carta = false
 		
 	remetente.text = "Nome:"
 	printar_personalidade(person_remetente,remetente)
@@ -106,15 +145,16 @@ func _on_botãocartachegando_pressed():
 	printar_personalidade(person_destinatario,destinatario)
 	destinatario.text += "\n" + template[randi_range(0, template.size()-1)]
 	
-	
-	
+
+
+
 var nome = [
-	"Carlos","Cauã","Paulo","Felipe","Pedro","Gabriel","Lara","Beatriz","Manuel", #todos os nomes com espaço no final
+	"Carlos","Cauã","Paulo","Felipe","Pedro","Gabriel","Lara","Beatriz","Manuel", 
 	"Clotilde"
 ]
 
 var sobrenome = [
-	"da Silva","Pinkman","dos Santos","Silveira","Sousa","Soares","Matos","oliveira" 
+	"da Silva","Pinkman","dos Santos","Silveira","Sousa","Soares","Matos","Oliveira" 
 ]
 
 var template_remetente =[
@@ -142,7 +182,10 @@ var person = [
 	["Nerd","Estudioso","Lolzeiro","Geek"]
 ]
 
+var namorado = []
+
 var nome_usado = []
+
 var person_remetente = []
 
 var person_destinatario = []
@@ -162,6 +205,8 @@ func random_person(person_carta: Array):
 		person_carta.append(person[escolha][sub_escolha])
 
 func _on_botãoaceitar_pressed():
+	if not carta or evento_namoro == 2:
+		errou += 1
 	processosfeitos += 1
 	$"botãoaceitar".hide()
 	$"botãonegar".hide()
@@ -177,6 +222,8 @@ func _on_botãoaceitar_pressed():
 	gerarcarta()
 
 func _on_botãonegar_pressed():
+	if carta:
+		errou += 1
 	processosfeitos += 1
 	$"botãoaceitar".hide()
 	$"botãonegar".hide()
@@ -197,6 +244,7 @@ func _on_botãonegar_pressed():
 func cartadeodio():
 	MenuMusic.get_child(4).stop()
 	MenuMusic.get_child(1).play()
+	
 	var chances = ["Seu imbecil! Porquê você recusou minha carta? Eu e ela éramos feito um para o outro... ",
 	"Seu @!#$#!, QUEM TU PENSA QUE É SEU !#@#@!@$ VAI A !#@#!#",
 	"VOCÊ ESTRAGOU MINHA VIDA, EU VOU TE PEGAR SEU PALHAÇO!",
@@ -208,6 +256,7 @@ func cartadeodio():
 	"Você vai ser demitido, rapazinho! Vou falar com seu chefe, aí você vai ver...",
 	"Nunca mais sigo recomendações do meu tio. Essa empresa é uma #@!#$."
 	]
+	
 	var i = randi_range(0, chances.size()-1)
 	veneno.text = chances[i]
 	texto.visible = true
@@ -222,6 +271,7 @@ func _on_fechar_pressed():
 	MenuMusic.get_child(1).play()
 
 func _on_timer_timeout():
+	print(processosfeitos)
 	MenuMusic.get_child(i).stop()
 	MenuMusic.get_child(16).play()
 	diaacabou = 1
@@ -232,3 +282,7 @@ func _on_carta_reabrir_pressed():
 	$cartaReabrir.hide()
 	texto.visible = true
 	MenuMusic.get_child(1).play()
+
+
+func _on_timer_2_timeout():
+	evento_namoro += 1

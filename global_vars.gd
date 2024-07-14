@@ -5,6 +5,8 @@ var highscore = 0
 var scoreatual = 0
 var botão_pressionado = 2
 var cartasnegadas = 0
+var errou = 0
+var processos_feitos = 0
 const SAVEFILE= "user://save.data"
 
 func save_hiscore():
