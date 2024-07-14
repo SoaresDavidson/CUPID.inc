@@ -1,8 +1,8 @@
-Button
-Label
 AudioStreamPlayer
-AnimationPlayer
+Button
 Sprite2D
+Label
+Camera2D
 AnimatedSprite2D
 Timer
-Camera2D
+AnimationPlayer

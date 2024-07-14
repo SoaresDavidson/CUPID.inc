@@ -1,46 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dg3skjko6rcqc"]
+[gd_scene load_steps=2 format=3 uid="uid://dg3skjko6rcqc"]
 
 [ext_resource type="Texture2D" uid="uid://bc4yv1h8hxcxn" path="res://assets/escritório.png" id="1_qa1sa"]
-[ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://fonts/PixelOperator8.ttf" id="2_oa28h"]
 
 [node name="escritorio_sprite" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_qa1sa")
-
-[node name="Papel1" type="Label" parent="."]
-offset_left = -108.0
-offset_top = -19.0
-offset_right = -8.00002
-offset_bottom = 121.0
-scale = Vector2(0.396079, 0.412807)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_oa28h")
-theme_override_font_sizes/font_size = 8
-text = "Um erro de entrega resulta em terminação imediata."
-autowrap_mode = 2
-
-[node name="Papel2" type="Label" parent="."]
-offset_left = -27.0
-offset_top = -9.0
-offset_right = 64.0
-offset_bottom = 55.0
-scale = Vector2(0.340512, 0.356884)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_oa28h")
-theme_override_font_sizes/font_size = 8
-text = "Esse trabalho é importante."
-autowrap_mode = 2
-
-[node name="Papel3" type="Label" parent="."]
-offset_left = 110.0
-offset_top = -3.0
-offset_right = 200.0
-offset_bottom = 137.0
-scale = Vector2(0.357341, 0.360626)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_oa28h")
-theme_override_font_sizes/font_size = 8
-text = "Tenho que dar conta de 10 cartas por dia ou eu sou demitido."
-horizontal_alignment = 1
-autowrap_mode = 2
