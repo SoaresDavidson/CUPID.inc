@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bjv3k832gs6c3"]
+[gd_scene load_steps=17 format=3 uid="uid://bjv3k832gs6c3"]
 
 [ext_resource type="AudioStream" uid="uid://5s0nw7clynws" path="res://Audios/click.mp3" id="1_de55m"]
 [ext_resource type="AudioStream" uid="uid://xo8p2mfcnfpi" path="res://Audios/Clair De Lune - Debussy _ 8-Bit Classical (320).mp3" id="1_id03p"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://cpj1h82rjvc0s" path="res://Audios/Central Office Alarm Sounds (320).mp3" id="13_ihf8v"]
 [ext_resource type="AudioStream" uid="uid://cw0uxvi1wy53i" path="res://Audios/Sadness   8 bit Relaxing Music (320).mp3" id="14_63bj5"]
 [ext_resource type="AudioStream" uid="uid://cog1s826draxk" path="res://Audios/Empty Room Ambient Noise Sound Effect (320).mp3" id="15_xcvte"]
+[ext_resource type="AudioStream" uid="uid://we1dcmscfv04" path="res://Audios/Trash (Sound Effect) (320).mp3" id="16_gr08y"]
 
 [node name="SFX" type="Node"]
 
@@ -85,3 +86,7 @@ volume_db = -15.0
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_xcvte")
 volume_db = -15.0
+
+[node name="lixeira" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_gr08y")
+volume_db = -10.0

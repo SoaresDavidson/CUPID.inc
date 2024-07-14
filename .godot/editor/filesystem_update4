@@ -1,14 +1,2 @@
-res://scenes/menu.tscn
 res://scenes/jogo_2.tscn
-res://scenes/transição.tscn
-res://scenes/texto.tscn
-res://scenes/incompetentefracasso.tscn
-res://scenes/incompetente.tscn
-res://scenes/fracasso.tscn
-res://scenes/escritorio_sprite.tscn
-res://scenes/carta.tscn
-<<<<<<< HEAD
 res://script/main.gd
-res://global_vars.gd
-=======
->>>>>>> 90547d1b29be7360fc217c01f73d5d1038284c98
