@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bq5m52kgqx1n7" path="res://scenes/texto.tscn" id="4_fgr2b"]
 [ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://fonts/PixelOperator8.ttf" id="6_1xo03"]
 [ext_resource type="FontFile" uid="uid://daxfdsjhbdu48" path="res://fonts/PixelOperator8-Bold.ttf" id="8_magwp"]
-[ext_resource type="Texture2D" path="res://assets/abadireita.png" id="9_gg3lf"]
-[ext_resource type="Texture2D" path="res://assets/abaesquerda.png" id="10_7cux2"]
+[ext_resource type="Texture2D" uid="uid://dehqaaft31st0" path="res://assets/abadireita.png" id="9_gg3lf"]
+[ext_resource type="Texture2D" uid="uid://r6xfdmqadj28" path="res://assets/abaesquerda.png" id="10_7cux2"]
 
 [sub_resource type="Animation" id="Animation_mekmd"]
 resource_name = "Fadein"
