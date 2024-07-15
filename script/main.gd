@@ -13,7 +13,7 @@ var trabalhando = 0 #determina se está operando alguma carta no momento
 var diaacabou = 0 #determina se o dia acabou
 var errou = 0 #determina quantos erros ocorreram
 var processosfeitos = 0 #determina o número de processos enviados, descartados não contam
-var i = randi_range(7, 10) #determina o index das músicas da rádio
+var i = randi_range(7, 14) #determina o index das músicas da rádio
 var invasivo:bool = false #se auma carta for invasiva isso se torna true
 var alcance = 0
 var combinam:bool = false
@@ -29,9 +29,9 @@ var namebankF = ["Lara","Beatriz","Maria","Marília","Marcia","Raquel","Luciana"
 "Fernanda","Amanda","Beatriz","Lia","Francisca","Cecília","Eduarda"]
 
 #personalidades das cartas padrões
-var personalidades = [["Alegre","Positivo"],["Tímido","Nerd"],["Geek","Lolzeiro"],["Bobo",
-"Engraçado"],["Sensível","Emotivo"],["Romântico","Leitor"],["Criativo","Artista"],["Calmo",
-"Pensativo"],["Calado","Falante"]]
+var personalidades = [["happy","positive"],["shy","nerd"],["geek","gamer"],["silly",
+"funny"],["sensitive","emotional"],["romantic","reader"],["creative","artistic"],["calm",
+"thinking"],["silent","talkative"]]
 
 var grupo_remetente = []
 
@@ -42,7 +42,7 @@ func _ready():
 	MenuMusic.get_child(18).play()
 	GlobalVars.scoreatual += 1 #toda vez que inicia o dia, é adicionado um dia no score atual
 	if GlobalVars.scoreatual>GlobalVars.highscore:
-			GlobalVars.save_hiscore()
+		GlobalVars.save_hiscore()
 	GlobalVars.load_score()
 	$Pontos.text = str(GlobalVars.scoreatual) #projeção do score na parede
 	await get_tree().create_timer(1.0).timeout
@@ -137,7 +137,6 @@ func _on_botãonegar_pressed():
 	if (combinam and not invasivo) or veneno:
 		errou += 1
 		print(errou)
-	
 	processosfeitos += 1
 	$"botãoaceitar".hide()
 	$"botãonegar".hide()
@@ -215,8 +214,7 @@ func _on_fechar_livro_pressed(): #fechar livro de regras
 		$cartaReabrir.show()
 		$Lixeira.show()
 		$Livrinho.show()
-		
-		
+
 func evento(j:int):
 	if j == 6:
 		stalker()
@@ -240,28 +238,27 @@ func cartapadrão():
 	var y = randi_range(0, 23)#index nome do par
 	var z = randi_range(0, 1)
 	if w == 0:
-		
-		%remetente.text = "De: " + namebankM[x]
-		%destinatario.text = "Para: " + namebankF[y]
+		%remetente.text = "From: " + namebankM[x]
+		%destinatario.text = "To: " + namebankF[y]
 		if l == 0:
-			%textinho.text = "Eu sou " + random_person(grupo_remetente) + " e ela é " + sorteia(z)
+			%textinho.text = "I'm " + random_person(grupo_remetente) + " and she is the " + sorteia(z) + " kind"
 		else:
-			%textinho.text = "Eu adoro o jeitinho " + random_person(grupo_remetente) + " dela. Eu, pessoalmente, sou " + sorteia(z)
+			%textinho.text = "I love her " + random_person(grupo_remetente) + " way. Personally, i'm " + sorteia(z)
 	else:
-		%remetente.text = "De: " + namebankF[x]
-		%destinatario.text = "Para: " + namebankM[y]
+		%remetente.text = "From: " + namebankF[x]
+		%destinatario.text = "To: " + namebankM[y]
 		if l == 0:
-			%textinho.text = "Eu sou " + random_person(grupo_remetente) + " e ele é " + sorteia(z)
+			%textinho.text = "I'm " + random_person(grupo_remetente) + " and he is the " + sorteia(z) + " kind"
 		else:
-			%textinho.text = "Eu adoro o jeitinho " + random_person(grupo_remetente) + " dele. Eu, pessoalmente, sou " + sorteia(z) 
+			%textinho.text = "I love his " + random_person(grupo_remetente) + " way. Personally, i'm " + sorteia(z) 
 	print(grupo_destinatario)
 
 	
 func empresarival():
 	if GlobalVars.scoreatual > 1:
-		%remetente.text = "De: Corporação Santo Antônio" 
-		%destinatario.text = "Para: Você,futuro companheiro"
-		%textinho.text ="Queremos você,eles vão tentar lhe ganhar \nabaixando sua meta,mas so nos vamos lhe dar o que \nseu trabalho duro merece"
+		%remetente.text = "From: SA INC." 
+		%destinatario.text = "To: You"
+		%textinho.text ="We want you with us! Come work here and you won't regret it!"
 		meta -= 1
 		veneno = true
 	else:
@@ -270,12 +267,10 @@ func empresarival():
 
 func cobrançachefe():
 	if GlobalVars.scoreatual > 1:
-		%remetente.text = "De: Cupido" 
-		%destinatario.text = "Para: Você,novato"
-		%textinho.text ="Tomamos ciência do seu atual desempenho,\n estamos preocupados se você\n realmente tem preparo, 
-		então vamos lhe dar um desafio para testa-lo"
+		%remetente.text = "From: Cupid" 
+		%destinatario.text = "To: You"
+		%textinho.text = "Since you're new around here, we'll be a little rough. Stay on your toes!"
 		meta += 1
-		veneno = true
 	else:
 		cartapadrão()
 		completa_cartapadrao()
@@ -283,57 +278,46 @@ func cobrançachefe():
 func stalker():
 	cartapadrão()
 	var creepy = [
-		". Sempre sou rejeitado mas dessa vez vai ser diferente",
-		". Não vou aceitar um não como resposta",
-		". Não vou desistir de nosso amor"
-		
+		". They never wanted me, but this time it's different.",
+		". I'm not taking 'no' for an answer.",
+		". No matter how hard they try to stay away..."
 	]
 	%textinho.text +=  creepy[randi_range(0, creepy.size()-1)]
 	invasivo = true
 
 func cartadeodio():
 	if GlobalVars.cartasnegadas > 0:
-		
-		MenuMusic.get_child(i).stop()
 		MenuMusic.get_child(1).play()
 		
-		var chances = ["Seu imbecil! Porquê você recusou minha carta? Eu e ela éramos feito um para o outro... ",
-		"Seu @!#$#!, QUEM TU PENSA QUE É SEU !#@#@!@$ VAI A !#@#!#",
-		"VOCÊ ESTRAGOU MINHA VIDA, EU VOU TE PEGAR SEU PALHAÇO!",
-		"Extremamente improfissional. É só um serviço de envio simples, e você recusa? Nunca mais conte comigo.",
-		"Seu serviço é um lixo! Vou falar pra todo mundo que essa empresa não presta.",
-		"Incompetente.",
-		"Você acha que pode fazer o que quiser com as nossas vidas? Você me dá nojo.",
-		"Gostava tanto dele... Agora tudo acabou.",
-		"Você vai ser demitido, rapazinho! Vou falar com seu chefe, aí você vai ver...",
-		"Nunca mais sigo recomendações do meu tio. Essa empresa é uma #@!#$."
+		var chances = ["You idiot! Why didn't you send it? We were made for each other... ",
+		"YOU RUINED MY LIFE I'M GOING TO GET YOU",
+		"Your work is trash! I'm never recommending this place to anyone.",
+		"Do you think you can do whatever you want with other's lives? You make me sick.",
+		"I liked him so much... Now it's all over.",
 		]
-		
 		%remetente.text = " "
 		%destinatario.text = " "
 		var i = randi_range(0, chances.size()-1)
 		%textinho.text = chances[i]
 		texto.visible = true
-		veneno = true
 	else:
 		cartapadrão()
 		completa_cartapadrao()
 
-	
-
 func bomba():
-	cartapadrão()
-	completa_cartapadrao()
+	%remetente.text = "From: Unknown"
+	%destinatario.text = "To: You"
+	%textinho.text = "DO YOU KNOW HOW TO DISARM A BOMB? I HOPE SO..."
 
 func cartadeseixo():
 	var w = randi_range(0,1)#
 	var x = randi_range(0,23)#index nome do remetente
 	if w == 0:
-		%remetente.text = "De: " + namebankM[x]
+		%remetente.text = "From: " + namebankM[x]
 	else :
-		%remetente.text +"De :" + namebankF[x]
-	%destinatario.text ="Para: "+ "Qualquer pessoa"
-	%textinho.text="\nEu quero qualquer pessoa\nnão quero passar mais uma noite de domingo\nsozinho"
+		%remetente.text = "From: " + namebankF[x]
+	%destinatario.text = "To: "+ "Anyone"
+	%textinho.text = "I just want someone, i can't spend another sunday night alone..."
 	veneno = true
 
 func cartadetraicao():
@@ -345,19 +329,19 @@ func cartadetraicao():
 	
 	if w == 0:
 		
-		%remetente.text = "De: " + namebankM[x]
-		%destinatario.text = "Para: " + namebankF[y]
+		%remetente.text = "From: " + namebankM[x]
+		%destinatario.text = "To: " + namebankF[y]
 		if l == 0:
-			%textinho.text = "Sei que to namorando,mas\nnão to morto"
+			%textinho.text = "I know im married, but i can still mess around, right?"
 		else:
-			%textinho.text = "Vocês não ligam pra traição né?\nÉ por isso que são os melhores"
+			%textinho.text = "I know you don't mind cheating, right? That's why you're the best."
 	else:
-		%remetente.text = "De: " + namebankF[x]
-		%destinatario.text = "Para: " + namebankM[y]
+		%remetente.text = "From: " + namebankF[x]
+		%destinatario.text = "To: " + namebankM[y]
 		if l == 0:
-			%textinho.text = "Não é traição,amo tanto,que\nate fico outras pessoas,mas\nnão termino o relacionamento"
+			%textinho.text = "It's not cheating! Even though i do like messing around..."
 		else:
-			%textinho.text = "Não é traição,ele me chamou primeiro\ne é deselegante recusar um convite"
+			%textinho.text = "It's not cheating, they called me first! I'm not refusing."
 
 
 func random_person(grupo) -> String:
@@ -373,12 +357,11 @@ func grupo(element): #checa o grupo da personalidade pra depois comparar
 		if element in i:
 			return i
 
-
 func completa_cartapadrao():
 	if randi_range(0,1) == 0:
-		%textinho.text += ". Se você acha que a gente tenho chances, manda a carta."
+		%textinho.text += ". Send this, please!"
 	else:
-		%textinho.text += ". Combina?"
+		%textinho.text += ". Do we work out?"
 		
 func sorteia(z: int):
 	if z == 0:

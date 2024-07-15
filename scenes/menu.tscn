@@ -248,14 +248,14 @@ mouse_default_cursor_shape = 2
 [node name="Jogar" type="Label" parent="."]
 z_index = 2
 layout_mode = 0
-offset_left = 21.5097
+offset_left = 23.5164
 offset_top = 18.804
-offset_right = 91.5095
+offset_right = 93.5162
 offset_bottom = 41.804
 scale = Vector2(0.400619, 0.573047)
 theme_override_fonts/font = ExtResource("3_qqr6m")
 theme_override_font_sizes/font_size = 8
-text = "Jogar"
+text = "Play"
 
 [node name="Sair" type="Label" parent="."]
 z_index = 2
@@ -268,7 +268,7 @@ offset_bottom = 50.8455
 scale = Vector2(0.507914, 0.468302)
 theme_override_fonts/font = ExtResource("3_qqr6m")
 theme_override_font_sizes/font_size = 8
-text = "Sair"
+text = "Quit"
 horizontal_alignment = 1
 
 [node name="BotãoSprite2" type="Sprite2D" parent="."]
@@ -333,10 +333,10 @@ offset_left = 66.1832
 offset_top = 28.5252
 offset_right = 240.183
 offset_bottom = 51.5253
-scale = Vector2(0.386894, 0.422483)
+scale = Vector2(0.351647, 0.388848)
 theme_override_fonts/font = ExtResource("3_qqr6m")
 theme_override_font_sizes/font_size = 8
-text = "Recorde:"
+text = "Highscore"
 
 [node name="Recorde" type="Label" parent="."]
 z_index = 2
@@ -357,9 +357,9 @@ scale = Vector2(0.730487, 0.715584)
 texture = ExtResource("6_fj4yt")
 
 [node name="Jornal" type="Sprite2D" parent="."]
-position = Vector2(72.9891, 14.9623)
+position = Vector2(73.9984, 12.6451)
 rotation = 0.120428
-scale = Vector2(0.0525328, 0.0531975)
+scale = Vector2(0.0461336, 0.0463004)
 texture = ExtResource("7_mqhc5")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

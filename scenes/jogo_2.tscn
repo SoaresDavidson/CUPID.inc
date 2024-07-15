@@ -218,7 +218,7 @@ scale = Vector2(0.732006, 1.29638)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("8_magwp")
 theme_override_font_sizes/font_size = 8
-text = "Dia"
+text = "Day"
 horizontal_alignment = 1
 
 [node name="Pontos" type="Label" parent="."]
@@ -245,7 +245,7 @@ texture = ExtResource("10_7cux2")
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
-wait_time = 150.0
+wait_time = 240.0
 one_shot = true
 autostart = true
 
@@ -255,10 +255,10 @@ offset_left = 35.0
 offset_top = -60.0
 offset_right = 111.0
 offset_bottom = -52.0
-scale = Vector2(1, 0.976123)
+scale = Vector2(0.989308, 0.976123)
 theme_override_fonts/font = ExtResource("6_1xo03")
 theme_override_font_sizes/font_size = 8
-text = "META DO DIA:"
+text = "DAILY QUOTA:"
 
 [node name="Meta2" type="Label" parent="."]
 z_index = 2

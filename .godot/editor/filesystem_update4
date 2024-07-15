@@ -1,5 +1,2 @@
-res://scenes/menu.tscn
 res://scenes/jogo_2.tscn
-res://script/main.gd
-res://default_bus_layout.tres
 res://Audios/menuMusic.tscn

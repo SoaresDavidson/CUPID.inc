@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c07gu8ugyn5lc"
+path="res://.godot/imported/All Star (from Shrek) [8 Bit Cover Tribute to Smash Mouth] - 8 Bit Universe (320).mp3-e5a4ae2805a4b1e2e2a2619bd9109246.mp3str"
+
+[deps]
+
+source_file="res://Audios/All Star (from Shrek) [8 Bit Cover Tribute to Smash Mouth] - 8 Bit Universe (320).mp3"
+dest_files=["res://.godot/imported/All Star (from Shrek) [8 Bit Cover Tribute to Smash Mouth] - 8 Bit Universe (320).mp3-e5a4ae2805a4b1e2e2a2619bd9109246.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
