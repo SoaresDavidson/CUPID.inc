@@ -3,7 +3,7 @@ extends Node2D
 
 func _ready():
 	MenuMusic.get_child(17).play()
-	$Label.text = "Não fez os processos a tempo. Você manteve o emprego por " + str(GlobalVars.scoreatual) + " dias."
+	$Label.text = "When leaving work today, your boss stopped you and gave you a firing letter. You didn't meet your daily quota and your slow pace compromised the integrity of the company. You kept your job for " + str(GlobalVars.scoreatual) + " days. Now you are jobless and living life aimlessly."
 	await get_tree().create_timer(1.0).timeout
 	$Button.show()
 

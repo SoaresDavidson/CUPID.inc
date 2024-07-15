@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://script/main.gd" id="1_o8kaa"]
 [ext_resource type="PackedScene" uid="uid://bkskky10obye7" path="res://scenes/carta.tscn" id="2_krjd3"]
 [ext_resource type="PackedScene" uid="uid://bq5m52kgqx1n7" path="res://scenes/texto.tscn" id="4_fgr2b"]
-[ext_resource type="PackedScene" path="res://scenes/livroderegras.tscn" id="4_wcrty"]
+[ext_resource type="PackedScene" uid="uid://ceeivj7ajngfv" path="res://scenes/livroderegras.tscn" id="4_wcrty"]
 [ext_resource type="FontFile" uid="uid://fenv4xgdmyyy" path="res://fonts/PixelOperator8.ttf" id="6_1xo03"]
 [ext_resource type="FontFile" uid="uid://daxfdsjhbdu48" path="res://fonts/PixelOperator8-Bold.ttf" id="8_magwp"]
 [ext_resource type="Texture2D" uid="uid://dehqaaft31st0" path="res://assets/abadireita.png" id="9_gg3lf"]
@@ -218,7 +218,7 @@ scale = Vector2(0.732006, 1.29638)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("8_magwp")
 theme_override_font_sizes/font_size = 8
-text = "Dia"
+text = "Day"
 horizontal_alignment = 1
 
 [node name="Pontos" type="Label" parent="."]
@@ -245,9 +245,31 @@ texture = ExtResource("10_7cux2")
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
-wait_time = 100.0
+wait_time = 240.0
 one_shot = true
 autostart = true
+
+[node name="Meta" type="Label" parent="."]
+z_index = 2
+offset_left = 35.0
+offset_top = -60.0
+offset_right = 111.0
+offset_bottom = -52.0
+scale = Vector2(0.989308, 0.976123)
+theme_override_fonts/font = ExtResource("6_1xo03")
+theme_override_font_sizes/font_size = 8
+text = "DAILY QUOTA:"
+
+[node name="Meta2" type="Label" parent="."]
+z_index = 2
+offset_left = 60.0
+offset_top = -47.0
+offset_right = 86.0
+offset_bottom = -39.0
+scale = Vector2(1, 1.28133)
+theme_override_fonts/font = ExtResource("6_1xo03")
+theme_override_font_sizes/font_size = 8
+text = "0/10"
 
 [connection signal="pressed" from="botãocartachegando" to="." method="_on_botãocartachegando_pressed"]
 [connection signal="pressed" from="botãoaceitar" to="." method="_on_botãoaceitar_pressed"]

@@ -42,7 +42,7 @@ scale = Vector2(0.743826, 0.773352)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_ymmns")
 theme_override_font_sizes/font_size = 8
-text = "Livro de regras da 
+text = "   Rule book from 
         Cupid.INC"
 autowrap_mode = 3
 
@@ -55,8 +55,8 @@ scale = Vector2(0.8, 0.8)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_w2sde")
 theme_override_font_sizes/font_size = 8
-text = "- Por turno, devem ser ENVIADAS 10 cartas.
-- Cartas devem ser recusadas com o selo de X, ou aceitas com o selo de     ."
+text = "- Every shift, 10 letters must be sent.
+- Letters must be refused with the X seal, Or accepted with the      seal   ."
 autowrap_mode = 3
 
 [node name="Label3" type="Label" parent="."]
@@ -68,7 +68,7 @@ scale = Vector2(0.8, 0.8)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_w2sde")
 theme_override_font_sizes/font_size = 8
-text = "- Cartas que não dizem respeito à empresa ou que não tem destinatário definido devem ser descartadas no lixeiro. Essas não contarão como processadas."
+text = "- Letters that don't concern the corporation or that don't have a specific destination must be thrown away in the trash can.Those won't count as workload."
 autowrap_mode = 3
 
 [node name="Label4" type="Label" parent="."]
@@ -81,7 +81,7 @@ scale = Vector2(0.8, 0.8)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_w2sde")
 theme_override_font_sizes/font_size = 8
-text = "- Cartas só devem ser enviadas como aceitas caso seu conteúdo não seja invasivo ou danoso (dilemas morais não nos concerne).
+text = "- Letters may only be sent as accepted if their content is not invasive or harmful. Other than that, moral dillemas don't concern us.
 "
 autowrap_mode = 3
 
@@ -89,22 +89,22 @@ autowrap_mode = 3
 visible = false
 offset_left = 10.0
 offset_top = -52.0
-offset_right = 135.0
+offset_right = 142.0
 offset_bottom = 77.0
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.743813, 0.805798)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_w2sde")
 theme_override_font_sizes/font_size = 8
-text = "- Eis uma lista de personalidades que combinam:
-Alegre - Positivo
-Tímido - Nerd
-Geek - Lolzeiro
-Bobo - Engraçado
-Sensível - Emotivo
-Romântico - Leitor
-Criativo - Artista
-Calmo - Pensativo
-Calado - Falante"
+text = "- Here's a list of matching traits:
+Happy - Positive
+Shy - Nerd
+Geek - Gamer
+Silly - Funny
+Sensitive - Emotional
+Romantic - Reader
+Creative - Artistic
+Calm - Thinking
+Silent - Talkative"
 autowrap_mode = 3
 
 [node name="Direita" type="Button" parent="."]
@@ -125,7 +125,7 @@ offset_bottom = -36.0
 mouse_default_cursor_shape = 2
 
 [node name="Coração" type="Sprite2D" parent="."]
-position = Vector2(-83, 32)
+position = Vector2(-53, 24)
 scale = Vector2(0.595238, 0.617647)
 texture = ExtResource("6_roo0w")
 

@@ -74,6 +74,7 @@ centered = false
 offset_right = 388.0
 offset_bottom = 644.0
 theme_override_fonts/font = ExtResource("2_x4nom")
+theme_override_font_sizes/font_size = 24
 autowrap_mode = 2
 
 [node name="Button" type="Button" parent="."]
