@@ -271,6 +271,19 @@ theme_override_fonts/font = ExtResource("6_1xo03")
 theme_override_font_sizes/font_size = 8
 text = "0/10"
 
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -81.0
+offset_top = -19.0
+offset_right = -16.0
+offset_bottom = 16.0
+scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = ExtResource("8_magwp")
+theme_override_font_sizes/font_size = 8
+text = "Rulebook
+--------->"
+autowrap_mode = 3
+
 [connection signal="pressed" from="botãocartachegando" to="." method="_on_botãocartachegando_pressed"]
 [connection signal="pressed" from="botãoaceitar" to="." method="_on_botãoaceitar_pressed"]
 [connection signal="pressed" from="botãonegar" to="." method="_on_botãonegar_pressed"]

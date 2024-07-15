@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bjv3k832gs6c3"]
+[gd_scene load_steps=23 format=3 uid="uid://bjv3k832gs6c3"]
 
 [ext_resource type="AudioStream" uid="uid://5s0nw7clynws" path="res://Audios/click.mp3" id="1_de55m"]
 [ext_resource type="AudioStream" uid="uid://xo8p2mfcnfpi" path="res://Audios/Clair De Lune - Debussy _ 8-Bit Classical (320).mp3" id="1_id03p"]
@@ -20,6 +20,8 @@
 [ext_resource type="AudioStream" uid="uid://fcpr5pkjf8ka" path="res://Audios/AllStar.mp3" id="15_vinon"]
 [ext_resource type="AudioStream" uid="uid://cog1s826draxk" path="res://Audios/Empty Room Ambient Noise Sound Effect (320).mp3" id="15_xcvte"]
 [ext_resource type="AudioStream" uid="uid://we1dcmscfv04" path="res://Audios/Trash (Sound Effect) (320).mp3" id="16_gr08y"]
+[ext_resource type="AudioStream" uid="uid://bsxrx8rsy6uxd" path="res://Audios/LivroAbrindo.mp3" id="21_l6ed7"]
+[ext_resource type="AudioStream" uid="uid://cg7xuf0211p5x" path="res://Audios/LivroFechando.mp3" id="22_5wka2"]
 
 [node name="SFX" type="Node"]
 
@@ -102,3 +104,9 @@ volume_db = -15.0
 [node name="lixeira" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_gr08y")
 volume_db = -10.0
+
+[node name="livro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_l6ed7")
+
+[node name="livro2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_5wka2")
