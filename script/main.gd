@@ -209,7 +209,7 @@ func _on_lixeira_pressed(): #botar carta na lixeira
 func _on_fechar_livro_pressed(): #fechar livro de regras 
 	MenuMusic.get_child(21).play()
 	$Livro.hide()
-	if trabalhando == 0: #questão de organização só
+	if $"botãocartachegando".visible: #questão de organização só
 		$"botãoaceitar".hide()
 		$"botãocartachegando".show()
 		$"botãonegar".hide()

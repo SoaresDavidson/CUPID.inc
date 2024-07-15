@@ -329,14 +329,14 @@ text = "CUPID.INC"
 [node name="Título2" type="Label" parent="."]
 z_index = 1
 layout_mode = 0
-offset_left = 66.1832
-offset_top = 28.5252
-offset_right = 240.183
-offset_bottom = 51.5253
-scale = Vector2(0.351647, 0.388848)
+offset_left = 66.0
+offset_top = 29.0
+offset_right = 132.0
+offset_bottom = 52.0
+scale = Vector2(0.331913, 0.388848)
 theme_override_fonts/font = ExtResource("3_qqr6m")
 theme_override_font_sizes/font_size = 8
-text = "Highscore"
+text = "Best work:"
 
 [node name="Recorde" type="Label" parent="."]
 z_index = 2
