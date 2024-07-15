@@ -1,9 +1,9 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1721015318
-default_bus_layout.tres::AudioBusLayout::8333680056011333374::1721005217::0::1::::<><>::
+::res://::1721015962
+default_bus_layout.tres::AudioBusLayout::8333680056011333374::1721015845::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1720743974::0::1::::<><>::
-global_vars.gd::GDScript::-1::1721005200::0::1::::<>Node<>::
-::res://assets/::1721010086
+global_vars.gd::GDScript::-1::1721015845::0::1::::<>Node<>::
+::res://assets/::1721015845
 abadireita.png::CompressedTexture2D::7455439550419870487::1720841746::1720841749::1::::<><>::
 abaesquerda.png::CompressedTexture2D::1258611648860356211::1720841730::1720841749::1::::<><>::
 allblack.png::CompressedTexture2D::242418994660827176::1720730625::1720730625::1::::<><>::
@@ -13,13 +13,13 @@ botãovermelho.png::CompressedTexture2D::631993135041100619::1720730625::1720730
 cartaodio.png::CompressedTexture2D::8731967217349528397::1720730625::1720730625::1::::<><>::
 coin.png::CompressedTexture2D::3382456054179693340::1720730625::1720730625::1::::<><>::
 concept.png::CompressedTexture2D::4101678896952484041::1720730625::1720730625::1::::<><>::
-escritório.png::CompressedTexture2D::2588161413265662379::1721005200::1720932507::1::::<><>::
+escritório.png::CompressedTexture2D::2588161413265662379::1721015845::1720932507::1::::<><>::
 hand.png::CompressedTexture2D::957100311634252907::1720885630::1720885633::1::::<><>::
 interface.png::CompressedTexture2D::4695005035969203537::1720730625::1720730625::1::::<><>::
-jornal.png::CompressedTexture2D::6965611292672206201::1721010085::1721010086::1::::<><>::
-livro.png::CompressedTexture2D::7192601310513913812::1721005200::1721005200::1::::<><>::
-livrodireita.png::CompressedTexture2D::5004517696592840393::1721005200::1721005200::1::::<><>::
-livroesquerda.png::CompressedTexture2D::7743464229440022132::1721005200::1721005200::1::::<><>::
+jornal.png::CompressedTexture2D::6965611292672206201::1721015845::1721010086::1::::<><>::
+livro.png::CompressedTexture2D::7192601310513913812::1721015845::1721015845::1::::<><>::
+livrodireita.png::CompressedTexture2D::5004517696592840393::1721015845::1721015845::1::::<><>::
+livroesquerda.png::CompressedTexture2D::7743464229440022132::1721015845::1721015845::1::::<><>::
 ruim.png::CompressedTexture2D::4918403792102328218::1720908438::1720908452::1::::<><>::
 select.png::CompressedTexture2D::4576525117435232770::1720885518::1720885520::1::::<><>::
 space.png::CompressedTexture2D::7101925377497691155::1720730625::1720730625::1::::<><>::
@@ -38,10 +38,10 @@ transição1.png::CompressedTexture2D::6236081606165014838::1720909703::17209097
 transição2.png::CompressedTexture2D::3410048371586164652::1720909703::1720909704::1::::<><>::
 transição3.png::CompressedTexture2D::8854362029648216513::1720909703::1720909704::1::::<><>::
 transição4.png::CompressedTexture2D::6548916389276375497::1720909703::1720909704::1::::<><>::
-::res://Audios/::1721015357
+::res://Audios/::1721015933
 abrirfecharcarta.mp3::AudioStreamMP3::6718893675080926102::1720730625::1721015442::1::::<><>::
-Africa.mp3::AudioStreamMP3::5425008394938310759::1721014477::1721015469::1::::<><>::
-AllStar.mp3::AudioStreamMP3::356015686425348496::1721011824::1721015469::1::::<><>::
+Africa.mp3::AudioStreamMP3::5425008394938310759::1721015845::1721015845::1::::<><>::
+AllStar.mp3::AudioStreamMP3::356015686425348496::1721015845::1721015845::1::::<><>::
 audio-editor-output.mp3::AudioStreamMP3::7996806186479890217::1720730625::1720730625::1::::<><>::
 cartaentrandosaindo.mp3::AudioStreamMP3::3248931972865414582::1720730625::1720730625::1::::<><>::
 cartaslide.mp3::AudioStreamMP3::7714882257333302859::1720730625::1720730625::1::::<><>::
@@ -56,39 +56,39 @@ Frank Sinatra - Fly Me To The Moon 8 Bits (320).mp3::AudioStreamMP3::24560704051
 Garota de ipanema 8 bit remix (320).mp3::AudioStreamMP3::5769625983125240596::1720844954::1721015464::1::::<><>::
 Legião Urbana - Tempo Perdido 8 Bits (320).mp3::AudioStreamMP3::2095618474462076027::1720843777::1721015464::1::::<><>::
 menu.wav::AudioStreamWAV::3904251369950140487::1720730625::1720730625::1::::<><>::
-menuMusic.tscn::PackedScene::3063191920767754028::1721015318::0::1::::<><>::uid://5s0nw7clynws::::res://Audios/click.mp3<>uid://xo8p2mfcnfpi::::res://Audios/Clair De Lune - Debussy _ 8-Bit Classical (320).mp3<>uid://dh6e8pcgwdbpr::::res://Audios/cartaslide.mp3<>uid://dl6yh2l788oa0::::res://Audios/audio-editor-output.mp3<>uid://dmt18dwo5niqp::::res://Audios/carteirofechar.mp3<>uid://cgiq4kaypq0n2::::res://Audios/carteiroabrir.mp3<>uid://dya4yad4blwjs::::res://Audios/static.mp3<>uid://ba80edtpav7sv::::res://Audios/Frank Sinatra - Fly Me To The Moon 8 Bits (320).mp3<>uid://bsb7bmpwpkjmt::::res://Audios/Queen - Love of my life 8 Bits (320).mp3<>uid://44esa2cwbr3x::::res://Audios/Legião Urbana - Tempo Perdido 8 Bits (320).mp3<>uid://cog35q6i6ekxo::::res://Audios/Garota de ipanema 8 bit remix (320).mp3<>uid://cxexlox2f4cnb::::res://Audios/stamp-102627.mp3<>uid://c07gu8ugyn5lc::::res://Audios/All Star (from Shrek) [8 Bit Cover Tribute to Smash Mouth] - 8 Bit Universe (320).mp3<>uid://doyh5ipy5dkqv::::res://Audios/Take On Me (8 Bit Remix Cover Version) [Tribute to A-ha] - 8 Bit Universe (320).mp3<>uid://cpj1h82rjvc0s::::res://Audios/Central Office Alarm Sounds (320).mp3<>uid://cw0uxvi1wy53i::::res://Audios/Sadness   8 bit Relaxing Music (320).mp3<>uid://ceghiwi278sgi::::res://Audios/MrBlueSky.mp3<>uid://bw8rr1gyhyu2t::::res://Audios/Africa [8 Bit Tribute to Toto] - 8 Bit Universe (320).mp3<>uid://cog1s826draxk::::res://Audios/Empty Room Ambient Noise Sound Effect (320).mp3<>uid://we1dcmscfv04::::res://Audios/Trash (Sound Effect) (320).mp3
-MrBlueSky.mp3::AudioStreamMP3::5066423482906270468::1721014179::1721015451::1::::<><>::
+menuMusic.tscn::PackedScene::3063191920767754028::1721015933::0::1::::<><>::uid://5s0nw7clynws::::res://Audios/click.mp3<>uid://xo8p2mfcnfpi::::res://Audios/Clair De Lune - Debussy _ 8-Bit Classical (320).mp3<>uid://dh6e8pcgwdbpr::::res://Audios/cartaslide.mp3<>uid://dl6yh2l788oa0::::res://Audios/audio-editor-output.mp3<>uid://dmt18dwo5niqp::::res://Audios/carteirofechar.mp3<>uid://cgiq4kaypq0n2::::res://Audios/carteiroabrir.mp3<>uid://dya4yad4blwjs::::res://Audios/static.mp3<>uid://ba80edtpav7sv::::res://Audios/Frank Sinatra - Fly Me To The Moon 8 Bits (320).mp3<>uid://bsb7bmpwpkjmt::::res://Audios/Queen - Love of my life 8 Bits (320).mp3<>uid://44esa2cwbr3x::::res://Audios/Legião Urbana - Tempo Perdido 8 Bits (320).mp3<>uid://cog35q6i6ekxo::::res://Audios/Garota de ipanema 8 bit remix (320).mp3<>uid://cxexlox2f4cnb::::res://Audios/stamp-102627.mp3<>uid://cjj6dit4hs06f::::res://Audios/Africa.mp3<>uid://doyh5ipy5dkqv::::res://Audios/Take On Me (8 Bit Remix Cover Version) [Tribute to A-ha] - 8 Bit Universe (320).mp3<>uid://cpj1h82rjvc0s::::res://Audios/Central Office Alarm Sounds (320).mp3<>uid://cw0uxvi1wy53i::::res://Audios/Sadness   8 bit Relaxing Music (320).mp3<>uid://ceghiwi278sgi::::res://Audios/MrBlueSky.mp3<>uid://fcpr5pkjf8ka::::res://Audios/AllStar.mp3<>uid://cog1s826draxk::::res://Audios/Empty Room Ambient Noise Sound Effect (320).mp3<>uid://we1dcmscfv04::::res://Audios/Trash (Sound Effect) (320).mp3
+MrBlueSky.mp3::AudioStreamMP3::5066423482906270468::1721015845::1721015845::1::::<><>::
 Queen - Love of my life 8 Bits (320).mp3::AudioStreamMP3::3653829630966471695::1720843852::1721015451::1::::<><>::
 Sadness   8 bit Relaxing Music (320).mp3::AudioStreamMP3::6369861900950038552::1720903755::1721015451::1::::<><>::
 stamp-102627.mp3::AudioStreamMP3::6396859188735752859::1720890280::1721015451::1::::<><>::
 static.mp3::AudioStreamMP3::8845597956189860324::1720843804::1721015451::1::::<><>::
 Street Sound Effect _ High-quality (320).mp3::AudioStreamMP3::8982803673721694668::1720909570::1721015451::1::::<><>::
-Take On Me (8 Bit Remix Cover Version) [Tribute to A-ha] - 8 Bit Universe (320).mp3::AudioStreamMP3::8191929965365240981::1721011361::1721015451::1::::<><>::
-Trash (Sound Effect) (320).mp3::AudioStreamMP3::1553996194651679563::1721005200::1721015451::1::::<><>::
+Take On Me (8 Bit Remix Cover Version) [Tribute to A-ha] - 8 Bit Universe (320).mp3::AudioStreamMP3::8191929965365240981::1721015845::1721015845::1::::<><>::
+Trash (Sound Effect) (320).mp3::AudioStreamMP3::1553996194651679563::1721015845::1721015845::1::::<><>::
 ::res://fonts/::1720733443
 PixelOperator8-Bold.ttf::FontFile::7207052641411293715::1720730625::1720733443::1::::<><>::
 PixelOperator8.ttf::FontFile::360030110769145400::1720730625::1720733443::1::::<><>::
-::res://scenes/::1721015309
+::res://scenes/::1721015933
 carta.tscn::PackedScene::3126094249393194256::1720842493::0::1::::<><>::uid://y6hahwp1o0::::res://assets/spritesheetanimaçãocarta.png
-escritorio_sprite.tscn::PackedScene::7639308942666405346::1721005200::0::1::::<><>::uid://bc4yv1h8hxcxn::::res://assets/escritório.png
-fracasso.tscn::PackedScene::3897231773682687075::1721010189::0::1::::<><>::res://script/fracasso.gd<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://cccrnk88ramo5::::res://assets/ruim.png
-incompetente.tscn::PackedScene::2682838821210899604::1721010202::0::1::::<><>::res://script/incompetente.gd<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://cccrnk88ramo5::::res://assets/ruim.png
-incompetentefracasso.tscn::PackedScene::2427788239405820014::1721010229::0::1::::<><>::res://script/incompetentefracasso.gd<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://cccrnk88ramo5::::res://assets/ruim.png
-jogo_2.tscn::PackedScene::7089527185775851797::1721015309::0::1::::<><>::uid://dg3skjko6rcqc::::res://scenes/escritorio_sprite.tscn<>res://script/main.gd<>uid://bkskky10obye7::::res://scenes/carta.tscn<>uid://bq5m52kgqx1n7::::res://scenes/texto.tscn<>uid://ceeivj7ajngfv::::res://scenes/livroderegras.tscn<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://daxfdsjhbdu48::::res://fonts/PixelOperator8-Bold.ttf<>uid://dehqaaft31st0::::res://assets/abadireita.png<>uid://r6xfdmqadj28::::res://assets/abaesquerda.png
-livroderegras.tscn::PackedScene::5062378012725142991::1721009000::0::1::::<><>::res://script/Livrinho.gd<>uid://cdkhw7v0jq2k0::::res://assets/livrodireita.png<>uid://dik8yvsykfhtk::::res://assets/livroesquerda.png<>uid://daxfdsjhbdu48::::res://fonts/PixelOperator8-Bold.ttf<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://c5auxjadgayr7::::res://assets/spritecoração.png
-menu.tscn::PackedScene::4456425629332049452::1721010212::0::1::::<><>::res://script/menu.gd<>uid://b75kbulbh2a2t::::res://assets/interface.png<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://dg0lfcf5kodqr::::res://assets/botão.png<>uid://c5auxjadgayr7::::res://assets/spritecoração.png<>uid://bvlu8yk4ervu1::::res://assets/botãoverde.png<>uid://c6igun7i4hrfd::::res://assets/jornal.png
-texto.tscn::PackedScene::3572157126127183418::1721005200::0::1::::<><>::uid://b75kbulbh2a2t::::res://assets/interface.png
+escritorio_sprite.tscn::PackedScene::7639308942666405346::1721015845::0::1::::<><>::uid://bc4yv1h8hxcxn::::res://assets/escritório.png
+fracasso.tscn::PackedScene::3897231773682687075::1721015845::0::1::::<><>::res://script/fracasso.gd<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://cccrnk88ramo5::::res://assets/ruim.png
+incompetente.tscn::PackedScene::2682838821210899604::1721015845::0::1::::<><>::res://script/incompetente.gd<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://cccrnk88ramo5::::res://assets/ruim.png
+incompetentefracasso.tscn::PackedScene::2427788239405820014::1721015845::0::1::::<><>::res://script/incompetentefracasso.gd<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://cccrnk88ramo5::::res://assets/ruim.png
+jogo_2.tscn::PackedScene::7089527185775851797::1721015933::0::1::::<><>::uid://dg3skjko6rcqc::::res://scenes/escritorio_sprite.tscn<>res://script/main.gd<>uid://bkskky10obye7::::res://scenes/carta.tscn<>uid://bq5m52kgqx1n7::::res://scenes/texto.tscn<>uid://ceeivj7ajngfv::::res://scenes/livroderegras.tscn<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://daxfdsjhbdu48::::res://fonts/PixelOperator8-Bold.ttf<>uid://dehqaaft31st0::::res://assets/abadireita.png<>uid://r6xfdmqadj28::::res://assets/abaesquerda.png
+livroderegras.tscn::PackedScene::5062378012725142991::1721015845::0::1::::<><>::res://script/Livrinho.gd<>uid://cdkhw7v0jq2k0::::res://assets/livrodireita.png<>uid://dik8yvsykfhtk::::res://assets/livroesquerda.png<>uid://daxfdsjhbdu48::::res://fonts/PixelOperator8-Bold.ttf<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://c5auxjadgayr7::::res://assets/spritecoração.png
+menu.tscn::PackedScene::4456425629332049452::1721015845::0::1::::<><>::res://script/menu.gd<>uid://b75kbulbh2a2t::::res://assets/interface.png<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://dg0lfcf5kodqr::::res://assets/botão.png<>uid://c5auxjadgayr7::::res://assets/spritecoração.png<>uid://bvlu8yk4ervu1::::res://assets/botãoverde.png<>uid://c6igun7i4hrfd::::res://assets/jornal.png
+texto.tscn::PackedScene::3572157126127183418::1721015845::0::1::::<><>::uid://b75kbulbh2a2t::::res://assets/interface.png
 transição.tscn::PackedScene::9047637313562343033::1720909712::0::1::::<><>::res://script/transição.gd<>uid://cu32maamu0de1::::res://assets/transição1.png<>uid://bot387hxxonsu::::res://assets/transição2.png<>uid://dyfebwvq4n83n::::res://assets/transição3.png<>uid://c0klxwyn4crs8::::res://assets/transição4.png<>uid://d08lp1rcogjeq::::res://Audios/Street Sound Effect _ High-quality (320).mp3
-::res://script/::1721010333
+::res://script/::1721015845
 background.gd::GDScript::-1::1720730625::0::1::::<>ParallaxBackground<>::
 carta.gd::GDScript::-1::1720730625::0::1::::<>AnimatableBody2D<>::
 carta_chegando.gd::GDScript::-1::1720730625::0::1::::<>AnimatableBody2D<>::
-fracasso.gd::GDScript::-1::1721009601::0::1::::<>Node2D<>::
-incompetente.gd::GDScript::-1::1721009677::0::1::::<>Node2D<>::
-incompetentefracasso.gd::GDScript::-1::1721010229::0::1::::<>Node2D<>::
-Livrinho.gd::GDScript::-1::1721005200::0::1::::<>Node2D<>::
-main.gd::GDScript::-1::1721010333::0::1::::<>Node<>::
-menu.gd::GDScript::-1::1721005217::0::1::::<>Control<>::
+fracasso.gd::GDScript::-1::1721015845::0::1::::<>Node2D<>::
+incompetente.gd::GDScript::-1::1721015845::0::1::::<>Node2D<>::
+incompetentefracasso.gd::GDScript::-1::1721015845::0::1::::<>Node2D<>::
+Livrinho.gd::GDScript::-1::1721015845::0::1::::<>Node2D<>::
+main.gd::GDScript::-1::1721015845::0::1::::<>Node<>::
+menu.gd::GDScript::-1::1721015845::0::1::::<>Control<>::
 texto.gd::GDScript::-1::1720730625::0::1::::<>Node2D<>::
 transição.gd::GDScript::-1::1720909173::0::1::::<>Node2D<>::
 tuto.gd::GDScript::-1::1720730625::0::1::::<>Node2D<>::
