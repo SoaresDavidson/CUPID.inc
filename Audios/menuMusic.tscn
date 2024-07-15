@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bjv3k832gs6c3"]
+[gd_scene load_steps=23 format=3 uid="uid://bjv3k832gs6c3"]
 
 [ext_resource type="AudioStream" uid="uid://5s0nw7clynws" path="res://Audios/click.mp3" id="1_de55m"]
 [ext_resource type="AudioStream" uid="uid://xo8p2mfcnfpi" path="res://Audios/Clair De Lune - Debussy _ 8-Bit Classical (320).mp3" id="1_id03p"]
@@ -12,14 +12,16 @@
 [ext_resource type="AudioStream" uid="uid://44esa2cwbr3x" path="res://Audios/Legião Urbana - Tempo Perdido 8 Bits (320).mp3" id="10_obdtb"]
 [ext_resource type="AudioStream" uid="uid://cog35q6i6ekxo" path="res://Audios/Garota de ipanema 8 bit remix (320).mp3" id="11_8srhr"]
 [ext_resource type="AudioStream" uid="uid://cxexlox2f4cnb" path="res://Audios/stamp-102627.mp3" id="12_8kc2g"]
-[ext_resource type="AudioStream" uid="uid://c07gu8ugyn5lc" path="res://Audios/All Star (from Shrek) [8 Bit Cover Tribute to Smash Mouth] - 8 Bit Universe (320).mp3" id="12_pmc7s"]
+[ext_resource type="AudioStream" uid="uid://cjj6dit4hs06f" path="res://Audios/Africa.mp3" id="12_v73ta"]
 [ext_resource type="AudioStream" uid="uid://doyh5ipy5dkqv" path="res://Audios/Take On Me (8 Bit Remix Cover Version) [Tribute to A-ha] - 8 Bit Universe (320).mp3" id="13_14bcs"]
 [ext_resource type="AudioStream" uid="uid://cpj1h82rjvc0s" path="res://Audios/Central Office Alarm Sounds (320).mp3" id="13_ihf8v"]
 [ext_resource type="AudioStream" uid="uid://cw0uxvi1wy53i" path="res://Audios/Sadness   8 bit Relaxing Music (320).mp3" id="14_63bj5"]
 [ext_resource type="AudioStream" uid="uid://ceghiwi278sgi" path="res://Audios/MrBlueSky.mp3" id="14_lr31g"]
-[ext_resource type="AudioStream" uid="uid://bw8rr1gyhyu2t" path="res://Audios/Africa [8 Bit Tribute to Toto] - 8 Bit Universe (320).mp3" id="15_7wo0c"]
+[ext_resource type="AudioStream" uid="uid://fcpr5pkjf8ka" path="res://Audios/AllStar.mp3" id="15_vinon"]
 [ext_resource type="AudioStream" uid="uid://cog1s826draxk" path="res://Audios/Empty Room Ambient Noise Sound Effect (320).mp3" id="15_xcvte"]
 [ext_resource type="AudioStream" uid="uid://we1dcmscfv04" path="res://Audios/Trash (Sound Effect) (320).mp3" id="16_gr08y"]
+[ext_resource type="AudioStream" uid="uid://bsxrx8rsy6uxd" path="res://Audios/LivroAbrindo.mp3" id="21_l6ed7"]
+[ext_resource type="AudioStream" uid="uid://cg7xuf0211p5x" path="res://Audios/LivroFechando.mp3" id="22_5wka2"]
 
 [node name="SFX" type="Node"]
 
@@ -68,7 +70,7 @@ volume_db = -10.018
 bus = &"Musicas"
 
 [node name="escritorio5" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_pmc7s")
+stream = ExtResource("12_v73ta")
 volume_db = -30.0
 
 [node name="escritorio6" type="AudioStreamPlayer" parent="."]
@@ -80,7 +82,7 @@ stream = ExtResource("14_lr31g")
 volume_db = -30.0
 
 [node name="escritorio8" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_7wo0c")
+stream = ExtResource("15_vinon")
 volume_db = -30.0
 
 [node name="stamp" type="AudioStreamPlayer" parent="."]
@@ -102,3 +104,9 @@ volume_db = -15.0
 [node name="lixeira" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_gr08y")
 volume_db = -10.0
+
+[node name="livro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_l6ed7")
+
+[node name="livro2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_5wka2")

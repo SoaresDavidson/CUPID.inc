@@ -39,13 +39,19 @@ var grupo_destinatario = []
 
 
 func _ready():
-	MenuMusic.get_child(18).play()
 	GlobalVars.scoreatual += 1 #toda vez que inicia o dia, é adicionado um dia no score atual
 	if GlobalVars.scoreatual>GlobalVars.highscore:
 		GlobalVars.save_hiscore()
 	GlobalVars.load_score()
 	$Pontos.text = str(GlobalVars.scoreatual) #projeção do score na parede
-	await get_tree().create_timer(1.0).timeout
+	MenuMusic.get_child(18).play()
+	if GlobalVars.scoreatual == 1:
+		$Label.show()
+		await get_tree().create_timer(30.0).timeout
+		$Label.hide()
+	else:
+		$Label.hide()
+		await get_tree().create_timer(2.0).timeout
 	MenuMusic.get_child(6).play()
 	await get_tree().create_timer(2.6).timeout
 	MenuMusic.get_child(i).play()
@@ -180,6 +186,7 @@ func _on_carta_reabrir_pressed(): #reabertura da carta depois de minimizada mas 
 	MenuMusic.get_child(1).play()
 
 func _on_livrinho_pressed(): #abertura do livrinho de regras
+	MenuMusic.get_child(20).play()
 	$"botãocartachegando".hide()
 	$Livro.show()
 	$"botãoaceitar".hide()
@@ -201,6 +208,7 @@ func _on_lixeira_pressed(): #botar carta na lixeira
 	$Meta2.text= str(processosfeitos) +"/"+ str(meta)
 
 func _on_fechar_livro_pressed(): #fechar livro de regras 
+	MenuMusic.get_child(21).play()
 	$Livro.hide()
 	if trabalhando == 0: #questão de organização só
 		$"botãoaceitar".hide()
@@ -259,7 +267,7 @@ func empresarival():
 	if GlobalVars.scoreatual > 1:
 		%remetente.text = "From: SA INC." 
 		%destinatario.text = "To: You"
-		%textinho.text ="We want you with us! Come work here and you won't regret it!"
+		%textinho.text ="We want you with us! We're going to lower your quota!"
 		meta -= 1
 		veneno = true
 	else:
@@ -270,7 +278,7 @@ func cobrançachefe():
 	if GlobalVars.scoreatual > 1:
 		%remetente.text = "From: Cupid" 
 		%destinatario.text = "To: You"
-		%textinho.text = "Since you're new around here, we'll be a little rough. Stay on your toes!"
+		%textinho.text = "Since you're new around here, we'll be a little rougher. Stay on your toes!"
 		meta += 1
 		veneno = true
 	else:
