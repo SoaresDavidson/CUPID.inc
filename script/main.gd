@@ -95,8 +95,8 @@ func _on_botãocartachegando_pressed():
 	veneno = false
 	trabalhando = 1 #inicia o processo da carta
 	combinam = false
-	var j = randi_range(0,12)
-	if j > 6: #dando maior chance de ocorrer uma carta padrão ao invés de um evento especial
+	var j = randi_range(0,12 + GlobalVars.dia)
+	if j < 6: #dando maior chance de ocorrer uma carta padrão ao invés de um evento especial
 		cartapadrão()
 		completa_cartapadrao()
 	else: #chamando uma função especial
@@ -168,6 +168,7 @@ func _on_fechar_pressed():
 	$Lixeira.show()
 	$Livrinho.show()
 	MenuMusic.get_child(1).play()
+	$Meta2.text= str(processosfeitos) +"/"+ str(meta)
 
 func _on_timer_timeout(): #fim do tempo do dia
 	print(processosfeitos)
@@ -226,17 +227,17 @@ func _on_fechar_livro_pressed(): #fechar livro de regras
 func evento(j:int):
 	if j == 6:
 		stalker()
-	elif j == 5:
+	elif j == 7:
 		cartadeodio()
-	elif j == 4:
+	elif j == 8:
 		empresarival()
-	elif j == 3:
+	elif j == 9:
 		bomba()
-	elif j == 2:
+	elif j == 10:
 		cartadeseixo()
-	elif j == 1:
+	elif j == 11:
 		cartadetraicao()
-	elif j == 0:
+	elif j >= 12:
 		cobrançachefe()
 	
 func cartapadrão():
