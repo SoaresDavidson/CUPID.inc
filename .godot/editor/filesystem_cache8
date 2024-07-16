@@ -1,7 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1721138709
+::res://::1721147634
 default_bus_layout.tres::AudioBusLayout::8333680056011333374::1721131442::0::1::::<><>::
-export_presets.cfg::TextFile::-1::1721133524::0::1::::<><>::
+export_presets.cfg::TextFile::-1::1721139183::0::1::::<><>::
 global_vars.gd::GDScript::-1::1720981697::0::1::::<>Node<>::
 ::res://assets/::1721131442
 abadireita.png::CompressedTexture2D::7455439550419870487::1720981697::1720981697::1::::<><>::
@@ -70,15 +70,15 @@ Trash (Sound Effect) (320).mp3::AudioStreamMP3::1553996194651679563::1720981697:
 ::res://fonts/::1720979246
 PixelOperator8-Bold.ttf::FontFile::7207052641411293715::1720979246::1720979246::1::::<><>::
 PixelOperator8.ttf::FontFile::360030110769145400::1720979246::1720979246::1::::<><>::
-::res://scenes/::1721138674
+::res://scenes/::1721147569
 carta.tscn::PackedScene::3126094249393194256::1720981697::0::1::::<><>::uid://y6hahwp1o0::::res://assets/spritesheetanimaçãocarta.png
 escritorio_sprite.tscn::PackedScene::7639308942666405346::1720981697::0::1::::<><>::uid://bc4yv1h8hxcxn::::res://assets/escritório.png
-fracasso.tscn::PackedScene::3897231773682687075::1721138674::0::1::::<><>::res://script/fracasso.gd<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://cccrnk88ramo5::::res://assets/ruim.png
-incompetente.tscn::PackedScene::2682838821210899604::1721138674::0::1::::<><>::res://script/incompetente.gd<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://cccrnk88ramo5::::res://assets/ruim.png
-incompetentefracasso.tscn::PackedScene::2427788239405820014::1721138674::0::1::::<><>::res://script/incompetentefracasso.gd<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://cccrnk88ramo5::::res://assets/ruim.png
-jogo_2.tscn::PackedScene::7089527185775851797::1721138674::0::1::::<><>::uid://dg3skjko6rcqc::::res://scenes/escritorio_sprite.tscn<>res://script/main.gd<>uid://bkskky10obye7::::res://scenes/carta.tscn<>uid://bq5m52kgqx1n7::::res://scenes/texto.tscn<>uid://ceeivj7ajngfv::::res://scenes/livroderegras.tscn<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://daxfdsjhbdu48::::res://fonts/PixelOperator8-Bold.ttf<>uid://dehqaaft31st0::::res://assets/abadireita.png<>uid://r6xfdmqadj28::::res://assets/abaesquerda.png
+fracasso.tscn::PackedScene::3897231773682687075::1721138725::0::1::::<><>::res://script/fracasso.gd<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://cccrnk88ramo5::::res://assets/ruim.png
+incompetente.tscn::PackedScene::2682838821210899604::1721138725::0::1::::<><>::res://script/incompetente.gd<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://cccrnk88ramo5::::res://assets/ruim.png
+incompetentefracasso.tscn::PackedScene::2427788239405820014::1721138739::0::1::::<><>::res://script/incompetentefracasso.gd<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://cccrnk88ramo5::::res://assets/ruim.png
+jogo_2.tscn::PackedScene::7089527185775851797::1721139690::0::1::::<><>::uid://dg3skjko6rcqc::::res://scenes/escritorio_sprite.tscn<>res://script/main.gd<>uid://bkskky10obye7::::res://scenes/carta.tscn<>uid://bq5m52kgqx1n7::::res://scenes/texto.tscn<>uid://ceeivj7ajngfv::::res://scenes/livroderegras.tscn<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://daxfdsjhbdu48::::res://fonts/PixelOperator8-Bold.ttf<>uid://dehqaaft31st0::::res://assets/abadireita.png<>uid://r6xfdmqadj28::::res://assets/abaesquerda.png
 livroderegras.tscn::PackedScene::5062378012725142991::1721131442::0::1::::<><>::res://script/Livrinho.gd<>uid://cdkhw7v0jq2k0::::res://assets/livrodireita.png<>uid://dik8yvsykfhtk::::res://assets/livroesquerda.png<>uid://daxfdsjhbdu48::::res://fonts/PixelOperator8-Bold.ttf<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://c5auxjadgayr7::::res://assets/spritecoração.png
-menu.tscn::PackedScene::4456425629332049452::1721138661::0::1::::<><>::res://script/menu.gd<>uid://b75kbulbh2a2t::::res://assets/interface.png<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://dg0lfcf5kodqr::::res://assets/botão.png<>uid://c5auxjadgayr7::::res://assets/spritecoração.png<>uid://bvlu8yk4ervu1::::res://assets/botãoverde.png<>uid://c6igun7i4hrfd::::res://assets/jornal.png
+menu.tscn::PackedScene::4456425629332049452::1721147569::0::1::::<><>::res://script/menu.gd<>uid://b75kbulbh2a2t::::res://assets/interface.png<>uid://fenv4xgdmyyy::::res://fonts/PixelOperator8.ttf<>uid://dg0lfcf5kodqr::::res://assets/botão.png<>uid://c5auxjadgayr7::::res://assets/spritecoração.png<>uid://bvlu8yk4ervu1::::res://assets/botãoverde.png<>uid://c6igun7i4hrfd::::res://assets/jornal.png
 texto.tscn::PackedScene::3572157126127183418::1720981697::0::1::::<><>::uid://b75kbulbh2a2t::::res://assets/interface.png
 transição.tscn::PackedScene::9047637313562343033::1721137688::0::1::::<><>::res://script/transição.gd<>uid://cu32maamu0de1::::res://assets/transição1.png<>uid://bot387hxxonsu::::res://assets/transição2.png<>uid://dyfebwvq4n83n::::res://assets/transição3.png<>uid://c0klxwyn4crs8::::res://assets/transição4.png<>uid://d08lp1rcogjeq::::res://Audios/Street Sound Effect _ High-quality (320).mp3
 ::res://script/::1721137524
