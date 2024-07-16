@@ -67,10 +67,7 @@ func gerarcarta():
 	$Carta_chegando.play("normal")
 	MenuMusic.get_child(5).play()
 	await get_tree().create_timer(0.5).timeout
-	if $Livro.visible: #acesso ao livro de instruções durante essa fase
-		$"botãocartachegando".hide()
-	else:
-		$"botãocartachegando".show()
+	$"botãocartachegando".show()
 
 func dia_acabou():
 	$Livro.hide()
@@ -187,7 +184,6 @@ func _on_carta_reabrir_pressed(): #reabertura da carta depois de minimizada mas 
 
 func _on_livrinho_pressed(): #abertura do livrinho de regras
 	MenuMusic.get_child(20).play()
-	$"botãocartachegando".hide()
 	$Livro.show()
 	$"botãoaceitar".hide()
 	$"botãonegar".hide()
