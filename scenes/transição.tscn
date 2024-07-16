@@ -80,6 +80,7 @@ animations = [{
 }]
 
 [node name="Transição" type="Node2D"]
+scale = Vector2(1.6617, 1.66823)
 script = ExtResource("1_qssvp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

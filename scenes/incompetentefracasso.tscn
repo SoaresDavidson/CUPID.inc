@@ -57,6 +57,7 @@ _data = {
 }
 
 [node name="IncompetenteFracasso" type="Node2D"]
+scale = Vector2(1.66804, 1.67043)
 script = ExtResource("1_objh6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

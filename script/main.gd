@@ -218,11 +218,18 @@ func _on_fechar_livro_pressed(): #fechar livro de regras
 		$Lixeira.hide()
 		$Livrinho.show()
 	else: #isso também
-		$"botãoaceitar".show()
-		$"botãonegar".show()
-		$cartaReabrir.show()
-		$Lixeira.show()
-		$Livrinho.show()
+		if $Label.visible:
+			$"botãoaceitar".hide()
+			$"botãonegar".hide()
+			$cartaReabrir.hide()
+			$Lixeira.hide()
+			$Livrinho.show()
+		else:
+			$"botãoaceitar".show()
+			$"botãonegar".show()
+			$cartaReabrir.show()
+			$Lixeira.show()
+			$Livrinho.show()
 
 func evento(j:int):
 	if j == 6:
@@ -269,7 +276,6 @@ func empresarival():
 		%destinatario.text = "To: You"
 		%textinho.text ="We want you with us! We're going to lower your quota!"
 		meta -= 1
-		veneno = true
 	else:
 		cartapadrão()
 		completa_cartapadrao()
@@ -316,7 +322,7 @@ func cartadeodio():
 func bomba():
 	%remetente.text = "From: Unknown"
 	%destinatario.text = "To: You"
-	%textinho.text = "DO YOU KNOW HOW TO DISARM A BOMB? I HOPE SO..."
+	%textinho.text = "Do you know how to disarm a bomb?"
 
 func cartadeseixo():
 	var w = randi_range(0,1)#

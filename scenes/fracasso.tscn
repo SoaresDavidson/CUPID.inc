@@ -57,6 +57,7 @@ _data = {
 }
 
 [node name="Fracasso" type="Node2D"]
+scale = Vector2(1.6713, 1.67679)
 script = ExtResource("1_eng58")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

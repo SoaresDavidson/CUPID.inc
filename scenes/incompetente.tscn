@@ -57,6 +57,7 @@ _data = {
 }
 
 [node name="Incompetente" type="Node2D"]
+scale = Vector2(1.66795, 1.66252)
 script = ExtResource("1_p5nb6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

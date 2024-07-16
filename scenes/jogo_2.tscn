@@ -63,6 +63,7 @@ _data = {
 }
 
 [node name="Jogo2" type="Node2D"]
+scale = Vector2(1.67098, 1.65963)
 script = ExtResource("1_o8kaa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
